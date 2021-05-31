@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from "react-router-dom";
 import { login } from "../../../store/session";
 
 const LoginForm = () => {
+  useEffect(() => {
+    document.title = 'Login | Radiant'
+  }, []);
+ 
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,6 +37,7 @@ const LoginForm = () => {
   }
 
   return (
+    <>
     <form onSubmit={onLogin}>
       <div>
         {errors.map((error) => (
@@ -61,6 +66,7 @@ const LoginForm = () => {
         <button type="submit">Login</button>
       </div>
     </form>
+    </>
   );
 };
 
