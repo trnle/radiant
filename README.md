@@ -19,12 +19,10 @@ Check out the [wiki](https://github.com/trnle/radiant/wiki)!
 * [Font Awesome](https://fontawesome.com/v4.7.0/icons/) and [Icons8](https://icons8.com/) for icons 
 * Hosted on Heroku -->
 #### Back End
-<!-- * PostgreSQL
-* Express.js
-* Sequelize.js
-* AJAX
-* CSURF Library
-* Express Validator Library -->
+<!-- * Python
+* PostgreSQL
+* SQLAlchemy
+* Flask -->
 
 ***
 
