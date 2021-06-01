@@ -45,7 +45,7 @@ const SignUpForm = () => {
 
   return (
     <form onSubmit={onSignUp}>
-      <div>
+      <div className='form-label-input'>
         <label>User Name</label>
         <input
           type="text"
@@ -54,7 +54,7 @@ const SignUpForm = () => {
           value={username}
         ></input>
       </div>
-      <div>
+      <div className='form-label-input'>
         <label>Email</label>
         <input
           type="text"
@@ -63,7 +63,7 @@ const SignUpForm = () => {
           value={email}
         ></input>
       </div>
-      <div>
+      <div className='form-label-input'>
         <label>Password</label>
         <input
           type="password"
@@ -72,8 +72,8 @@ const SignUpForm = () => {
           value={password}
         ></input>
       </div>
-      <div>
-        <label>Repeat Password</label>
+      <div className='form-label-input'>
+        <label>Confirm Password</label>
         <input
           type="password"
           name="repeat_password"

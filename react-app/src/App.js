@@ -23,13 +23,9 @@ function App() {
 
   let sessionLinks;
   if (user) {
-    sessionLinks = (
-      <Home />
-    )
+    sessionLinks = <Home />
   } else {
-    sessionLinks = (
-      <Splash />
-    )
+    sessionLinks = <Splash />
   }
 
   if (!loaded) {

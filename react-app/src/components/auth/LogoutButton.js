@@ -1,9 +1,10 @@
 import React from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { logout } from "../../store/session";
 
 const LogoutButton = () => {
+  const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -12,7 +13,11 @@ const LogoutButton = () => {
     dispatch(logout());
   };
 
-  return <button onClick={onLogout}>Logout</button>;
-};
+  return (
+    <div className='nav-bar-links'>
+      {user && <button onClick={onLogout}>Logout</button>}
+    </div>
+  );
+}
 
 export default LogoutButton;
