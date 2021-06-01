@@ -7,6 +7,7 @@ import NavBar from './components/NavBar';
 // import ProtectedRoute from './components/Auth/ProtectedRoute';
 import Splash from './components/Splash';
 import Home from './components/Home';
+import Footer from './components/Footer';
 import { authenticate } from './store/session';
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
           {sessionLinks}
         </Route>
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 }

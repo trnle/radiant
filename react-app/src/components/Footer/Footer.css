@@ -1,0 +1,16 @@
+footer {
+  height: 60px;
+  background-color: white;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
+
+#footer-links {
+  text-align: center;
+  margin-top: 13px;
+}
+
+#footer-links a {
+  margin: 7px;
+}
