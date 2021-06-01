@@ -5,7 +5,7 @@ import { login } from "../../../store/session";
 
 const LoginForm = () => {
   useEffect(() => {
-    document.title = 'Login | Radiant'
+    document.title = 'Login | Radiant';
   }, []);
  
   const [errors, setErrors] = useState([]);

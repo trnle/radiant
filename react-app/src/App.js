@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Login from './components/Auth/Login';
 import SignUp from './components/Auth/SignUp';
 import NavBar from './components/NavBar';
-import ProtectedRoute from './components/Auth/ProtectedRoute';
+// import ProtectedRoute from './components/Auth/ProtectedRoute';
+import Splash from './components/Splash';
+import Home from './components/Home';
 import { authenticate } from './store/session';
 
 function App() {
-  // const user = useSelector(state => state.session.user);
+  const user = useSelector(state => state.session.user);
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
@@ -18,6 +20,17 @@ function App() {
       setLoaded(true);
     })();
   }, [dispatch]);
+
+  let sessionLinks;
+  if (user) {
+    sessionLinks = (
+      <Home />
+    )
+  } else {
+    sessionLinks = (
+      <Splash />
+    )
+  }
 
   if (!loaded) {
     return null;
@@ -33,9 +46,9 @@ function App() {
         <Route path='/signup' exact={true}>
           <SignUp />
         </Route>
-        <ProtectedRoute path='/' exact={true}>
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
+        <Route path='/' exact={true}>
+          {sessionLinks}
+        </Route>
       </Switch>
     </BrowserRouter>
   );
