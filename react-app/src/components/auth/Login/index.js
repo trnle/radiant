@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, NavLink } from 'react-router-dom';
 import { login } from '../../../store/session';
+import DemoButton from '../DemoButton';
 import './Login.css';
 
 const LoginForm = () => {
@@ -65,7 +66,7 @@ const LoginForm = () => {
             onChange={updatePassword}
           />
           <button className='auth-btn' type='submit'>Login</button>
-          <button className='auth-btn'>Demo User</button>
+          <DemoButton />
           <div className='redirect-form'>
             Don't have an account?
             <NavLink to='/signup'> Sign up here.</NavLink>

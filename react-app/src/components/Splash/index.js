@@ -1,4 +1,5 @@
 import React from 'react';
+import DemoButton from '../Auth/DemoButton';
 import './Splash.css';
 
 const Splash = () => {
@@ -8,7 +9,7 @@ const Splash = () => {
     <div id='splash-container'>
       <h1>Welcome to Radiant.</h1>
       <h3>Create personalized routines for your skincare & beauty treatments</h3>
-      <button>Demo User</button>
+      <DemoButton />
     </div>
   )
 }
