@@ -2,7 +2,7 @@
 body {
   margin: 0;
   font-family: muli, sans-serif;
-  font-weight: 200;
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -10,6 +10,7 @@ h1 {
   font-family: abril-fatface, serif;
   font-weight: 400;
   font-style: normal;
+  margin: 0;
 }
 
 button {
@@ -20,4 +21,15 @@ button {
   color: white;
   border: 1px solid transparent;
   border-radius: 14px;
+}
+
+button:hover {
+  background-color: #72aab8;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: #3E3B3B;
+  font-weight: 900;
 }

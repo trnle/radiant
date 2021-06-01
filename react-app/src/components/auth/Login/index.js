@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-// import { Helmet } from 'react-helmet-async';
+import { Redirect, NavLink } from 'react-router-dom';
 import { login } from '../../../store/session';
 import './Login.css';
 
 const LoginForm = () => {
-  document.title = 'Log In | Radiant';
-  document.body.style = 'background-color: #F2CC8F';
   useEffect(() => {
-    
+    document.title = 'Log In | Radiant';
+    document.body.style = 'background-color: #F2CC8F';
   }, []);
 
   const [errors, setErrors] = useState([]);
@@ -42,41 +40,39 @@ const LoginForm = () => {
 
   return (
     <div id='login-page-container'>
-      {/* <Helmet title='Log In | Radiant' bodyAttributes={{ style: 'background-color: #F2CC8F'}}/> */}
-      <div id='login-form-container'>
+      <form onSubmit={onLogin} id='login-form'>
         <h1>Log In</h1>
-        <form onSubmit={onLogin} id='login-form'>
-          <div>
-            {errors.map((error) => (
-              <div>{error}</div>
-            ))}
+        <div>
+          {errors.map((error) => (
+            <div>{error}</div>
+          ))}
+        </div>
+        <div className='form-label-input'>
+          <label htmlFor='email'>Email</label>
+          <input
+            name='mail'
+            type='text'
+            placeholder='Email'
+            value={email}
+            onChange={updateEmail}
+          />
+          <label htmlFor="password">Password</label>
+          <input
+            name='password'
+            type='password'
+            placeholder='Password'
+            value={password}
+            onChange={updatePassword}
+          />
+          <button className='auth-btn' type='submit'>Login</button>
+          <button className='auth-btn'>Demo User</button>
+          <div className='redirect-form'>
+            Don't have an account?
+            <NavLink to='/signup'> Sign up here.</NavLink>
           </div>
-          <div className='form-label-input'>
-            <label htmlFor="email">Email</label>
-            <input
-              name="email"
-              type="text"
-              placeholder="Email"
-              value={email}
-              onChange={updateEmail}
-            />
-          </div>
-          <div className='form-label-input'>
-            <label htmlFor="password">Password</label>
-            <input
-              name="password"
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={updatePassword}
-            />
-            <button className='login-btn' type="submit">Login</button>
-            <button className='login-btn'>Demo User</button>
-          </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
-
   );
 };
 
