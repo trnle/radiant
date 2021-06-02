@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import Product
+from app.models import Product, User
 
 product_routes = Blueprint('products', __name__)
 
@@ -14,4 +14,5 @@ def products():
 @login_required
 def product(id):
   product = Product.query.get(id)
-  return product.to_dict()
+  user = User.query.get(product.user_id).username
+  return {'product': product.to_dict(), 'user': user}
