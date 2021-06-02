@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import Login from './components/Auth/Login/index.js';
-import SignUp from './components/Auth/SignUp/index.js';
+import Login from './components/Auth/Login';
+import SignUp from './components/Auth/SignUp';
 import NavBar from './components/NavBar';
 // import ProtectedRoute from './components/Auth/ProtectedRoute';
 import Splash from './components/Splash';
