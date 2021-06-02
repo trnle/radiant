@@ -1,9 +1,14 @@
 /* TODO Add site wide styles */
+html {
+  height: 100px;
+}
+
 body {
   margin: 0;
   font-family: muli, sans-serif;
   font-weight: 400;
   font-style: normal;
+  height: 100%;
 }
 
 h1 {
@@ -11,6 +16,7 @@ h1 {
   font-weight: 400;
   font-style: normal;
   margin: 0;
+  color: #3E3B3B;
 }
 
 button {
@@ -30,6 +36,6 @@ button:hover {
 
 a {
   text-decoration: none;
-  color: #3E3B3B;
+  color: #1C2237;
   font-weight: 900;
 }

@@ -16,6 +16,7 @@ class Product(db.Model):
   am_use = db.Column(db.Boolean, default=False)
   pm_use = db.Column(db.Boolean, default=False)
   description = db.Column(db.Text)
+  directions = db.Column(db.Text, default='N/A')
   precautions = db.Column(db.String, default='N/A')
   ingredients = db.Column(db.Text, default='N/A')
   img_url = db.Column(db.Text)
@@ -33,6 +34,7 @@ class Product(db.Model):
       'am_use': self.am_use,
       'pm_use': self.pm_use,
       'description': self.description,
+      'directions': self.directions,
       'precautions': self.precautions,
       'ingredients': self.ingredients,
       'img_url': self.img_url,

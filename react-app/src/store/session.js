@@ -35,7 +35,7 @@ export const login = (email, password) => async dispatch => {
   const data = await response.json();
 
   if (data.errors) return data;
-  
+
   dispatch(setUser(data));
   return {};
 }
@@ -71,14 +71,14 @@ export const signUp = (username, email, password) => async dispatch => {
   return {};
 }
 
-const initialState = {user: null};
+const initialState = { user: null };
 
-export default function reducer(state=initialState, action) {
+export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:
-      return {user: action.payload}
+      return { user: action.payload }
     case REMOVE_USER:
-      return {user: null}
+      return { user: null }
     default:
       return state
   }
