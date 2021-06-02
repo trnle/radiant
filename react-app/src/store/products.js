@@ -1,8 +1,14 @@
 const LOAD_PRODUCTS = 'products/GET_PRODUCTS';
+const LOAD_ONE_PRODUCT = 'products/LOAD_ONE_PRODUCT';
 
 const loadProducts = products => ({
   type: LOAD_PRODUCTS,
   products
+})
+
+const loadOneProduct = product => ({
+  type: LOAD_ONE_PRODUCT,
+  product
 })
 
 export const getProducts = () => async dispatch => {
@@ -12,20 +18,21 @@ export const getProducts = () => async dispatch => {
   if (res.ok) dispatch(loadProducts(data));
 }
 
-// const initialState = {productInfo: null}
-const initialState = {}
+export const getOneProduct = id => async dispatch => {
+  const res = await fetch(`/api/products/${id}`);
+  const data = await res.json();
+
+  if (res.ok) dispatch(loadOneProduct(data));
+}
+
+const initialState = { allProducts: {}, oneProduct: {} }
 
 export default function reducer(state = initialState, action) {
-  let newState;
   switch (action.type) {
-    // case LOAD_PRODUCTS:
-    //   return {productInfo: action.products}
     case LOAD_PRODUCTS:
-      newState = {}
-      action.products.forEach((product) => {
-        newState[product.id] = product
-      })
-      return { ...newState, ...state }
+      return { ...state, allProducts: action.products }
+    case LOAD_ONE_PRODUCT:
+      return { oneProduct: action.product };
     default:
       return state
   }

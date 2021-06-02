@@ -1,0 +1,9 @@
+#products-page {
+  display: grid;
+  justify-content: center;
+  
+}
+
+#products-page h1 {
+  text-align: center;
+}

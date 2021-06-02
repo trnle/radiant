@@ -9,3 +9,9 @@ product_routes = Blueprint('products', __name__)
 def products():
   products = Product.query.all()
   return jsonify([product.to_dict() for product in products])
+
+@product_routes.route('/<int:id>')
+@login_required
+def product(id):
+  product = Product.query.get(id)
+  return product.to_dict()

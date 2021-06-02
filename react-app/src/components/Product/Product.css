@@ -1,0 +1,11 @@
+#product-page h3 {
+  font-family: abril-fatface, serif;
+  font-weight: 400;
+  font-style: normal;
+  /* margin: 0; */
+  color: #3E3B3B;
+}
+
+#product-intro img {
+  height: 300px;
+}

@@ -4,7 +4,7 @@ import { getProducts } from '../../store/products';
 import './Products.css';
 
 const Products = () => {
-  let products = useSelector(state => state.products);
+  let products = useSelector(state => state.products.allProducts);
   products = Object.values(products);
   const dispatch = useDispatch();
 
@@ -13,7 +13,8 @@ const Products = () => {
   }, [dispatch])
 
   return (
-    <div id='product-page'>
+    <div id='products-page'>
+      <h1>Products</h1>
       {products.map(product => (
         <div className='product-container' key={product.id}>
           {product.brand_name}
