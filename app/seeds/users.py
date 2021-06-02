@@ -5,8 +5,7 @@ from app.models import db, User
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     radiant = User(username='RadiantTeam', email='radiant@gmail.com', password='radiance123')
-    demo = User(username='Demo', email='demo@aa.io',
-                password='password')
+    demo = User(username='Demo', email='demo@aa.io', password='password')
     db.session.add(radiant)
     db.session.add(demo)
 
