@@ -3,9 +3,6 @@ import './Footer.css';
 
 const Footer = () => {
   return (
-    <footer>
-      {/* <i className="fab fa-github"></i>
-      <i className="fab fa-linkedin"></i> */}
       <div id='footer-container'>
         <div id='by-line'>
           Developed by Tran Le
@@ -23,8 +20,6 @@ const Footer = () => {
           </a>
         </div>
       </div>
-     
-    </footer>
   )
 }
 

@@ -1,6 +1,7 @@
 #login-page-container {
   display: flex;
   justify-content: center;
+  min-height: 100%;
 }
 
 #login-form {
@@ -8,9 +9,9 @@
   flex-direction: column;
   align-items: center;
   background-color: white;
-  min-width: 31vw;
-  margin-top: 16vh;
-  height: 55vh;
+  width: 450px;
+  margin: 16vh 0 0;
+  height: 450px;
   border-radius: 39px;
   box-shadow: 0px 1px 4px 0px rgb(0 0 0 / 20%);
 }

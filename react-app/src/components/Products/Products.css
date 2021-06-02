@@ -1,7 +1,7 @@
 #products-page {
   display: grid;
   justify-content: center;
-  
+  min-height: 100vh;
 }
 
 #products-page h1 {
