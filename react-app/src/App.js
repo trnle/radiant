@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import Login from './components/Auth/Login';
 import SignUp from './components/Auth/SignUp';
 import NavBar from './components/NavBar';
-// import ProtectedRoute from './components/Auth/ProtectedRoute';
+import ProtectedRoute from './components/Auth/ProtectedRoute';
 import Splash from './components/Splash';
 import Home from './components/Home';
+import Products from './components/Products'
 import Footer from './components/Footer';
 import { authenticate } from './store/session';
 
@@ -46,6 +47,9 @@ function App() {
         <Route path='/' exact={true}>
           {sessionLinks}
         </Route>
+        <ProtectedRoute path='/products' exact={true}>
+          <Products />
+        </ProtectedRoute>
       </Switch>
       <Footer />
     </BrowserRouter>
