@@ -1,6 +1,5 @@
 nav {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   top: 0;
   height: 60px;
@@ -9,5 +8,25 @@ nav {
 }
 
 .nav-bar-links {
+  display: flex;
+  align-items: center;
   margin: 20px;
+}
+
+#radiant-home {
+  font-family: abril-fatface, serif;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0;
+  font-size: 26px;
+}
+
+#other-nav-links {
+  display: flex;
+  margin-left: 65vw;
+}
+
+#logout-btn {
+  height: 35px;
+  width: 70px;
 }
