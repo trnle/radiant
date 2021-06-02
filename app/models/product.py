@@ -1,5 +1,10 @@
 from .db import db
 
+routine_products_table = db.Table('routine_products_table',
+  db.Column('routine_id', db.Integer, db.ForeignKey('routines.id'), primary_key=True),
+  db.Column('product_id', db.Integer, db.ForeignKey('products.id'), primary_key=True)
+)
+
 class Product(db.Model):
   __tablename__ = 'products'
 
@@ -14,9 +19,9 @@ class Product(db.Model):
   precautions = db.Column(db.String, default='N/A')
   ingredients = db.Column(db.Text, default='N/A')
   img_url = db.Column(db.Text)
-  user_id = db.Column(db.Integer, default=None)
+  user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-  routine_products = db.relationship('RoutineProducts', back_populates='products')
+  routines = db.relationship('Routine', secondary=routine_products_table, back_populates='products')
 
   def to_dict(self):
     return {

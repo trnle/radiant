@@ -1,4 +1,5 @@
 from .db import db
+from .product import routine_products_table
 
 class Routine(db.Model):
   __tablename__ = 'routines'
@@ -8,7 +9,7 @@ class Routine(db.Model):
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
   user = db.relationship('User', back_populates='routines')
-  routine_products = db.relationship('RoutineProduct', back_populates='routine')
+  products = db.relationship('Product', secondary=routine_products_table, back_populates='routines')
 
   def to_dict(self):
     return {
