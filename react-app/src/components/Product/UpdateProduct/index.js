@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { updateOneProduct, getOneProduct } from '../../../store/products';
 
 const UpdateProduct = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
   let product = useSelector(state => state.products.oneProduct?.product);
+  const user = useSelector(state => state.session.user);
+  const userId = user.id;
+  const productId = product.id;
 
   const [showForm, setShowForm] = useState(false);
   const [productName, setProductName] = useState(product.product_name);
@@ -17,17 +24,16 @@ const UpdateProduct = () => {
   const [checkAM, setCheckAM] = useState(product.am_use);
   const [checkPM, setCheckPM] = useState(product.pm_use);
 
-  const updateProduct = e => {
+  const updateProduct = async e => {
     e.preventDefault();
-
-    
+    const product = await dispatch(updateOneProduct({ productName, brandName, skincareStep, target, checkAM, checkPM, description, directions, precautions, ingredients, productImg, userId, productId }))
+    history.push(`/products/${product.id}`);
   }
-  
 
   return (
     <div>
-      <button onClick={() => setShowForm(!showForm)}>Settings</button>
-      {showForm && <form action={`/products/${product.id}`} method='post' onSubmit={updateProduct}>
+      <button onClick={() => setShowForm(!showForm)}>Edit Product</button>
+      {showForm && <form onSubmit={updateProduct}>
         <div id='create-product-fields'>
           <div id='product-name-input'>
             <label>Product Name*</label>
