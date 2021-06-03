@@ -44,7 +44,6 @@ const Product = () => {
       </div>
       <div id='product-summary'>
         <h4>Summary</h4>
-       
         <div>
           Skincare Step
           <p>{product.skincare_step}</p>

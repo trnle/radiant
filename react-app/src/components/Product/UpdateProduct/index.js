@@ -27,7 +27,7 @@ const UpdateProduct = () => {
   const updateProduct = async e => {
     e.preventDefault();
     const product = await dispatch(updateOneProduct({ productName, brandName, skincareStep, target, checkAM, checkPM, description, directions, precautions, ingredients, productImg, userId, productId }))
-    history.push(`/products/${product.id}`);
+    setShowForm(false);
   }
 
   return (
@@ -124,6 +124,7 @@ const UpdateProduct = () => {
             </textarea>
           </div>
         </div>
+        <button id='delete-product-btn'>Delete Product</button>
         <button id='update-product-btn' type='submit'>Update Product</button>
       </form>}
     </div>
