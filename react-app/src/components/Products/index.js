@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { getProducts } from '../../store/products';
 import CreateProductModal from './CreateProductModal';
 import './Products.css';
@@ -24,7 +25,7 @@ const Products = () => {
       {Object.values(products).map(product => (
         <div className='product-container' key={product.id}>
           {product.brand_name}
-          <a href={`/products/${product.id}`}>{product.product_name}</a>
+          <NavLink to={`/products/${product.id}`}>{product.product_name}</NavLink>
           {product.skincare_step}
         </div>
       ))}
