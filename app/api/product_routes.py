@@ -16,3 +16,9 @@ def product(id):
   product = Product.query.get(id)
   user = User.query.get(product.user_id).username
   return {'product': product.to_dict(), 'user': user}
+
+@product_routes.route('/', methods=['POST'])
+@login_required
+def create_product():
+  json_data = request.get_json()
+  print(json_data)

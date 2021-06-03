@@ -1,0 +1,60 @@
+#create-product-form {
+  margin: 30px;
+}
+
+#create-product-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+  'name brand'
+  'skin-step prod-img'
+  'description description'
+  'target target'
+  'time-use time-use';
+  margin: 0px;
+  /* display: flex;
+  flex-direction: column; */
+}
+
+#create-product-header {
+  text-align: center;
+}
+
+#create-product-fields div {
+  display: flex;
+  flex-direction: column;
+}
+
+#product-name-input {
+  grid-area: 'name';
+}
+
+#brand-name-input {
+  grid-area: 'brand';
+}
+
+#skincare-step-input {
+  grid-area: 'skin-step';
+}
+
+#product-img-input {
+  grid-area: 'prod-img';
+}
+
+#description-input {
+  grid-area: 'description';
+}
+
+#target-input {
+  grid-area: 'target'
+}
+
+#time-input {
+  grid-area: 'time-use';
+  
+}
+
+#time-input input {
+  display: flex;
+  flex-direction: row;
+}
