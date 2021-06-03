@@ -11,13 +11,12 @@ const NavBar = () => {
   return (
     <nav>
       <NavLink to='/' exact={true} className='nav-bar-links' id='radiant-home'>Radiant</NavLink>
-      {!user && (
+      {!user ? (
         <>
           <NavLink to='/login' exact={true}>Log In</NavLink>
           <NavLink to='/signup' exact={true}>Sign Up</NavLink>
         </>
-      )}
-      {user && (
+      ) : (
         <>
           <NavLink to='/products' exact={true} id='products-nav'>Products</NavLink>
           <NavLink to='/' exact={true} id='routine-nav'>Routine</NavLink>
