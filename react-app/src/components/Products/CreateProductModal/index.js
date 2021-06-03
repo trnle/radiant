@@ -25,21 +25,6 @@ const CreateProductModal = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    // const newProduct = {
-    //   product_name: productName,
-    //   brand_name: brandName,
-    //   skincare_step: skincareStep,
-    //   target,
-    //   am_use: checkAM,
-    //   pm_use: checkPM,
-    //   description,
-    //   directions,
-    //   precautions,
-    //   ingredients,
-    //   img_url: productImg,
-    //   user_id: user.id
-    // }
-    // console.log('newproduct=------------------', newProduct)
     dispatch(createOneProduct({ productName, brandName, skincareStep, target, checkAM, checkPM, description, directions, precautions, ingredients, productImg, userId }));
   }
 

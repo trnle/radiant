@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getOneProduct } from '../../store/products';
+import noProductImg from '../../images/product-img-placeholder.png';
 import './Product.css';
 
 const Product = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   let product = useSelector(state => state.products.oneProduct?.product);
-  console.log('productktja;lkjte;wlktj;wlet',product)
   let productUser = useSelector(state => state.products.oneProduct?.user);
 
   useEffect(() => {
@@ -25,7 +25,8 @@ const Product = () => {
     timeOfUse.push('PM');
   }
 
-  
+  let productImg;
+  if (product.img_url === '') product.img_url = noProductImg;
 
   return (
     <div id='product-page'>
