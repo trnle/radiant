@@ -34,3 +34,14 @@
 #redirect-signup a:hover {
   color: #60929e;
 }
+
+#signup-btn {
+  font-size: 16px;
+  height: 5vh;
+  margin-top: 5px;
+}
+
+#signup-btn:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}

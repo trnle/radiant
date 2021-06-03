@@ -11,20 +11,28 @@ const SignUpForm = () => {
     document.body.style = 'background-color: #F2CC8F';
   }, []);
 
+  const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
-  // const [errors, setErrors] = useState([]);
 
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   const onSignUp = async e => {
     e.preventDefault();
-    if (password === repeatPassword) {
+    const data = await dispatch(signUp(username, email, password, repeatPassword))
+    if (data.errors) {
+      setErrors(data.errors)
+    }
+
+    if (password === repeatPassword && !errors) {
       await dispatch(signUp(username, email, password));
     }
+
+    setPassword('');
+    setRepeatPassword('');
   };
 
   const updateUsername = e => {
@@ -43,6 +51,19 @@ const SignUpForm = () => {
     setRepeatPassword(e.target.value);
   };
 
+  const checkPass = () => {
+    if (password !== repeatPassword) {
+      document.getElementById('password-field').style.borderColor = '#E34234';
+      document.getElementById('confirm-password-field').style.borderColor = '#E34234';
+      document.getElementById('signup-btn').disabled = true;
+    }
+    if (password === repeatPassword) {
+      document.getElementById('password-field').style.borderColor = 'lightgray';
+      document.getElementById('confirm-password-field').style.borderColor = 'lightgray';
+      document.getElementById('signup-btn').disabled = false;
+    }
+  }
+
   if (user) {
     return <Redirect to='/' />;
   }
@@ -51,7 +72,11 @@ const SignUpForm = () => {
     <div id='signup-page-container'>
       <form onSubmit={onSignUp} id='signup-form'>
         <h1>Sign Up</h1>
-  
+        <div>
+          {errors.map((error) => (
+            <div>{error}</div>
+          ))}
+        </div>
         <div className='form-label-input'>
           <label>Username</label>
           <input
@@ -60,6 +85,7 @@ const SignUpForm = () => {
             placeholder='Username'
             onChange={updateUsername}
             value={username}
+            required
           ></input>
           <label>Email</label>
           <input
@@ -68,25 +94,31 @@ const SignUpForm = () => {
             placeholder='Email'
             onChange={updateEmail}
             value={email}
+            required
           ></input>
           <label>Password</label>
           <input
+            id='password-field'
             type='password'
             name='password'
             placeholder='Password'
             onChange={updatePassword}
             value={password}
+            onKeyUp={checkPass}
+            required
           ></input>
           <label>Confirm Password</label>
           <input
+            id='confirm-password-field'
             type='password'
             name='repeat_password'
             placeholder='Confirm password'
             onChange={updateRepeatPassword}
             value={repeatPassword}
+            onKeyUp={checkPass}
             required={true}
           ></input>
-          <button className='auth-btn' type='submit'>Sign Up</button>
+          <button id='signup-btn' type='submit' disabled={true}>Sign Up</button>
           <DemoButton />
           <div className='redirect-form'>
             Already have an account?
