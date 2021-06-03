@@ -9,18 +9,19 @@ const Products = () => {
   document.body.style = 'background-color: #FFFFFF';
   // const user = useSelector(state => state.session.user);
   let products = useSelector(state => state.products.allProducts);
-  products = Object.values(products);
   const dispatch = useDispatch();
-
+  
   useEffect(() => {
     dispatch(getProducts())
   }, [dispatch])
+  
+  if (!products) return null;
 
   return (
     <div id='products-page'>
       <h1>Products</h1>
       <CreateProductModal />
-      {products.map(product => (
+      {Object.values(products).map(product => (
         <div className='product-container' key={product.id}>
           {product.brand_name}
           <a href={`/products/${product.id}`}>{product.product_name}</a>
