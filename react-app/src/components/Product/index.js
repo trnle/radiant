@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, NavLink } from 'react-router-dom';
 import { getOneProduct } from '../../store/products';
+import UpdateProduct from './UpdateProduct';
 import noProductImg from '../../images/product-img-placeholder.png';
 import './Product.css';
 
@@ -10,6 +11,7 @@ const Product = () => {
   const dispatch = useDispatch();
   let product = useSelector(state => state.products.oneProduct?.product);
   let productUser = useSelector(state => state.products.oneProduct?.user);
+  const user = useSelector(state => state.session.user);
   
   useEffect(() => {
     dispatch(getOneProduct(id));
@@ -42,6 +44,7 @@ const Product = () => {
       </div>
       <div id='product-summary'>
         <h4>Summary</h4>
+        {productUser === user.username && <UpdateProduct />}
         <div>
           Skincare Step
           <p>{product.skincare_step}</p>
