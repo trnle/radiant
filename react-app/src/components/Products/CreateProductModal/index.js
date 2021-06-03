@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal } from '../../../context/Modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { createOneProduct, getProducts } from '../../../store/products';
+import { createOneProduct } from '../../../store/products';
 import './CreateProductModal.css';
 
 const CreateProductModal = () => {

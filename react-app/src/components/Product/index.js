@@ -12,7 +12,7 @@ const Product = () => {
   let product = useSelector(state => state.products.oneProduct?.product);
   let productUser = useSelector(state => state.products.oneProduct?.user);
   const user = useSelector(state => state.session.user);
-  
+
   useEffect(() => {
     dispatch(getOneProduct(id));
   }, [dispatch, id])
@@ -44,7 +44,7 @@ const Product = () => {
       </div>
       <div id='product-summary'>
         <h4>Summary</h4>
-        {productUser === user.username && <UpdateProduct />}
+       
         <div>
           Skincare Step
           <p>{product.skincare_step}</p>
@@ -63,6 +63,7 @@ const Product = () => {
           <p>{product.ingredients}</p>
         </div>
       </div>
+      {productUser === user.username && <UpdateProduct />}
     </div>
   )
 }
