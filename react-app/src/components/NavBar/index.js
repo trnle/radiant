@@ -10,25 +10,21 @@ const NavBar = () => {
 
   return (
     <nav>
-      <div className='nav-bar-links'>
-        <NavLink to='/' exact={true} id='radiant-home' activeClassName='active'>
-          {/* <img src={logo} alt='Radiant sparkle icon' height='40' /> */}
-          Radiant
-       </NavLink>
-      </div>
-      <div id='other-nav-links'>
-        {!user && <div className='nav-bar-links'>
-          <NavLink to='/login' exact={true} activeClassName='active'>
-            Log In
-        </NavLink>
-        </div>}
-        {!user && <div className='nav-bar-links'>
-          <NavLink to='/signup' exact={true} activeClassName='active'>
-            Sign Up
-          </NavLink>
-        </div>}
-        {user && <LogoutButton />}
-      </div>
+      <NavLink to='/' exact={true} className='nav-bar-links' id='radiant-home'>Radiant</NavLink>
+      {!user && (
+        <>
+          <NavLink to='/login' exact={true}>Log In</NavLink>
+          <NavLink to='/signup' exact={true}>Sign Up</NavLink>
+        </>
+      )}
+      {user && (
+        <>
+          <NavLink to='/products' exact={true} id='products-nav'>Products</NavLink>
+          <NavLink to='/' exact={true} id='routine-nav'>Routine</NavLink>
+          <NavLink to='/journal' exact={true} id='journal-nav'>Journal</NavLink>
+          <LogoutButton />
+        </>
+      )}
     </nav>
   );
 }

@@ -22,7 +22,7 @@ const CreateProductModal = () => {
 
   return (
     <div className='modal'>
-      <button onClick={() => setShowModal(true)} >
+      <button id='product-modal-btn' onClick={() => setShowModal(true)} >
         Add Product
       </button>
       {showModal && (

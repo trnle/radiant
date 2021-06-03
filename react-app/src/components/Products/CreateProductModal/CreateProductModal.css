@@ -1,7 +1,3 @@
-#create-product-form {
-  margin: 30px;
-}
-
 #create-product-fields {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -57,4 +53,10 @@
 #time-input input {
   display: flex;
   flex-direction: row;
+}
+
+#product-modal-btn {
+  float: right;
+  margin-bottom: 30px;
+  padding: 8px;
 }

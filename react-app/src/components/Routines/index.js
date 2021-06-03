@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Home = () => {
+const Routines = () => {
   return (
     <div>
       testing2
@@ -8,4 +8,4 @@ const Home = () => {
   )
 }
 
-export default Home;
+export default Routines;

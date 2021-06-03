@@ -6,9 +6,10 @@ import SignUp from './components/Auth/SignUp';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
 import Splash from './components/Splash';
-import Home from './components/Home';
+import Routines from './components/Routines';
 import Products from './components/Products';
 import Product from './components/Product';
+import Journal from './components/Journal';
 import Footer from './components/Footer';
 import { authenticate } from './store/session';
 
@@ -26,7 +27,7 @@ function App() {
 
   let sessionLinks;
   if (user) {
-    sessionLinks = <Home />
+    sessionLinks = <Routines />
   } else {
     sessionLinks = <Splash />
   }
@@ -53,6 +54,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path={'/products/:id'} exact={true}>
           <Product />
+        </ProtectedRoute>
+        <ProtectedRoute path={'/journal'} exact={true}>
+          <Journal />
         </ProtectedRoute>
       </Switch>
       <Footer />

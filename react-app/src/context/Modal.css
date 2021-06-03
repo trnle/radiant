@@ -20,6 +20,7 @@
 
 #modal-content {
   position: absolute;
-  background-color:white;
-  border-radius: 6px;
+  background-color: #F2CC8F;
+  border-radius: 25px;
+  padding: 30px;
 }
