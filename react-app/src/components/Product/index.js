@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, NavLink } from 'react-router-dom';
 import { getOneProduct } from '../../store/products';
 import noProductImg from '../../images/product-img-placeholder.png';
 import './Product.css';
@@ -10,13 +10,15 @@ const Product = () => {
   const dispatch = useDispatch();
   let product = useSelector(state => state.products.oneProduct?.product);
   let productUser = useSelector(state => state.products.oneProduct?.user);
-
+  
   useEffect(() => {
     dispatch(getOneProduct(id));
   }, [dispatch, id])
-
+  
   if (!product) return null;
-
+  document.title = `${product.product_name} | Radiant`;
+  document.body.style = 'background-color: #FFFFFF';
+  
   let timeOfUse = [];
   if (product.am_use) {
     timeOfUse.push('AM');
@@ -25,18 +27,18 @@ const Product = () => {
     timeOfUse.push('PM');
   }
 
-  let productImg;
   if (product.img_url === '') product.img_url = noProductImg;
 
   return (
     <div id='product-page'>
+      <NavLink to='/products'>Back to Products</NavLink>
       <div id='product-intro'>
         <img src={product.img_url} alt={product.product_name} />
         <p>Added by {productUser}</p>
         <h3>{product.product_name}</h3>
         <h4>{product.brand_name}</h4>
         <p>{product.description}</p>
-        <p>{product.target}</p>
+        <p>Targets {product.target}</p>
       </div>
       <div id='product-summary'>
         <h4>Summary</h4>
