@@ -15,6 +15,7 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [errors, setErrors] = useState([]);
 
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
@@ -50,6 +51,7 @@ const SignUpForm = () => {
     <div id='signup-page-container'>
       <form onSubmit={onSignUp} id='signup-form'>
         <h1>Sign Up</h1>
+  
         <div className='form-label-input'>
           <label>Username</label>
           <input
