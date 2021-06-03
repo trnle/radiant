@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { updateOneProduct, getOneProduct } from '../../../store/products';
+import { updateOneProduct, deleteOneProduct } from '../../../store/products';
 
 const UpdateProduct = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  let product = useSelector(state => state.products.oneProduct?.product);
+  const product = useSelector(state => state.products.oneProduct?.product);
   const user = useSelector(state => state.session.user);
   const userId = user.id;
   const productId = product.id;
@@ -24,16 +24,23 @@ const UpdateProduct = () => {
   const [checkAM, setCheckAM] = useState(product.am_use);
   const [checkPM, setCheckPM] = useState(product.pm_use);
 
-  const updateProduct = async e => {
+  const updateProduct = e => {
     e.preventDefault();
-    const product = await dispatch(updateOneProduct({ productName, brandName, skincareStep, target, checkAM, checkPM, description, directions, precautions, ingredients, productImg, userId, productId }))
+    const product = dispatch(updateOneProduct({ productName, brandName, skincareStep, target, checkAM, checkPM, description, directions, precautions, ingredients, productImg, userId, productId }))
     setShowForm(false);
+  }
+
+  const deleteProduct = e => {
+    e.preventDefault();
+
+    dispatch(deleteOneProduct(productId));
+    history.push('/products');
   }
 
   return (
     <div>
       <button onClick={() => setShowForm(!showForm)}>Edit Product</button>
-      {showForm && <form onSubmit={updateProduct}>
+      {showForm && <form action={`/product/${productId}`} method='post' onSubmit={updateProduct}>
         <div id='create-product-fields'>
           <div id='product-name-input'>
             <label>Product Name*</label>
@@ -124,7 +131,8 @@ const UpdateProduct = () => {
             </textarea>
           </div>
         </div>
-        <button id='delete-product-btn'>Delete Product</button>
+        <button id='cancel-product-btn' onClick={() => setShowForm(false)}>Cancel</button>
+        <button id='delete-product-btn' onClick={deleteProduct}>Delete Product</button>
         <button id='update-product-btn' type='submit'>Update Product</button>
       </form>}
     </div>

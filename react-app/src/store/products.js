@@ -95,16 +95,22 @@ export const updateOneProduct = productData => async dispatch => {
   });
   const product = await res.json();
   if (!res.ok) throw res;
-  if (res.ok) {
-    dispatch(updateProduct(product));
-    dispatch(getOneProduct(productId));
-  }
+
+  dispatch(updateProduct(product));
+  dispatch(getOneProduct(productId));
 
   return product
 }
 
-export const deleteOneProduct = () => {
-
+export const deleteOneProduct = productId => async dispatch => {
+  console.log('productid--------------', productId)
+  const res = await fetch(`/api/products/${productId}`, {
+    method: 'DELETE',
+  })
+  
+  console.log('ressss----------------', res)
+  if (!res.ok) throw res;
+  dispatch(deleteProduct(productId))
 }
 
 const initialState = { allProducts: {}, oneProduct: {}, newProduct: {} }
@@ -119,12 +125,12 @@ export default function reducer(state = initialState, action) {
     case CREATE_PRODUCT:
       return { ...state, newProduct: action.product }
     case UPDATE_PRODUCT:
-      newState = { ...state, [action.product.id]: action.product}
+      newState = { ...state, [action.product.id]: action.product }
       return newState
     case DELETE_PRODUCT:
-      // newState = {...state}
-      delete action.product
-      return {...state}
+      newState = { ...state }
+      delete newState[action.product]
+      return newState
     default:
       return state
   }

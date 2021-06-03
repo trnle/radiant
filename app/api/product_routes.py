@@ -55,7 +55,9 @@ def update_product(id):
   @login_required
   def delete_product(id):
     product = Product.query.get(id)
+    print('product to delete-----------------', product)
 
     db.session.delete(product)
     db.session.commit()
+    
     return product.to_dict()
