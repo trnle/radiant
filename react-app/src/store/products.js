@@ -53,10 +53,10 @@ export const createOneProduct = productData => async dispatch => {
       user_id: userId
     }),
   });
-  console.log('res----------', res)
-  const data = await res.json();
+  const product = await res.json();
 
-  if (res.ok) dispatch(createProduct(data));
+  if (res.ok) dispatch(createProduct(product));
+  return product
 }
 
 const initialState = { allProducts: {}, oneProduct: {}, newProduct: {} }

@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Modal } from '../../../context/Modal';
 import { useDispatch, useSelector } from 'react-redux';
-// import { useHistory } from 'react-router-dom';
-import { createOneProduct } from '../../../store/products';
+import { useHistory } from 'react-router-dom';
+import { createOneProduct, getProducts } from '../../../store/products';
 import './CreateProductModal.css';
 
 const CreateProductModal = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const user = useSelector(state => state.session.user);
   const userId = user.id;
   const [showModal, setShowModal] = useState(false);
@@ -22,10 +23,11 @@ const CreateProductModal = () => {
   const [checkAM, setCheckAM] = useState(false);
   const [checkPM, setCheckPM] = useState(false);
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
-    dispatch(createOneProduct({ productName, brandName, skincareStep, target, checkAM, checkPM, description, directions, precautions, ingredients, productImg, userId }));
+    const product = await dispatch(createOneProduct({ productName, brandName, skincareStep, target, checkAM, checkPM, description, directions, precautions, ingredients, productImg, userId }));
+    history.push(`/products/${product.id}`); 
   }
 
   return (
