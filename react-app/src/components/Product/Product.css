@@ -1,6 +1,7 @@
 #product-page {
   position: relative;
   min-height: 100%;
+  margin: 50px 200px;
 }
 
 #product-page h3 {
