@@ -50,11 +50,6 @@
   
 }
 
-#time-input input {
-  display: flex;
-  flex-direction: row;
-}
-
 #product-modal-btn {
   float: right;
   margin-bottom: 30px;

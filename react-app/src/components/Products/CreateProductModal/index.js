@@ -1,23 +1,46 @@
 import React, { useState } from 'react';
 import { Modal } from '../../../context/Modal';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
+import { createOneProduct } from '../../../store/products';
 import './CreateProductModal.css';
 
 const CreateProductModal = () => {
+  const dispatch = useDispatch();
   const user = useSelector(state => state.session.user);
+  const userId = user.id;
   const [showModal, setShowModal] = useState(false);
   const [productName, setProductName] = useState('');
   const [brandName, setBrandName] = useState('');
+  const [skincareStep, setSkincareStep] = useState('');
   const [productImg, setProductImg] = useState('');
   const [description, setDescription] = useState('');
   const [directions, setDirections] = useState('');
   const [precautions, setPrecautions] = useState('');
   const [ingredients, setIngredients] = useState('');
-  const [targets, setTargets] = useState('');
-  
-  const handleSubmit = async e => {
+  const [target, setTarget] = useState('');
+  const [checkAM, setCheckAM] = useState(false);
+  const [checkPM, setCheckPM] = useState(false);
+
+  const handleSubmit = e => {
     e.preventDefault();
+
+    // const newProduct = {
+    //   product_name: productName,
+    //   brand_name: brandName,
+    //   skincare_step: skincareStep,
+    //   target,
+    //   am_use: checkAM,
+    //   pm_use: checkPM,
+    //   description,
+    //   directions,
+    //   precautions,
+    //   ingredients,
+    //   img_url: productImg,
+    //   user_id: user.id
+    // }
+    // console.log('newproduct=------------------', newProduct)
+    dispatch(createOneProduct({ productName, brandName, skincareStep, target, checkAM, checkPM, description, directions, precautions, ingredients, productImg, userId }));
   }
 
   return (
@@ -49,7 +72,7 @@ const CreateProductModal = () => {
               </div>
               <div id='skincare-step-input'>
                 <label>Skincare Step*</label>
-                <select name='skincare-step' id=''>
+                <select name='skincare-step' onChange={e => setSkincareStep(e.target.value)} value={skincareStep}>
                   <option value=''></option>
                   <option value='Cleanse'>Cleanse</option>
                   <option value='Treat'>Treat</option>
@@ -61,9 +84,11 @@ const CreateProductModal = () => {
               </div>
               <div id='time-input'>
                 <label>Time of Use*</label>
-                <input type='checkbox' id='am' value='AM' /> AM
-                <input type='checkbox' id='pm' value='PM' /> PM
-             </div>
+                <input type='checkbox' onChange={() => setCheckAM(!checkAM)} checked={checkAM} id='am' value='AM' />
+                <label htmlFor="am">AM</label>
+                <input type='checkbox' onChange={() => setCheckPM(!checkPM)} checked={checkPM} id='pm' value='PM' />
+                <label htmlFor="pm">PM</label>
+              </div>
               <div id='product-img-input'>
                 <label>Product Image</label>
                 <input type='text'
@@ -71,14 +96,14 @@ const CreateProductModal = () => {
                   onChange={e => setProductImg(e.target.value)}
                   value={productImg} />
               </div>
-             <div id='target-input'>
+              <div id='target-input'>
                 <label>Target</label>
                 <input type='text'
                   placeholder='Targets...'
-                  onChange={e => setTargets(e.target.value)}
-                  value={targets} />
-             </div>
-            
+                  onChange={e => setTarget(e.target.value)}
+                  value={target} />
+              </div>
+
               <div id='description-input'>
                 <label>Product Description*</label>
                 <textarea
@@ -90,7 +115,7 @@ const CreateProductModal = () => {
                   rows='4'>
                 </textarea>
               </div>
-             <div id='directions-input'>
+              <div id='directions-input'>
                 <label>How to Use</label>
                 <textarea
                   name='directions'
@@ -100,16 +125,15 @@ const CreateProductModal = () => {
                   cols='7'
                   rows='7'>
                 </textarea>
-             </div>
-             <div id='precautions-input'>
+              </div>
+              <div id='precautions-input'>
                 <label>Precautions</label>
                 <input type='text'
                   placeholder='Precautions'
                   onChange={e => setPrecautions(e.target.value)}
                   value={precautions} />
-
-             </div>
-             <div id='ingredients-input'>
+              </div>
+              <div id='ingredients-input'>
                 <label>Ingredients</label>
                 <textarea
                   name='ingredients'
@@ -119,8 +143,7 @@ const CreateProductModal = () => {
                   cols='7'
                   rows='7'>
                 </textarea>
-             </div>
-             
+              </div>
             </div>
             <button
               type='button'

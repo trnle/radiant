@@ -31,16 +31,29 @@ export const getOneProduct = id => async dispatch => {
   if (res.ok) dispatch(loadProduct(data));
 }
 
-export const createOneProduct = data => async dispatch => {
+export const createOneProduct = productData => async dispatch => {
+  const { productName, brandName, skincareStep, target, checkAM, checkPM, description, directions, precautions, ingredients, productImg, userId } = productData
   const res = await fetch('/api/products/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      data
+      product_name: productName,
+      brand_name: brandName,
+      skincare_step: skincareStep,
+      target,
+      am_use: checkAM,
+      pm_use: checkPM,
+      description,
+      directions,
+      precautions,
+      ingredients,
+      img_url: productImg,
+      user_id: userId
     }),
   });
+  console.log('res----------', res)
   const data = await res.json();
 
   if (res.ok) dispatch(createProduct(data));
@@ -55,7 +68,7 @@ export default function reducer(state = initialState, action) {
     case LOAD_ONE_PRODUCT:
       return { oneProduct: action.product };
     case CREATE_PRODUCT:
-      return { ...state, newProduct: action.product}
+      return { ...state, newProduct: action.product }
     default:
       return state
   }

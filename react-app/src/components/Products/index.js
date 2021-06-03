@@ -7,7 +7,7 @@ import './Products.css';
 const Products = () => {
   document.title = 'Products | Radiant';
   document.body.style = 'background-color: #FFFFFF';
-  const user = useSelector(state => state.session.user);
+  // const user = useSelector(state => state.session.user);
   let products = useSelector(state => state.products.allProducts);
   products = Object.values(products);
   const dispatch = useDispatch();

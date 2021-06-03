@@ -30,7 +30,7 @@ const Product = () => {
   return (
     <div id='product-page'>
       <div id='product-intro'>
-        <img src={product.img_url} alt={`Image of ${product.product_name}`} />
+        <img src={product.img_url} alt={product.product_name} />
         <p>Added by {productUser}</p>
         <h3>{product.product_name}</h3>
         <h4>{product.brand_name}</h4>

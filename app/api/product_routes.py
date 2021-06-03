@@ -1,6 +1,7 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import Product, User
+from app.models import Product, User, db
+# import requests
 
 product_routes = Blueprint('products', __name__)
 
@@ -20,5 +21,10 @@ def product(id):
 @product_routes.route('/', methods=['POST'])
 @login_required
 def create_product():
-  json_data = request.get_json()
-  print(json_data)
+  # print(request.get_json()['productData'], 'testtetetsettw')
+  product = Product(**request.json)
+
+  db.session.add(product)
+  db.session.commit()
+
+  return product.to_dict()
