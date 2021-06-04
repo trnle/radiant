@@ -22,13 +22,17 @@ const Products = () => {
     <div id='products-page'>
       <h1>Products</h1>
       <CreateProductModal />
-      {Object.values(products).map(product => (
-        <div className='product-container' key={product.id}>
-          {product.brand_name}
-          <NavLink to={`/products/${product.id}`}>{product.product_name}</NavLink>
-          {product.skincare_step}
-        </div>
-      ))}
+      <div id='product-flex'>
+        {Object.values(products).map(product => (
+          <div className='product-container' key={product.id}>
+            {/* <img src={product.img_url} alt={product.product_name} /> */}
+            {product.brand_name}
+            <NavLink to={`/products/${product.id}`}>{product.product_name}</NavLink>
+            {product.skincare_step}
+          </div>
+        ))}
+
+      </div>
     </div>
   )
 }
