@@ -119,7 +119,7 @@ export default function reducer(state = initialState, action) {
     case LOAD_PRODUCTS:
       return { ...state, allProducts: action.products }
     case LOAD_ONE_PRODUCT:
-      return { oneProduct: action.product };
+      return { ...state, oneProduct: action.product };
     case CREATE_PRODUCT:
       return { ...state, newProduct: action.product }
     case UPDATE_PRODUCT:
@@ -127,7 +127,7 @@ export default function reducer(state = initialState, action) {
       return newState
     case DELETE_PRODUCT:
       newState = { ...state }
-      delete newState[action.product]
+      delete action.product
       return newState
     default:
       return state
