@@ -7,7 +7,7 @@ class Entry(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   img_url = db.Column(db.Text)
   description = db.Column(db.Text)
-  rating = db.Column(db.Integer, db='N/A')
+  rating = db.Column(db.Integer)
   am_products = db.Column(db.Text)
   pm_products = db.Column(db.Text)
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
