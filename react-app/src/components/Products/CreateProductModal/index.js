@@ -48,14 +48,16 @@ const CreateProductModal = () => {
                 <input type='text'
                   placeholder='Product Name'
                   onChange={e => setProductName(e.target.value)}
-                  value={productName} />
+                  value={productName}
+                  required />
                 <label>Brand Name*</label>
                 <input type='text'
                   placeholder='Brand Name'
                   onChange={e => setBrandName(e.target.value)}
-                  value={brandName} />
+                  value={brandName}
+                  required />
                 <label>Skincare Step*</label>
-                <select name='skincare-step' onChange={e => setSkincareStep(e.target.value)} value={skincareStep}>
+                <select name='skincare-step' onChange={e => setSkincareStep(e.target.value)} value={skincareStep} required>
                   <option value=''></option>
                   <option value='Cleanse'>Cleanse</option>
                   <option value='Treat'>Treat</option>
@@ -64,7 +66,7 @@ const CreateProductModal = () => {
                   <option value='Protect'>Protect</option>
                   <option value='Miscellaneous'>Miscellaneous</option>
                 </select>
-                <label>Time of Use*</label>
+                <label>Time of Use</label>
                 <div id='time-box-align'>
                   <div className='time-box'>
                     <input type='checkbox' onChange={() => setCheckAM(!checkAM)} checked={checkAM} id='am' value='AM' />
@@ -99,7 +101,8 @@ const CreateProductModal = () => {
                   onChange={e => setDescription(e.target.value)}
                   value={description}
                   cols='5'
-                  rows='7'>
+                  rows='7'
+                  required>
                 </textarea>
                 <label>How to Use</label>
                 <textarea
