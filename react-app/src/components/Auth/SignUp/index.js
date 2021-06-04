@@ -72,7 +72,7 @@ const SignUpForm = () => {
           ></input>
           <label>Email</label>
           <input
-            type='text'
+            type='email'
             name='email'
             placeholder='Email'
             onChange={e => setEmail(e.target.value)}
