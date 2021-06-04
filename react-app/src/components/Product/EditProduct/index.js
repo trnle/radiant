@@ -131,7 +131,7 @@ const UpdateProduct = () => {
             </textarea>
           </div>
         </div>
-        <button id='cancel-product-btn' onClick={() => setShowForm(false)}>Cancel</button>
+        <button id='cancel-product-btn' onClick={e => {e.preventDefault(); setShowForm(false)}}>Cancel</button>
         <button id='delete-product-btn' onClick={deleteProduct}>Delete Product</button>
         <button id='update-product-btn' type='submit'>Update Product</button>
       </form>}
