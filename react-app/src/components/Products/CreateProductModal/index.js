@@ -25,7 +25,6 @@ const CreateProductModal = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-
     const product = await dispatch(createOneProduct({ productName, brandName, skincareStep, target, checkAM, checkPM, description, directions, precautions, ingredients, productImg, userId }));
     history.push(`/products/${product.id}`);
   }

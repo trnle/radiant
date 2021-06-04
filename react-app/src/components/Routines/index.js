@@ -1,6 +1,6 @@
-import React, { useEffect, userEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, NavLink, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { getRoutines } from '../../store/routines';
 import './Routines.css';
 
@@ -10,9 +10,9 @@ const Routines = () => {
 
   const dispatch = useDispatch();
   const history = useHistory();
-  const userRoutines = useSelector(state => state.routines.userRoutines);
-  const amRoutine = userRoutines?.AM;
-  const pmRoutine = userRoutines?.PM;
+  const userRP = useSelector(state => state.routines.userRoutines.user_routine_products);
+  const amRoutine = userRP?.AM;
+  const pmRoutine = userRP?.PM;
 
   useEffect(() => {
     dispatch(getRoutines());

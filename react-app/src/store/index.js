@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session';
 import products from './products';
 import routines from './routines';
+import routineProducts from './routineProducts';
 
 const rootReducer = combineReducers({
   session,
   products,
-  routines
+  routines,
+  routineProducts
 })
 
 let enhancer;
