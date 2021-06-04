@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, NavLink } from 'react-router-dom';
 import { getOneProduct } from '../../store/products';
-import UpdateProduct from './UpdateProduct';
+import EditProduct from './EditProduct';
 import noProductImg from '../../images/product-img-placeholder.png';
 import './Product.css';
 
@@ -44,7 +44,6 @@ const Product = () => {
       </div>
       <div id='product-summary'>
         <h4>Summary</h4>
-       
         <div>
           Skincare Step
           <p>{product.skincare_step}</p>
@@ -63,7 +62,7 @@ const Product = () => {
           <p>{product.ingredients}</p>
         </div>
       </div>
-      {productUser === user.username && <UpdateProduct />}
+      {productUser === user.username && <EditProduct />}
     </div>
   )
 }

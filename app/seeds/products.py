@@ -357,7 +357,7 @@ def seed_products():
     directions='Scoop a pearl-sized amount of cream with the gold spoon. Massage onto face, neck, and décolletage in upward strokes. Use daily, morning and night.',
     ingredients='Aqua/Water/Eau, Saccharomyces/Camellia Sinensis Leaf/Cladosiphon Okamuranus/Rice Ferment Filtrate*, Glycerin, Propanediol, Dimethicone, Squalane, Diisostearyl Malate, Behenyl Alcohol, Myristyl Myristate, Dipentaerythrityl Hexahydroxystearate, Bis-Diglyceryl Polyacyladipate-2, Tridecyl Trimellitate, Chondrus Crispus Extract, Betaphycus Gelatinum Extract, Eisenia Arborea Extract, Oryza Sativa (Rice) Bran Extract, Panax Ginseng Root Extract, Origanum Majorana Leaf Extract, Thymus Serpyllum Extract, Malva Sylvestris (Mallow) Flower Extract, Sodium Hyaluronate, Inositol, Gold, Sericin, Phytosteryl Macadamiate, Butylene Glycol, Beheneth-20, Sorbitan Tristearate, Disodium Edta, Dimethicone/Vinyl Dimethicone Crosspolymer, Sodium Acrylate/Acryloyldimethyltaurate/Dimethylacrylamide Crosspolymer, Caprylyl/Capryl Glucoside, Sorbitan Isostearate, Ethylhexylglycerin, Parfum/Fragrance, Alcohol, Phenoxyethanol, Mica (Ci 77019), Titanium Dioxide (Ci 77891), Tin Oxide (Ci 77861), Violet 2 (Ci 60725). *Hadasei-3.',
     img_url='https://www.sephora.com/productimages/sku/s2181006-main-zoom.jpg?imwidth=1224',
-    user_id=2
+    user_id=1
   )
 
   db.session.add(product1)
