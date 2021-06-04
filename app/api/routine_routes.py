@@ -9,7 +9,7 @@ routine_routes = Blueprint('routines', __name__)
 def user_routines():
   # retrieve user routines
   routines = Routine.query.filter(Routine.user_id == current_user.id).all()
-  
+
   # for each routine, find products added to each routine 
   routine_products = {}
   for routine in routines:
@@ -19,6 +19,5 @@ def user_routines():
       else:
         routine_products[routine.routine_type] = [product.to_dict()]
 
-    # print(routine_products, 'reiawjr;alkjerawe----------')
   # return jsonify([routine.to_dict() for routine in routines])
-  return routine_products
+  return {'user_routines': [routine.to_dict() for routine in routines], 'user_routine_products': routine_products}

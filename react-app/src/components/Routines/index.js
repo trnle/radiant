@@ -10,9 +10,9 @@ const Routines = () => {
 
   const dispatch = useDispatch();
   const history = useHistory();
-  const userRoutines = useSelector(state => state.routines.userRoutines);
-  const amRoutine = userRoutines?.AM;
-  const pmRoutine = userRoutines?.PM;
+  const userRP = useSelector(state => state.routines.userRoutines.user_routine_products);
+  const amRoutine = userRP?.AM;
+  const pmRoutine = userRP?.PM;
 
   useEffect(() => {
     dispatch(getRoutines());
