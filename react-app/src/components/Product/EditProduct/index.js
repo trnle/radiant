@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { updateOneProduct, deleteOneProduct } from '../../../store/products';
+import './EditProduct.css';
 
 const UpdateProduct = () => {
   const dispatch = useDispatch();
@@ -39,102 +40,95 @@ const UpdateProduct = () => {
 
   return (
     <div>
-      <button onClick={() => setShowForm(!showForm)}>Edit Product</button>
-      {showForm && <form action={`/product/${productId}`} method='post' onSubmit={updateProduct}>
-        <div id='create-product-fields'>
-          <div id='product-name-input'>
-            <label>Product Name*</label>
-            <input type='text'
-              placeholder='Product Name'
-              onChange={e => setProductName(e.target.value)}
-              value={productName} />
+      <button id='edit-product-btn' onClick={() => setShowForm(!showForm)}>Edit Product</button>
+      {showForm &&
+        <form action={`/product/${productId}`} method='post' onSubmit={updateProduct}>
+          <div id='edit-product-fields'>
+            <div id='left-edit-product-form'>
+              <label>Product Name*</label>
+              <input type='text'
+                placeholder='Product Name'
+                onChange={e => setProductName(e.target.value)}
+                value={productName}
+                required />
+              <label>Brand Name*</label>
+              <input type='text'
+                placeholder='Brand Name'
+                onChange={e => setBrandName(e.target.value)}
+                value={brandName}
+                required />
+              <label>Skincare Step*</label>
+              <select name='skincare-step' onChange={e => setSkincareStep(e.target.value)} value={skincareStep} required>
+                <option value=''></option>
+                <option value='Cleanse'>Cleanse</option>
+                <option value='Treat'>Treat</option>
+                <option value='Nourish'>Nourish</option>
+                <option value='Moisturize'>Moisturize</option>
+                <option value='Protect'>Protect</option>
+                <option value='Miscellaneous'>Miscellaneous</option>
+              </select>
+              <label>Time of Use</label>
+              <div id='edit-time-box-align'>
+                <div className='time-box'>
+                  <input type='checkbox' onChange={() => setCheckAM(!checkAM)} checked={checkAM} id='am' value='AM' />
+                  <label htmlFor="am">AM</label>
+                </div>
+                <div className='edit-time-box'>
+                  <input type='checkbox' onChange={() => setCheckPM(!checkPM)} checked={checkPM} id='pm' value='PM' />
+                  <label htmlFor="pm">PM</label>
+                </div>
+              </div>
+              <label>Product Image</label>
+              <input type='text'
+                placeholder='Insert Image URL'
+                onChange={e => setProductImg(e.target.value)}
+                value={productImg} />
+              <label>Targets</label>
+              <input type='text'
+                placeholder='Targets...'
+                onChange={e => setTarget(e.target.value)}
+                value={target} />
+              <label>Precautions</label>
+              <input type='text'
+                placeholder='Precautions'
+                onChange={e => setPrecautions(e.target.value)}
+                value={precautions} />
+            </div>
+            <div id='right-edit-product-form'>
+              <label>Product Description*</label>
+              <textarea
+                name='description'
+                placeholder='What is this product'
+                onChange={e => setDescription(e.target.value)}
+                value={description}
+                cols='5'
+                rows='7'
+                required>
+              </textarea>
+              <label>How to Use</label>
+              <textarea
+                name='directions'
+                placeholder='How should this product be used?'
+                onChange={e => setDirections(e.target.value)}
+                value={directions}
+                cols='5'
+                rows='7'>
+              </textarea>
+              <label>Ingredients</label>
+              <textarea
+                name='ingredients'
+                placeholder='Ingredients'
+                onChange={e => setIngredients(e.target.value)}
+                value={ingredients}
+                cols='5'
+                rows='7'>
+              </textarea>
+            </div>
           </div>
-          <div id='brand-name-input'>
-            <label>Brand Name*</label>
-            <input type='text'
-              placeholder='Brand Name'
-              onChange={e => setBrandName(e.target.value)}
-              value={brandName} />
-          </div>
-          <div id='skincare-step-input'>
-            <label>Skincare Step*</label>
-            <select name='skincare-step' onChange={e => setSkincareStep(e.target.value)} value={skincareStep}>
-              <option value=''></option>
-              <option value='Cleanse'>Cleanse</option>
-              <option value='Treat'>Treat</option>
-              <option value='Nourish'>Nourish</option>
-              <option value='Moisturize'>Moisturize</option>
-              <option value='Protect'>Protect</option>
-              <option value='Miscellaneous'>Miscellaneous</option>
-            </select>
-          </div>
-          <div id='time-input'>
-            <label>Time of Use*</label>
-            <input type='checkbox' onChange={() => setCheckAM(!checkAM)} checked={checkAM} id='am' value='AM' />
-            <label htmlFor="am">AM</label>
-            <input type='checkbox' onChange={() => setCheckPM(!checkPM)} checked={checkPM} id='pm' value='PM' />
-            <label htmlFor="pm">PM</label>
-          </div>
-          <div id='product-img-input'>
-            <label>Product Image</label>
-            <input type='text'
-              placeholder='Insert Image URL'
-              onChange={e => setProductImg(e.target.value)}
-              value={productImg} />
-          </div>
-          <div id='target-input'>
-            <label>Target</label>
-            <input type='text'
-              placeholder='Targets...'
-              onChange={e => setTarget(e.target.value)}
-              value={target} />
-          </div>
-
-          <div id='description-input'>
-            <label>Product Description*</label>
-            <textarea
-              name='description'
-              placeholder='What is this product'
-              onChange={e => setDescription(e.target.value)}
-              value={description}
-              cols='20'
-              rows='4'>
-            </textarea>
-          </div>
-          <div id='directions-input'>
-            <label>How to Use</label>
-            <textarea
-              name='directions'
-              placeholder='How should this product be used?'
-              onChange={e => setDirections(e.target.value)}
-              value={directions}
-              cols='7'
-              rows='7'>
-            </textarea>
-          </div>
-          <div id='precautions-input'>
-            <label>Precautions</label>
-            <input type='text'
-              placeholder='Precautions'
-              onChange={e => setPrecautions(e.target.value)}
-              value={precautions} />
-          </div>
-          <div id='ingredients-input'>
-            <label>Ingredients</label>
-            <textarea
-              name='ingredients'
-              placeholder='Ingredients'
-              onChange={e => setIngredients(e.target.value)}
-              value={ingredients}
-              cols='7'
-              rows='7'>
-            </textarea>
-          </div>
-        </div>
-        <button id='cancel-product-btn' onClick={e => {e.preventDefault(); setShowForm(false)}}>Cancel</button>
-        <button id='delete-product-btn' onClick={deleteProduct}>Delete Product</button>
-        <button id='update-product-btn' type='submit'>Update Product</button>
-      </form>}
+          <button id='update-product-btn' type='submit'>Update Product</button>
+          <button id='delete-product-btn' onClick={deleteProduct}>Delete Product</button>
+          <button id='cancel-edit-product-btn' onClick={e => { e.preventDefault(); setShowForm(false) }}>Cancel</button>
+        </form>}
     </div>
   )
 }
