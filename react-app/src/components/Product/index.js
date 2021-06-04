@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams, NavLink } from 'react-router-dom';
 import { getOneProduct } from '../../store/products';
 import EditProduct from './EditProduct';
+import RoutineProduct from '../RoutineProduct';
 import noProductImg from '../../images/product-img-placeholder.png';
 import './Product.css';
 
@@ -42,6 +43,7 @@ const Product = () => {
         <p>{product.description}</p>
         <p>Targets {product.target}</p>
       </div>
+      <RoutineProduct />
       <div id='product-summary'>
         <h4>Summary</h4>
         <div>
