@@ -31,8 +31,9 @@ def create_product():
 @product_routes.route('/<int:id>', methods=['PUT', 'DELETE'])
 @login_required
 def update_product(id):
+  product = Product.query.get(id)
+  
   if request.method == 'PUT':
-    product = Product.query.get(id)
     user = User.query.get(product.user_id).username
 
     product.product_name = request.json['product_name']
@@ -53,14 +54,9 @@ def update_product(id):
     return product.to_dict()
 
   elif request.method == 'DELETE':
-    product = Product.query.get(id)
-    print('product to delete-----------------', product)
-
     db.session.delete(product)
     db.session.commit()
     
     return product.to_dict()
-  # @product_routes.route('/<int:id>', methods=['DELETE'])
-  # @login_required
-  # def delete_product(id):
+
     

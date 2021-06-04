@@ -103,12 +103,10 @@ export const updateOneProduct = productData => async dispatch => {
 }
 
 export const deleteOneProduct = productId => async dispatch => {
-  console.log('productid--------------', productId)
   const res = await fetch(`/api/products/${productId}`, {
     method: 'DELETE',
   })
   
-  console.log('ressss----------------', res)
   if (!res.ok) throw res;
   dispatch(deleteProduct(productId))
 }
