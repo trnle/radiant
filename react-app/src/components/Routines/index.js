@@ -1,6 +1,6 @@
-import React, { useEffect, userEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, NavLink, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { getRoutines } from '../../store/routines';
 import './Routines.css';
 

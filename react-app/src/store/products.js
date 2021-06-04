@@ -127,7 +127,7 @@ export default function reducer(state = initialState, action) {
       return newState
     case DELETE_PRODUCT:
       newState = { ...state }
-      delete action.product
+      delete newState[action.product]
       return newState
     default:
       return state

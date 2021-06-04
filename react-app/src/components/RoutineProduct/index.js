@@ -1,44 +1,39 @@
-import React, { useEffect, userEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, NavLink, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getRoutines } from '../../store/routines';
 import { addRoutineProduct } from '../../store/routineProducts';
 
 const RoutineProduct = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const { id } = useParams();
   const userRoutines = useSelector(state => state.routines.userRoutines.user_routines);
-  const [showRoutines, setShowRoutines] = useState(false);
+  const [showAddRoutines, setAddShowRoutines] = useState(false);
+  const [showRemoveRoutines, setShowRemoveRoutines] = useState(false);
   const [routine, setRoutine] = useState(false);
   
   useEffect(() => {
     dispatch(getRoutines());
   }, [dispatch])
   
-  let routineId;
-  
-  const setRoutineId = e => {
-    setRoutine(e.target.value)
-    for (let routine in userRoutines) {
-      if (routine.routine_type === routine) {
-        routineId = routine.id
-      }
-    }
-  }
-  
   const handleAdd = e => {
     e.preventDefault();
-    
-    console.log(routine, 'routine id test using the key---------')
+
     dispatch(addRoutineProduct({ routine, id }))
   }
+
+  const handleRemove = e => {
+    e.preventDefault();
+
+    // dispatch(addRoutineProduct({ routine, id }))
+  }
+
   // if (!userRoutines) return null;
 
   return (
     <div>
-      <button onClick={() => setShowRoutines(!showRoutines)}>Add to Routine</button>
-      {showRoutines &&
+      <button onClick={() => setAddShowRoutines(!showAddRoutines)}>Add to Routine</button>
+      {showAddRoutines &&
         <form action='' onSubmit={handleAdd}>
         <select name='routines' id='' onChange={e => setRoutine(e.target.value)} value={routine} required>
             <option value=''>Select Routine</option>
@@ -47,6 +42,18 @@ const RoutineProduct = () => {
             ))}
           </select>
           <button>Add</button>
+        </form>
+      }
+      <button onClick={() => setShowRemoveRoutines(!showRemoveRoutines)}>Remove from Routine</button>
+      {showRemoveRoutines &&
+        <form action='' onSubmit={handleRemove}>
+          <select name='routines' id='' onChange={e => setRoutine(e.target.value)} value={routine} required>
+            <option value=''>Select Routine</option>
+            {userRoutines.map(routine => (
+              <option key={routine.id} value={routine.routine_type}>{routine.routine_type}</option>
+            ))}
+          </select>
+          <button>Remove</button>
         </form>
       }
     </div>

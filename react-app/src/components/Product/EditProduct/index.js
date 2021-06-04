@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { updateOneProduct, deleteOneProduct } from '../../../store/products';
@@ -27,14 +27,14 @@ const UpdateProduct = () => {
 
   const updateProduct = e => {
     e.preventDefault();
-    const product = dispatch(updateOneProduct({ productName, brandName, skincareStep, target, checkAM, checkPM, description, directions, precautions, ingredients, productImg, userId, productId }))
+    dispatch(updateOneProduct({ productName, brandName, skincareStep, target, checkAM, checkPM, description, directions, precautions, ingredients, productImg, userId, productId }))
     setShowForm(false);
   }
 
-  const deleteProduct = e => {
+  const deleteProduct = async e => {
     e.preventDefault();
 
-    dispatch(deleteOneProduct(productId));
+    await dispatch(deleteOneProduct(productId));
     history.push('/products');
   }
 
