@@ -46,3 +46,20 @@ a {
   min-height: 100%;
   position: relative;
 }
+
+input, textarea {
+  font-family: muli, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  color: #1C2237;
+  border: 1px solid lightgray;
+}
+
+input {
+  border-radius: 5px;
+  border: 1px solid lightgray;
+}
+
+input:focus {
+  outline-color: lightgray;
+}

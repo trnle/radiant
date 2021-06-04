@@ -35,14 +35,11 @@
   width: 21vw;
   margin-bottom: 15px;
   padding: 5px 10px;
-  border: 1px solid lightgray;
-  border-radius: 7px;
   height: 20px;
 }
 
-.form-label-input input:focus {
+.form-label-input  {
   box-shadow: 0 0 3px 2px lightgray;
-  outline-color: lightgray;
 }
 
 .auth-btn {

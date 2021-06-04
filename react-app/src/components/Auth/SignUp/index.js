@@ -22,7 +22,7 @@ const SignUpForm = () => {
 
   const onSignUp = async e => {
     e.preventDefault();
-    if (password != repeatPassword) {
+    if (password !== repeatPassword) {
       setErrors(['Passwords must match.']);
       setPassword('');
       setRepeatPassword('');

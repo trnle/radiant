@@ -1,57 +1,72 @@
+#product-modal-btn {
+  float: right;
+  margin-bottom: 30px;
+  padding: 8px;
+}
+
 #create-product-fields {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-areas:
-  'name brand'
-  'skin-step prod-img'
-  'description description'
-  'target target'
-  'time-use time-use';
-  margin: 0px;
-  /* display: flex;
-  flex-direction: column; */
 }
 
 #create-product-header {
   text-align: center;
 }
 
-#create-product-fields div {
+#left-product-form {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
+  width: 270px;
 }
 
-#product-name-input {
-  grid-area: 'name';
+#left-product-form input {
+  margin-bottom: 10px;
+  height: 20px;
+  padding: 3px 5px 3px;
 }
 
-#brand-name-input {
-  grid-area: 'brand';
+#left-product-form select {
+  margin-bottom: 10px;
+  height: 27px;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  padding: 3px;
 }
 
-#skincare-step-input {
-  grid-area: 'skin-step';
+#right-product-form textarea:focus,
+#left-product-form select:focus {
+  outline-color: lightgray;
 }
 
-#product-img-input {
-  grid-area: 'prod-img';
+#right-product-form {
+  display: flex;
+  flex-direction: column; 
+  /* margin-left: 25px; */
 }
 
-#description-input {
-  grid-area: 'description';
+#right-product-form textarea {
+  max-width: 400px;
+  width: 400px;
+  max-height: 100px;
+  border-radius: 5px;
+  padding: 3px 5px 3px;
+  margin-bottom: 10px;
 }
 
-#target-input {
-  grid-area: 'target'
+.time-box {
+  display: flex;
+  flex-direction: row;
+  margin-right: 40px;
 }
 
-#time-input {
-  grid-area: 'time-use';
-  
+#time-box-align {
+  display: flex;
 }
 
-#product-modal-btn {
+#cancel-product-btn, #add-product-btn {
   float: right;
-  margin-bottom: 30px;
-  padding: 8px;
+  margin-top: 10px;
+  height: 35px;
+  margin-left: 10px;
+  font-size: 13px;
 }
