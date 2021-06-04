@@ -23,8 +23,8 @@ const LoginForm = () => {
     const data = await dispatch(login(email, password));
 
     if (data.errors) {
-      setErrors(user.errors);
-    }
+      setErrors(data.errors);
+    } 
   };
 
   const updateEmail = e => {
@@ -44,8 +44,8 @@ const LoginForm = () => {
       <form onSubmit={onLogin} id='login-form'>
         <h1>Log In</h1>
         <div>
-          {errors.map((error) => (
-            <div>{error}</div>
+          {errors.map(error => (
+            <div key={error}>{error}</div>
           ))}
         </div>
         <div className='form-label-input'>

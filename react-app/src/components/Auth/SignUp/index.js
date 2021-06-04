@@ -22,47 +22,30 @@ const SignUpForm = () => {
 
   const onSignUp = async e => {
     e.preventDefault();
+    if (password != repeatPassword) {
+      setErrors(['Passwords must match.']);
+      setPassword('');
+      setRepeatPassword('');
+      return
+    }
     const data = await dispatch(signUp(username, email, password, repeatPassword))
     if (data.errors) {
       setErrors(data.errors)
+      setPassword('');
+      setRepeatPassword('');
     }
-
-    if (password === repeatPassword && !errors) {
-      await dispatch(signUp(username, email, password));
-    }
-
-    setPassword('');
-    setRepeatPassword('');
   };
 
-  const updateUsername = e => {
-    setUsername(e.target.value);
-  };
-
-  const updateEmail = e => {
-    setEmail(e.target.value);
-  };
-
-  const updatePassword = e => {
-    setPassword(e.target.value);
-  };
-
-  const updateRepeatPassword = e => {
-    setRepeatPassword(e.target.value);
-  };
-
-  const checkPass = () => {
-    if (password !== repeatPassword) {
-      document.getElementById('password-field').style.borderColor = '#E34234';
-      document.getElementById('confirm-password-field').style.borderColor = '#E34234';
-      document.getElementById('signup-btn').disabled = true;
-    }
-    if (password === repeatPassword) {
-      document.getElementById('password-field').style.borderColor = 'lightgray';
-      document.getElementById('confirm-password-field').style.borderColor = 'lightgray';
-      document.getElementById('signup-btn').disabled = false;
-    }
-  }
+  // const checkPass = () => {
+  //   if (password !== repeatPassword) {
+  //     document.getElementById('password-field').style.borderColor = '#E34234';
+  //     document.getElementById('confirm-password-field').style.borderColor = '#E34234';
+  //   }
+  //   if (password === repeatPassword) {
+  //     document.getElementById('password-field').style.borderColor = 'lightgray';
+  //     document.getElementById('confirm-password-field').style.borderColor = 'lightgray';
+  //   }
+  // }
 
   if (user) {
     return <Redirect to='/' />;
@@ -83,7 +66,7 @@ const SignUpForm = () => {
             type='text'
             name='username'
             placeholder='Username'
-            onChange={updateUsername}
+            onChange={e => setUsername(e.target.value)}
             value={username}
             required
           ></input>
@@ -92,7 +75,7 @@ const SignUpForm = () => {
             type='text'
             name='email'
             placeholder='Email'
-            onChange={updateEmail}
+            onChange={e => setEmail(e.target.value)}
             value={email}
             required
           ></input>
@@ -102,9 +85,9 @@ const SignUpForm = () => {
             type='password'
             name='password'
             placeholder='Password'
-            onChange={updatePassword}
+            onChange={e => setPassword(e.target.value)}
+            // onKeyUp={checkPass}
             value={password}
-            onKeyUp={checkPass}
             required
           ></input>
           <label>Confirm Password</label>
@@ -113,12 +96,12 @@ const SignUpForm = () => {
             type='password'
             name='repeat_password'
             placeholder='Confirm password'
-            onChange={updateRepeatPassword}
+            onChange={e => setRepeatPassword(e.target.value)}
+            // onKeyUp={checkPass}
             value={repeatPassword}
-            onKeyUp={checkPass}
             required={true}
           ></input>
-          <button id='signup-btn' type='submit' disabled={true}>Sign Up</button>
+          <button id='signup-btn' type='submit'>Sign Up</button>
           <DemoButton />
           <div className='redirect-form'>
             Already have an account?
