@@ -20,6 +20,7 @@ class Entry(db.Model):
       'id': self.id,
       'img_url': self.img_url,
       'description': self.description,
+      'rating': self.rating,
       'am_products': self.am_products,
       'pm_products': self.pm_products,
       'user_id': self.user_id,

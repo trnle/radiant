@@ -3,7 +3,7 @@ from app.models import db, Entry
 def seed_entries():
   entry1 = Entry(
     description='My skin feels really dry today.',
-    rating='3',
+    rating=3,
     am_products='Daily UV Defense Sunscreen SPF 36',
     pm_products='The Rice Wash Skin-Softening Cleanser',
     user_id=2,
@@ -12,7 +12,7 @@ def seed_entries():
 
   entry2 = Entry(
     description='Skin feels a bit better today',
-    rating='5',
+    rating=5,
     am_products='Superfood Antioxidant Cleanser',
     pm_products='10% Azelaic Acid Booster',
     user_id=2,
@@ -21,7 +21,7 @@ def seed_entries():
 
   entry3 = Entry(
     description='',
-    rating='7',
+    rating=7,
     am_products='Niacinamide 10% + Zinc 1%',
     pm_products='Truth Serum®',
     user_id=2,
@@ -30,7 +30,7 @@ def seed_entries():
 
   entry4 = Entry(
     description='I\'m very happy with my skin today!! Feeling great',
-    rating='9',
+    rating=9,
     am_products='Niacinamide 10% + Zinc 1%',
     pm_products='Niacinamide 10% + Zinc 1%, The Rice Wash Skin-Softening Cleanser',
     user_id=2,
@@ -39,7 +39,7 @@ def seed_entries():
 
   entry5 = Entry(
     description='',
-    rating='7',
+    rating=7,
     am_products='Niacinamide 10% + Zinc 1%, Daily UV Defense Sunscreen SPF 36',
     pm_products='Niacinamide 10% + Zinc 1%, Water Sleeping Mask',
     user_id=2,

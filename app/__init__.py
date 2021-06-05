@@ -11,6 +11,7 @@ from .api.auth_routes import auth_routes
 from .api.product_routes import product_routes
 from .api.routine_routes import routine_routes
 from .api.routine_product_routes import routine_product_routes
+from .api.entry_routes import entry_routes
 
 from .seeds import seed_commands
 
@@ -37,6 +38,7 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(product_routes, url_prefix='/api/products')
 app.register_blueprint(routine_routes, url_prefix='/api/routines')
 app.register_blueprint(routine_product_routes, url_prefix='/api/routine_products')
+app.register_blueprint(entry_routes, url_prefix='/api/entries')
 db.init_app(app)
 Migrate(app, db)
 
