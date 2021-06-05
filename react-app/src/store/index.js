@@ -4,12 +4,14 @@ import session from './session';
 import products from './products';
 import routines from './routines';
 import routineProducts from './routineProducts';
+import entries from './entries';
 
 const rootReducer = combineReducers({
   session,
   products,
   routines,
-  routineProducts
+  routineProducts,
+  entries
 })
 
 let enhancer;
