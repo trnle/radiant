@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getRoutines } from '../../store/routines';
-import { addRoutineProduct } from '../../store/routineProducts';
+import { addRoutineProduct, removeRoutineProduct } from '../../store/routineProducts';
 
 const RoutineProduct = () => {
   const dispatch = useDispatch();
@@ -18,14 +18,12 @@ const RoutineProduct = () => {
   
   const handleAdd = e => {
     e.preventDefault();
-
     dispatch(addRoutineProduct({ routine, id }))
   }
 
   const handleRemove = e => {
     e.preventDefault();
-
-    // dispatch(addRoutineProduct({ routine, id }))
+    dispatch(removeRoutineProduct({ routine, id }))
   }
 
   // if (!userRoutines) return null;

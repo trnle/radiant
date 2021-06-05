@@ -20,7 +20,6 @@ def product(id):
 @product_routes.route('/', methods=['POST'])
 @login_required
 def create_product():
-  # print(request.get_json()['productData'], 'testtetetsettw')
   product = Product(**request.json)
 
   db.session.add(product)
@@ -49,14 +48,12 @@ def update_product(id):
     product.img_url = request.json['img_url']
 
     db.session.add(product)
-    db.session.commit()
-    
-    return product.to_dict()
 
   elif request.method == 'DELETE':
     db.session.delete(product)
-    db.session.commit()
-    
-    return product.to_dict()
+  
+  db.session.commit()
+  
+  return product.to_dict()
 
     

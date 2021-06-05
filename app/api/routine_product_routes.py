@@ -11,16 +11,15 @@ def add_routine_product():
 
   for routine in routines:
     if routine.routine_type == request.json['routine_type']:
-      routineToAddTo = routine
+      routineToUpdate = routine
 
   routine_product = Product.query.get(request.json['product_id'])
 
-  # if request.method == 'POST':
-  routineToAddTo.products.append(routine_product)
+  if request.method == 'POST':
+    routineToUpdate.products.append(routine_product)
+  elif request.method == 'DELETE':
+    routineToUpdate.products.remove(routine_product)
 
-  db.session.add(routineToAddTo)
+  db.session.add(routineToUpdate)
   db.session.commit()
-
-  return routineToAddTo.to_dict()
-  # elif request.method == 'DELETE':
-    # db.session.delete()
+  return routineToUpdate.to_dict()
