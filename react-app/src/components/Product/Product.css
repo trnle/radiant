@@ -6,7 +6,7 @@
 
 #nav-products {
   font-size: 16px;
-  margin-bottom: 70px;
+  margin-bottom: 50px;
 }
 
 #nav-products a {
@@ -73,12 +73,19 @@
   margin: 0;
 }
 
-#summary-settings {
-  display: flex;
+.react-tabs__tab--selected {
+  color: #79B3C2;
+  font-weight: 800;
+  /* border: none; */
+  /* padding: 0; */
+}
+
+.react-tabs__tab-list {
+  margin-top: 50px;
 }
 
 #summary-settings h4 {
-  font-size: 19px;
+  font-size: 17px;
   margin-bottom: 0;
 }
 

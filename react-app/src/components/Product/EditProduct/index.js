@@ -12,7 +12,7 @@ const UpdateProduct = () => {
   const userId = user.id;
   const productId = product.id;
 
-  const [showForm, setShowForm] = useState(false);
+  // const [showForm, setShowForm] = useState(false);
   const [productName, setProductName] = useState(product.product_name);
   const [brandName, setBrandName] = useState(product.brand_name);
   const [skincareStep, setSkincareStep] = useState(product.skincare_step);
@@ -28,7 +28,7 @@ const UpdateProduct = () => {
   const updateProduct = e => {
     e.preventDefault();
     dispatch(updateOneProduct({ productName, brandName, skincareStep, target, checkAM, checkPM, description, directions, precautions, ingredients, productImg, userId, productId }))
-    setShowForm(false);
+    // setShowForm(false);
   }
 
   const deleteProduct = async e => {
@@ -40,8 +40,7 @@ const UpdateProduct = () => {
 
   return (
     <div>
-      <button id='edit-product-btn' onClick={() => setShowForm(!showForm)}>Edit Product</button>
-      {showForm &&
+      {/* <button id='edit-product-btn' onClick={() => setShowForm(!showForm)}>Edit Product</button> */}
         <form action={`/product/${productId}`} method='post' onSubmit={updateProduct}>
           <div id='edit-product-fields'>
             <div id='left-edit-product-form'>
@@ -127,8 +126,8 @@ const UpdateProduct = () => {
           </div>
           <button id='update-product-btn' type='submit'>Update Product</button>
           <button id='delete-product-btn' onClick={deleteProduct}>Delete Product</button>
-          <button id='cancel-edit-product-btn' onClick={e => { e.preventDefault(); setShowForm(false) }}>Cancel</button>
-        </form>}
+          {/* <button id='cancel-edit-product-btn'>Cancel</button> */}
+        </form>
     </div>
   )
 }
