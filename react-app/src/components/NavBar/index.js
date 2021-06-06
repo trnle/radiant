@@ -13,8 +13,8 @@ const NavBar = () => {
       <NavLink to='/' exact={true} className='nav-bar-links' id='radiant-home'>Radiant</NavLink>
       {!user ? (
         <>
-          <NavLink to='/login' exact={true}>Log In</NavLink>
-          <NavLink to='/signup' exact={true}>Sign Up</NavLink>
+          <NavLink to='/login' id='login-nav' exact={true}>Log In</NavLink>
+          <NavLink to='/signup' id='signup-nav' exact={true}>Sign Up</NavLink>
         </>
       ) : (
         <>

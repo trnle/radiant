@@ -1,8 +1,70 @@
 #routines-page {
   min-height: 100%;
-  margin: 50px 200px;
+  margin: 50px 17vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 200px;
+}
+
+#routines-page .react-tabs__tab-list {
+  text-align: center;
+  border: none;
+  font-size: 20px;
+}
+
+#routines-page .react-tabs__tab--selected {
+  border: none;
+  font-weight: 800;
+}
+
+#routines-page .react-tabs {
+  padding-top: 0;
 }
 
 .rp-container {
   cursor: pointer;
+  margin: 7px 0 20px;
+  border: 1px solid #e7e5e5;
+  border-radius: 7px;
+  height: 10vh;
+  width: 45vw;
+  display: grid;
+  grid-template-columns: 0.4fr 2fr 0.2fr;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.rp-container img {
+  margin: 0 25px;
+}
+
+.rp-container input[type='checkbox'] {
+  /* width: 30px; */
+  width: 20px;
+  height: 20px;
+  content: '';
+  position: relative;
+}
+/* 
+input[type='checkbox']:checked {
+  content: '';
+}
+
+input[type='checkbox']:checked:before {
+  background-color: white;
+}
+
+input[type='checkbox']:checked:after {  
+  background-color: white;
+  content: "✔️";
+  position: absolute;
+  border: 1px solid lightgray;
+  text-align: center;
+} */
+
+#am-routine-form h4, #pm-routine-form h4 {
+  margin-top: 35px;
+  margin-bottom: 0;
+  font-size: 17px;
 }

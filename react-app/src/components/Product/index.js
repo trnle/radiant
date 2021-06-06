@@ -5,6 +5,10 @@ import { getOneProduct } from '../../store/products';
 import EditProduct from './EditProduct';
 import RoutineProduct from '../RoutineProduct';
 import noProductImg from '../../images/product-img-placeholder.png';
+
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
+
 import './Product.css';
 
 const Product = () => {
@@ -54,31 +58,48 @@ const Product = () => {
           </div>
         </div>
       </div>
-      <RoutineProduct />
       <div id='product-summary'>
         <div id='summary-settings'>
-          <h4>Summary</h4>
-          {productUser === user.username && <EditProduct />}
-        </div>
-        <div className='summary'>
-          <h4>Skincare Step</h4>
-          <p>{product.skincare_step}</p>
-        </div>
-        <div className='summary'>
-          <h4>Suggested time of use:</h4>
-          <p>{timeOfUse}</p>
-        </div>
-        <div className='summary'>
-          <h4>How to Use</h4>
-          <p>{product.directions}</p>
-        </div>
-        <div className='summary'>
-          <h4>Precautions</h4>
-          <p>{product.precautions}</p>
-        </div>
-        <div className='summary'>
-          <h4>Ingredients</h4>
-          <p>{product.ingredients}</p>
+          <Tabs>
+            <TabList>
+              <Tab>Summary</Tab>
+              <Tab>Routine</Tab>
+              {productUser === user.username && <Tab>Edit Product</Tab>}
+            </TabList>
+            <TabPanel>
+              <div className='summary'>
+                <h4>Skincare Step</h4>
+                <p>{product.skincare_step}</p>
+              </div>
+              <div className='summary'>
+                <h4>Suggested time of use:</h4>
+                {timeOfUse.map(time => (
+                  <li key={time}>{time}</li>
+                ))}
+                {/* <p>{timeOfUse}</p> */}
+              </div>
+              <div className='summary'>
+                <h4>How to Use</h4>
+                <p>{product.directions}</p>
+              </div>
+              <div className='summary'>
+                <h4>Precautions</h4>
+                <p>{product.precautions}</p>
+              </div>
+              <div className='summary'>
+                <h4>Ingredients</h4>
+                <p>{product.ingredients}</p>
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <RoutineProduct />
+            </TabPanel>
+            {productUser === user.username && 
+              <TabPanel>
+                <EditProduct />
+              </TabPanel>
+            }
+          </Tabs>
         </div>
       </div>
     </div>

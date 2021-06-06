@@ -1,12 +1,14 @@
 #edit-product-fields {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  padding-top: 10px;
 }
 
 #left-edit-product-form {
   display: flex;
   flex-direction: column; 
-  width: 32vw;
+  width: 31vw;
+  margin-right: 20px;
 }
 
 #left-edit-product-form input {
@@ -34,8 +36,8 @@
 }
 
 #right-edit-product-form textarea {
-  max-width: 35vw;
-  width: 35vw;
+  /* max-width: 35vw; */
+  width: 97%;
   max-height: 100px;
   border-radius: 5px;
   padding: 3px 5px 3px;

@@ -46,6 +46,11 @@
   font-size: 16px;
   height: 5vh;
   margin-top: 5px;
+  background-color: #79B3C2;
+}
+
+.auth-btn:hover {
+  background-color: #72aab8;
 }
 
 .redirect-form {

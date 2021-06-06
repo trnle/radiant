@@ -69,4 +69,9 @@
   height: 35px;
   margin-left: 10px;
   font-size: 13px;
+  background-color: #79B3C2;
 }
+
+#cancel-product-btn:hover, #add-product-btn:hover {
+  background-color: #72aab8;
+} 

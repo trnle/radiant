@@ -12,14 +12,14 @@ const deleteRP = routineProduct => ({
 })
 
 export const addRoutineProduct = rpData => async dispatch => {
-  const { routine, id } = rpData;
+  const { addRoutine, id } = rpData;
   const res = await fetch('/api/routine_products/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      routine_type: routine,
+      routine_type: addRoutine,
       product_id: id
     }),
   })
@@ -30,14 +30,14 @@ export const addRoutineProduct = rpData => async dispatch => {
 }
 
 export const removeRoutineProduct = rpData => async dispatch => {
-  const {routine, id} = rpData;
+  const { removeRoutine, id} = rpData;
   const res = await fetch(`/api/routine_products/`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      routine_type: routine,
+      routine_type: removeRoutine,
       product_id: id
     }),
   })

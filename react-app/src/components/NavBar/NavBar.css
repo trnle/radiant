@@ -22,8 +22,15 @@ nav {
   flex-direction: flex-start;
 }
 
+#products-nav.active, #routine-nav.active, #journal-nav.active {
+  color: #e5aa8b;
+}
+
+#login-nav.active, #signup-nav.active {
+  color: #79B3C2;
+}
 
 #logout-btn {
-  height: 35px;
+  height: 30px;
   width: 70px;
 }

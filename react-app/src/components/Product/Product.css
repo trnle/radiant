@@ -6,13 +6,13 @@
 
 #nav-products {
   font-size: 16px;
-  margin-bottom: 70px;
+  margin-bottom: 50px;
 }
 
 #nav-products a {
   font-weight: 400;
   font-size: 15px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #e7e5e5;
   padding: 5px 10px;
   border-radius: 10px;
 }
@@ -73,12 +73,24 @@
   margin: 0;
 }
 
-#summary-settings {
-  display: flex;
+ .react-tabs__tab {
+  
+}
+
+.react-tabs__tab--selected {
+  color: #e5aa8b;
+  font-weight: 800;
+  border-color: #e7e5e5;
+  /* padding: 0; */
+}
+
+#summary-settings .react-tabs__tab-list {
+  margin-top: 30px;
+  border-color: #e7e5e5;
 }
 
 #summary-settings h4 {
-  font-size: 19px;
+  font-size: 17px;
   margin-bottom: 0;
 }
 
