@@ -9,12 +9,13 @@
 
 #routines-page .react-tabs__tab-list {
   text-align: center;
-  border:none;
+  border: none;
   font-size: 20px;
 }
 
 #routines-page .react-tabs__tab--selected {
   border: none;
+  font-weight: 800;
 }
 
 #routines-page .react-tabs {
