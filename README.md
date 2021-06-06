@@ -9,31 +9,29 @@ Check out the [wiki](https://github.com/trnle/radiant/wiki)!
 
 ### Technologies
 #### Front End
-<!-- * JavaScript
-* HTML
-* CSS
+* JavaScript
 * React
 * Redux
-* Adobe XD
+* HTML
+* CSS
+* Hosted Heroku
+* Adobe XD for [wireframes](https://xd.adobe.com/view/c86b0283-7c64-444c-97bb-2c0bfc26798c-9d38/)
 * [Favicon.io](https://favicon.io/) for favicon
-* [Font Awesome](https://fontawesome.com/v4.7.0/icons/) and [Icons8](https://icons8.com/) for icons 
-* Hosted on Heroku -->
+
 #### Back End
-<!-- * Python
-* PostgreSQL
+* Python
+* Flask
 * SQLAlchemy
-* Flask -->
+* PostgreSQL
+* Docker
 
 ***
 
 ### Key Features
-<!-- * Users have access to view, upload, and edit photos.
-* Users can edit add, delete comments, and update comments.
-* Users can create albums for their photos and edit or delete the albums.
-* Prevents csrf attacks and uses validation forms to authenticate users.
-* Photo upload and photo edit forms created by using modals.
-* Uses AJAX to asynchronously render elements like editing or deleting a comment.
-* Users have a profile page with that contains their photostream and albums. -->
+* Users can manually input their own products onto their account to be added to a routine(s).
+* Users can check off products they've used in their routines and submit the routine for completion.
+* Journal entries can be created each day to keep track of a user's skin condition and progress.
+* Product information can be filtered and searched for to learn more about the ingredients and application process.
 
 <!-- <img src="" alt="signup-page" width="80%">
 <img src="" alt="explore-page" width="80%">
@@ -43,8 +41,5 @@ Check out the [wiki](https://github.com/trnle/radiant/wiki)!
 ***
 
 ### Stretch Goals
-<!-- * Search for photos
-* Tags
-* Gallery carousel
-* Follows
-* Favorites -->
+- [ ] Skincare insights and information threads for users to interact
+- [ ] Notifications for conflicting ingredients users check off within the same routine
