@@ -5,10 +5,7 @@
   flex-direction: column;
   align-items: center;
   /* position: relative; */
-}
-
-.rp-container {
-  cursor: pointer;
+  padding-bottom: 200px;
 }
 
 #routines-page .react-tabs__tab-list {
@@ -23,5 +20,27 @@
 
 #routines-page .react-tabs {
   padding-top: 0;
-  position: absolute;
+  /* position: absolute; */
 }
+
+.rp-container {
+  cursor: pointer;
+  margin: 20px 0;
+  border: 1px solid #e7e5e5;
+  border-radius: 7px;
+  height: 10vh;
+  width: 45vw;
+  display: grid;
+  grid-template-columns: 0.4fr 2fr 0.5fr;
+  align-items: center;
+  justify-items: center;
+}
+
+.rp-container img {
+  align-items: center;
+}
+
+/* #am-use-btn, #pm-use-btn {
+  height: 30px;
+  width: 5vw;
+} */

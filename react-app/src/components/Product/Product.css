@@ -12,7 +12,7 @@
 #nav-products a {
   font-weight: 400;
   font-size: 15px;
-  border: 1px solid #aaa;
+  border: 1px solid #e7e5e5;
   padding: 5px 10px;
   border-radius: 10px;
 }
@@ -73,15 +73,20 @@
   margin: 0;
 }
 
+ .react-tabs__tab {
+  
+}
+
 .react-tabs__tab--selected {
   color: #e5aa8b;
   font-weight: 800;
-  /* border: none; */
+  border-color: #e7e5e5;
   /* padding: 0; */
 }
 
-.react-tabs__tab-list {
+#summary-settings .react-tabs__tab-list {
   margin-top: 30px;
+  border-color: #e7e5e5;
 }
 
 #summary-settings h4 {

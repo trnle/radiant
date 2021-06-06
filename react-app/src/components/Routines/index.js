@@ -33,23 +33,29 @@ const Routines = () => {
           <Tab>PM</Tab>
         </TabList>
         <TabPanel>
-          {amRoutine.map(product => (
-            <div key={product.id} className='rp-container' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>
-              <img src={product.img_url} alt={product.product_name} height='50' />
-              {product.product_name}
-              <button>Use</button>
-            </div>
-          ))}
+          <form>
+            {amRoutine.map(product => (
+              <div key={product.id} className='rp-container'>
+                <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}/>
+                <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
+                <input type="checkbox" />
+              </div>
+            ))}
+            <button>Complete Routine</button>
+          </form>
         </TabPanel>
         <TabPanel></TabPanel>
         <TabPanel>
-          {pmRoutine.map(product => (
-            <div key={product.id} className='rp-container' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>
-              <img src={product.img_url} alt={product.product_name} height='50' />
-              {product.product_name}
-              <button>Use</button>
-            </div>
-          ))}
+          <form>
+            {pmRoutine.map(product => (
+              <div key={product.id} className='rp-container' >
+                <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}/>
+                <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
+                <input type="checkbox"/>
+              </div>
+            ))}
+            <button>Complete Routine</button>
+          </form>
         </TabPanel>
       </Tabs>
     </div>
