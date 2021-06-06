@@ -4,6 +4,9 @@ import { useHistory } from 'react-router-dom';
 import { getRoutines } from '../../store/routines';
 import './Routines.css';
 
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
+
 const Routines = () => {
   document.title = 'Home | Radiant';
   document.body.style = 'background-color: #FFFFFF';
@@ -22,22 +25,33 @@ const Routines = () => {
 
   return (
     <div id='routines-page'>
-      <h2>AM Routine</h2>
-      {amRoutine.map(product => (
-        <div key={product.id} className='rp-container' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>
-          <img src={product.img_url} alt={product.product_name} height='50' />
-          {product.product_name}
-          <button>Use</button>
-        </div>
-      ))}
-      <h2>PM Routine</h2>
-      {pmRoutine.map(product => (
-        <div key={product.id} className='rp-container' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>
-          <img src={product.img_url} alt={product.product_name} height='50' />
-          {product.product_name}
-          <button>Use</button>
-        </div>
-      ))}
+      <h1>Routine</h1>
+      <Tabs>
+        <TabList>
+          <Tab>AM</Tab>
+          <Tab disabled>|</Tab>
+          <Tab>PM</Tab>
+        </TabList>
+        <TabPanel>
+          {amRoutine.map(product => (
+            <div key={product.id} className='rp-container' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>
+              <img src={product.img_url} alt={product.product_name} height='50' />
+              {product.product_name}
+              <button>Use</button>
+            </div>
+          ))}
+        </TabPanel>
+        <TabPanel></TabPanel>
+        <TabPanel>
+          {pmRoutine.map(product => (
+            <div key={product.id} className='rp-container' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>
+              <img src={product.img_url} alt={product.product_name} height='50' />
+              {product.product_name}
+              <button>Use</button>
+            </div>
+          ))}
+        </TabPanel>
+      </Tabs>
     </div>
   )
 }
