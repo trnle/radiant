@@ -27,6 +27,7 @@ const Routines = () => {
         <div key={product.id} className='rp-container' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>
           <img src={product.img_url} alt={product.product_name} height='50' />
           {product.product_name}
+          <button>Use</button>
         </div>
       ))}
       <h2>PM Routine</h2>
@@ -34,6 +35,7 @@ const Routines = () => {
         <div key={product.id} className='rp-container' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>
           <img src={product.img_url} alt={product.product_name} height='50' />
           {product.product_name}
+          <button>Use</button>
         </div>
       ))}
     </div>
