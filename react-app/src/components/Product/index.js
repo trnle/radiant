@@ -63,7 +63,7 @@ const Product = () => {
           <Tabs>
             <TabList>
               <Tab>Summary</Tab>
-              <Tab>Add to Routine</Tab>
+              <Tab>Routine</Tab>
               {productUser === user.username && <Tab>Edit Product</Tab>}
             </TabList>
             <TabPanel>

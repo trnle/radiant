@@ -1,0 +1,39 @@
+#rp-form-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.rp-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rp-form h4 {
+  padding-bottom: 5px;
+}
+
+#rp-select {
+  margin-bottom: 10px;
+  height: 27px;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  padding: 3px;
+}
+
+#rp-select:focus {
+  outline-color: #e5aa8b;
+}
+
+#add-rp-btn, #remove-rp-btn {
+  width: 5vw;
+  height: 26px;
+  border-radius: 7px;
+  margin-left: 10px;
+  background-color: #e5aa8b;
+}
+
+#add-rp-btn:hover, #remove-rp-btn:hover {
+  background-color: #f1a47b;
+}
+

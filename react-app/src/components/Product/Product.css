@@ -74,14 +74,14 @@
 }
 
 .react-tabs__tab--selected {
-  color: #79B3C2;
+  color: #e5aa8b;
   font-weight: 800;
   /* border: none; */
   /* padding: 0; */
 }
 
 .react-tabs__tab-list {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 #summary-settings h4 {

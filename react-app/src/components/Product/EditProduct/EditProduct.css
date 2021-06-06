@@ -1,6 +1,7 @@
 #edit-product-fields {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  padding-top: 10px;
 }
 
 #left-edit-product-form {
