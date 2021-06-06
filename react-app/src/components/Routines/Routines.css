@@ -33,16 +33,35 @@
   grid-template-columns: 0.4fr 2fr 0.2fr;
   align-items: center;
   padding: 10px 0;
-  /* justify-items: center; */
 }
 
 .rp-container img {
   margin: 0 25px;
 }
 
-.rp-container input {
-  float: right;
+.rp-container input[type='checkbox'] {
+  /* width: 30px; */
+  width: 20px;
+  height: 20px;
+  content: '';
+  position: relative;
 }
+/* 
+input[type='checkbox']:checked {
+  content: '';
+}
+
+input[type='checkbox']:checked:before {
+  background-color: white;
+}
+
+input[type='checkbox']:checked:after {  
+  background-color: white;
+  content: "✔️";
+  position: absolute;
+  border: 1px solid lightgray;
+  text-align: center;
+} */
 
 #am-routine-form h4, #pm-routine-form h4 {
   margin-top: 35px;
