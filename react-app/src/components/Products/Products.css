@@ -10,7 +10,7 @@
   text-align: center;
 }
 
-#product-flex {
+#product-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -23,9 +23,22 @@
   margin: 20px;
   padding: 15px;
   width: 30vw;
+  min-height: 10vh;
+  cursor: pointer;
 }
 
 .product-container img {
   height: 150px;
   width: 150px;
+}
+
+.product-container a {
+  font-size: 15px;
+  
+}
+
+.product-container p {
+  color: #707175;
+  font-size: 14px;
+  font-weight: 200;
 }

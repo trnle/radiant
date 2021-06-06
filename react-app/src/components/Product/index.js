@@ -34,18 +34,29 @@ const Product = () => {
 
   return (
     <div id='product-page'>
-      <NavLink to='/products'>Back to Products</NavLink>
+      <div id='nav-products'>
+        <NavLink to='/products'>Back to Products</NavLink>
+      </div>
       <div id='product-intro'>
-        <img src={product.img_url} alt={product.product_name} />
-        <p>Added by {productUser}</p>
-        <h3>{product.product_name}</h3>
-        <h4>{product.brand_name}</h4>
-        <p>{product.description}</p>
-        <p>Targets {product.target}</p>
+        <div id='product-image'>
+          <img src={product.img_url} alt={product.product_name} />
+        </div>
+        <div id='product-info'>
+          <h3>{product.product_name}</h3>
+          <h4>{product.brand_name}</h4>
+          <p>{product.description}</p>
+          <p>TARGETS... {product.target}</p>
+          <div id='product-added-by'>
+            <p>Added by {productUser} ✨</p>
+          </div>
+        </div>
       </div>
       <RoutineProduct />
       <div id='product-summary'>
-        <h4>Summary</h4>
+        <div id='summary-settings'>
+          <h4>Summary</h4>
+          {productUser === user.username && <EditProduct />}
+        </div>
         <div>
           Skincare Step
           <p>{product.skincare_step}</p>
@@ -64,7 +75,6 @@ const Product = () => {
           <p>{product.ingredients}</p>
         </div>
       </div>
-      {productUser === user.username && <EditProduct />}
     </div>
   )
 }
