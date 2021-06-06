@@ -45,7 +45,10 @@ const Product = () => {
           <h3>{product.product_name}</h3>
           <h4>{product.brand_name}</h4>
           <p>{product.description}</p>
-          <p>TARGETS... {product.target}</p>
+          <div id='target-info'>
+            <p>TARGETS...</p>
+            <p>{product.target}</p>
+          </div>
           <div id='product-added-by'>
             <p>Added by {productUser} ✨</p>
           </div>
@@ -57,21 +60,24 @@ const Product = () => {
           <h4>Summary</h4>
           {productUser === user.username && <EditProduct />}
         </div>
-        <div>
-          Skincare Step
+        <div className='summary'>
+          <h4>Skincare Step</h4>
           <p>{product.skincare_step}</p>
         </div>
-        <p>{`Suggested time of use: ${timeOfUse}`}</p>
-        <div>
-          How to Use
+        <div className='summary'>
+          <h4>Suggested time of use:</h4>
+          <p>{timeOfUse}</p>
+        </div>
+        <div className='summary'>
+          <h4>How to Use</h4>
           <p>{product.directions}</p>
         </div>
-        <div>
-          Precautions
+        <div className='summary'>
+          <h4>Precautions</h4>
           <p>{product.precautions}</p>
         </div>
-        <div>
-          Ingredients
+        <div className='summary'>
+          <h4>Ingredients</h4>
           <p>{product.ingredients}</p>
         </div>
       </div>

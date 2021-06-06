@@ -1,7 +1,7 @@
 #product-page {
   position: relative;
   min-height: 100%;
-  margin: 50px 20vw;
+  margin: 50px 17vw;
 }
 
 #nav-products {
@@ -56,6 +56,14 @@
   margin: 0;
 }
 
+#product-info p {
+  margin: 0 0 20px;
+}
+
+#target-info p {
+  margin: 0;
+}
+
 #product-added-by {
   bottom: 0;
   position: absolute;
@@ -67,4 +75,17 @@
 
 #summary-settings {
   display: flex;
+}
+
+#summary-settings h4 {
+  font-size: 19px;
+  margin-bottom: 0;
+}
+
+.summary h4 {
+  margin-bottom: 5px;
+}
+
+.summary p {
+  margin: 0;
 }
