@@ -39,9 +39,9 @@
   font-size: 16px;
   height: 5vh;
   margin-top: 5px;
+  background-color: #79B3C2;
 }
 
-#signup-btn:disabled {
-  background-color: gray;
-  cursor: not-allowed;
+#signup-btn:hover {
+  background-color: #72aab8;
 }

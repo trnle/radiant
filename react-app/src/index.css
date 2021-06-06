@@ -25,14 +25,14 @@ button {
   font-family: muli, sans-serif;
   font-weight: 900;
   font-style: normal;
-  background-color: #79B3C2;
+  background-color: #e5aa8b;
   color: white;
   border: 1px solid transparent;
   border-radius: 11px;
 }
 
 button:hover {
-  background-color: #72aab8;
+  background-color: #f1a47b;
   cursor: pointer;
 }
 

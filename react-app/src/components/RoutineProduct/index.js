@@ -11,8 +11,8 @@ const RoutineProduct = () => {
   const userRoutines = useSelector(state => state.routines.userRoutines.user_routines);
   // const [showAddRoutines, setAddShowRoutines] = useState(false);
   // const [showRemoveRoutines, setShowRemoveRoutines] = useState(false);
-  const [addRoutine, setAddRoutine] = useState(false);
-  const [removeRoutine, setRemoveRoutine] = useState(false);
+  const [addRoutine, setAddRoutine] = useState('');
+  const [removeRoutine, setRemoveRoutine] = useState('');
   
   useEffect(() => {
     dispatch(getRoutines());
@@ -20,6 +20,7 @@ const RoutineProduct = () => {
 
   const handleAdd = e => {
     e.preventDefault();
+    console.log('===========', addRoutine)
     dispatch(addRoutineProduct({ addRoutine, id }))
   }
 
@@ -35,7 +36,7 @@ const RoutineProduct = () => {
       {/* <button onClick={() => setAddShowRoutines(!showAddRoutines)}>Add to Routine</button> */}
       <div className='rp-form'>
         <h4>Add Product to Routine</h4>
-        <form action='' onSubmit={handleAdd}>
+        <form method='post' onSubmit={handleAdd}>
           <select name='routines' id='rp-select' onChange={e => setAddRoutine(e.target.value)} value={addRoutine} required>
             <option value=''>Select Routine</option>
             {userRoutines.map(routine => (
@@ -50,7 +51,7 @@ const RoutineProduct = () => {
       {/* <button onClick={() => setShowRemoveRoutines(!showRemoveRoutines)}>Remove from Routine</button> */}
       <div className='rp-form'>
         <h4>Remove Product to Routine</h4>
-        <form action='' onSubmit={handleRemove}>
+        <form method='post' onSubmit={handleRemove}>
           <select name='routines' id='rp-select' onChange={e => setRemoveRoutine(e.target.value)} value={removeRoutine} required>
             <option value=''>Select Routine</option>
             {userRoutines.map(routine => (
