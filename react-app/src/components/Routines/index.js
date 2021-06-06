@@ -33,12 +33,77 @@ const Routines = () => {
           <Tab>PM</Tab>
         </TabList>
         <TabPanel>
-          <form>
+          <form id='am-routine-form'>
+            <h4>1 CLEANSE</h4>
             {amRoutine.map(product => (
-              <div key={product.id} className='rp-container'>
-                <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}/>
-                <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
-                <input type="checkbox" />
+              <div key={product.id}>
+                {product.skincare_step === 'Cleanse' &&
+                  <div key={product.id} className='rp-container'>
+                    <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
+                    <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
+                    <input type="checkbox" />
+                  </div>
+                }
+              </div>
+            ))}
+            <h4>2 TREAT</h4>
+            {amRoutine.map(product => (
+              <div key={product.id}>
+                {product.skincare_step === 'Treat' &&
+                  <div key={product.id} className='rp-container'>
+                    <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
+                    <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
+                    <input type="checkbox" />
+                  </div>
+                }
+              </div>
+            ))}
+            <h4>3 NOURISH</h4>
+            {amRoutine.map(product => (
+              <div key={product.id}>
+                {product.skincare_step === 'Nourish' &&
+                  <div key={product.id} className='rp-container'>
+                    <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
+                    <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
+                    <input type="checkbox" />
+                  </div>
+                }
+              </div>
+            ))}
+            <h4>4 MOISTURIZE</h4>
+            {amRoutine.map(product => (
+              <div key={product.id}>
+                {product.skincare_step === 'Moisturize' &&
+                  <div key={product.id} className='rp-container'>
+                    <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
+                    <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
+                    <input type="checkbox" />
+                  </div>
+                }
+              </div>
+            ))}
+            <h4>5 PROTECT</h4>
+            {amRoutine.map(product => (
+              <div key={product.id}>
+                {product.skincare_step === 'Protect' &&
+                  <div key={product.id} className='rp-container'>
+                    <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
+                    <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
+                    <input type="checkbox" />
+                  </div>
+                }
+              </div>
+            ))}
+            <h4>6 MISCELLANEOUS</h4>
+            {amRoutine.map(product => (
+              <div key={product.id}>
+                {product.skincare_step === 'Miscellaneous' &&
+                  <div key={product.id} className='rp-container'>
+                    <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
+                    <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
+                    <input type="checkbox" />
+                  </div>
+                }
               </div>
             ))}
             <button>Complete Routine</button>
@@ -46,12 +111,77 @@ const Routines = () => {
         </TabPanel>
         <TabPanel></TabPanel>
         <TabPanel>
-          <form>
+          <form id='pm-routine-form'>
+            <h4>1 CLEANSE</h4>
             {pmRoutine.map(product => (
-              <div key={product.id} className='rp-container' >
-                <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}/>
-                <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
-                <input type="checkbox"/>
+              <div key={product.id}>
+                {product.skincare_step === 'Cleanse' &&
+                  <div key={product.id} className='rp-container'>
+                    <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
+                    <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
+                    <input type="checkbox" />
+                  </div>
+                }
+              </div>
+            ))}
+            <h4>2 TREAT</h4>
+            {pmRoutine.map(product => (
+              <div key={product.id}>
+                {product.skincare_step === 'Treat' &&
+                  <div key={product.id} className='rp-container'>
+                    <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
+                    <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
+                    <input type="checkbox" />
+                  </div>
+                }
+              </div>
+            ))}
+            <h4>3 NOURISH</h4>
+            {pmRoutine.map(product => (
+              <div key={product.id}>
+                {product.skincare_step === 'Nourish' &&
+                  <div key={product.id} className='rp-container'>
+                    <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
+                    <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
+                    <input type="checkbox" />
+                  </div>
+                }
+              </div>
+            ))}
+            <h4>4 MOISTURIZE</h4>
+            {pmRoutine.map(product => (
+              <div key={product.id}>
+                {product.skincare_step === 'Moisturize' &&
+                  <div key={product.id} className='rp-container'>
+                    <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
+                    <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
+                    <input type="checkbox" />
+                  </div>
+                }
+              </div>
+            ))}
+            <h4>5 PROTECT</h4>
+            {pmRoutine.map(product => (
+              <div key={product.id}>
+                {product.skincare_step === 'Protect' &&
+                  <div key={product.id} className='rp-container'>
+                    <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
+                    <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
+                    <input type="checkbox" />
+                  </div>
+                }
+              </div>
+            ))}
+            <h4>6 MISCELLANEOUS</h4>
+            {pmRoutine.map(product => (
+              <div key={product.id}>
+                {product.skincare_step === 'Miscellaneous' &&
+                  <div key={product.id} className='rp-container'>
+                    <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
+                    <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
+                    <input type="checkbox" />
+                  </div>
+                }
               </div>
             ))}
             <button>Complete Routine</button>

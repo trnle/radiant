@@ -4,7 +4,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* position: relative; */
   padding-bottom: 200px;
 }
 
@@ -20,27 +19,32 @@
 
 #routines-page .react-tabs {
   padding-top: 0;
-  /* position: absolute; */
 }
 
 .rp-container {
   cursor: pointer;
-  margin: 20px 0;
+  margin: 7px 0 20px;
   border: 1px solid #e7e5e5;
   border-radius: 7px;
   height: 10vh;
   width: 45vw;
   display: grid;
-  grid-template-columns: 0.4fr 2fr 0.5fr;
+  grid-template-columns: 0.4fr 2fr 0.2fr;
   align-items: center;
-  justify-items: center;
+  padding: 10px 0;
+  /* justify-items: center; */
 }
 
 .rp-container img {
-  align-items: center;
+  margin: 0 25px;
 }
 
-/* #am-use-btn, #pm-use-btn {
-  height: 30px;
-  width: 5vw;
-} */
+.rp-container input {
+  float: right;
+}
+
+#am-routine-form h4, #pm-routine-form h4 {
+  margin-top: 35px;
+  margin-bottom: 0;
+  font-size: 17px;
+}
