@@ -27,6 +27,7 @@
   width: 90%;
   margin: 5px;
   border-radius: 12px;
+  cursor: pointer;
 }
 
 .entry-info h4 {
