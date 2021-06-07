@@ -1,10 +1,9 @@
 #routines-page {
-  min-height: 100%;
-  margin: 50px 17vw;
+  min-height: 95%; 
+  margin: 50px 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 200px;
 }
 
 #routines-page .react-tabs__tab-list {
@@ -16,6 +15,10 @@
 #routines-page .react-tabs__tab--selected {
   border: none;
   font-weight: 800;
+}
+
+#routines-page .react-tabs__tab--selected:focus {
+  box-shadow: none;
 }
 
 #routines-page .react-tabs {
@@ -63,8 +66,24 @@ input[type='checkbox']:checked:after {
   text-align: center;
 } */
 
+#am-routine-form {
+  /* position: sticky;
+  overflow: scroll;
+  height: 100vh; */
+}
+
 #am-routine-form h4, #pm-routine-form h4 {
   margin-top: 35px;
   margin-bottom: 0;
   font-size: 17px;
+}
+
+#complete-am, #complete-pm {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+#complete-am button, #complete-pm button {
+  height: 40px;
 }

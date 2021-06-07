@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { updateOneProduct, deleteOneProduct } from '../../../store/products';
+import Swal from 'sweetalert2'
 import './EditProduct.css';
 
 const UpdateProduct = () => {
@@ -27,15 +28,27 @@ const UpdateProduct = () => {
 
   const updateProduct = e => {
     e.preventDefault();
+    Swal.fire({
+      icon: 'success',
+      title: 'Product Updated!',
+    })
     dispatch(updateOneProduct({ productName, brandName, skincareStep, target, checkAM, checkPM, description, directions, precautions, ingredients, productImg, userId, productId }))
     // setShowForm(false);
   }
 
   const deleteProduct = async e => {
     e.preventDefault();
-
-    await dispatch(deleteOneProduct(productId));
-    history.push('/products');
+    Swal.fire({
+      title: 'Delete Product',
+      text: 'Are you sure you want to delete this product permanently?',
+      showCancelButton: true,
+      confirmButtonText: 'Delete'
+    }).then(res => {
+      if (res.value) {
+        dispatch(deleteOneProduct(productId));
+        history.push('/products');
+      }
+    }) 
   }
 
   return (

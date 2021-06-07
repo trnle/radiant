@@ -41,7 +41,7 @@ const Routines = () => {
                   <div key={product.id} className='rp-container'>
                     <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
                     <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
-                    <input type="checkbox" />
+                    <input type="checkbox" checked={product.product_name}/>
                   </div>
                 }
               </div>
@@ -106,7 +106,9 @@ const Routines = () => {
                 }
               </div>
             ))}
-            <button>Complete Routine</button>
+            <div id='complete-am'>
+              <button>Complete Routine</button>
+            </div>
           </form>
         </TabPanel>
         <TabPanel></TabPanel>
@@ -184,7 +186,9 @@ const Routines = () => {
                 }
               </div>
             ))}
-            <button>Complete Routine</button>
+            <div id='complete-pm'>
+              <button>Complete Routine</button>
+            </div>
           </form>
         </TabPanel>
       </Tabs>

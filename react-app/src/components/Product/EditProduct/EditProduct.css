@@ -67,3 +67,33 @@
   height: 35px;
   font-size: 13px;
 }
+
+.swal2-popup {
+  border-radius: 20px;
+}
+
+.swal2-title {
+  font-family: muli, sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  color: #1C2237;
+  font-size: 27px;
+}
+
+.swal2-styled.swal2-confirm {
+  background-color: #e5aa8b;
+}
+
+.swal2-styled.swal2-cancel {
+  background-color: #bebebe;
+}
+
+.swal2-actions button {
+  font-weight: 700;
+  border-radius: 8px !important;
+}
+
+.swal2-actions button:focus {
+  box-shadow: none !important;
+}
+
