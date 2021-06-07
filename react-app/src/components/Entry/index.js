@@ -8,8 +8,8 @@ const Entry = () => {
   document.title = 'Entry | Radiant';
   document.body.style = 'background-color: #FFFFFF';
   const { id } = useParams();
-
   const dispatch = useDispatch();
+  const user = useSelector(state => state.session.user);
   const entry = useSelector(state => state.entries.oneEntry);
 
   useEffect(() => {
@@ -21,7 +21,12 @@ const Entry = () => {
     <div id='entry-page'>
       <div id='entry-summary'>
         <h4>{entry.created_at}</h4>
-        {entry.img_url && <img src={entry.img_url} alt="Image of skin progress" />}
+        {user &&
+          <div>
+            <button>Edit Entry</button>
+          </div>
+        }
+        {entry.img_url && <img src={entry.img_url} alt="Skin progress" />}
         <p>{entry.description}</p>
         <p>{entry.am_products}</p>
         <p>{entry.pm_products}</p>

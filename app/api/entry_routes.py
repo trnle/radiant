@@ -17,3 +17,13 @@ def entry(id):
   entry = Entry.query.get(id)
 
   return entry.to_dict()
+
+@entry_routes.route('/', methods=['POST'])
+@login_required
+def create_entry():
+  entry = Entry(**request.json, user_id=current_user.id)
+
+  db.session.add(entry)
+  db.session.commit()
+
+  return entry.to_dict()
