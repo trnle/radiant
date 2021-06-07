@@ -15,7 +15,8 @@
     "react-tabs": "^3.2.2",
     "redux": "^4.1.0",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "sweetalert2": "^11.0.16"
   },
   "scripts": {
     "start": "react-scripts start",
