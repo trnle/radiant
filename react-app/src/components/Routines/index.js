@@ -185,7 +185,7 @@ const Routines = () => {
         </TabPanel>
         <TabPanel></TabPanel>
         <TabPanel>
-          <form id='pm-routine-form' onSubmit={completePM}>
+          <form id='pm-routine-form'>
             <h4>1 CLEANSE</h4>
             {pmRoutine.map((product, idx) => (
               <div key={idx}>
