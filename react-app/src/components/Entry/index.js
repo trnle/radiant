@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { getEntry } from '../../store/entries';
+import { useParams, useHistory } from 'react-router-dom';
+import { getEntry, deleteOneEntry } from '../../store/entries';
 import './Entry.css';
 
 const Entry = () => {
@@ -9,6 +9,7 @@ const Entry = () => {
   document.body.style = 'background-color: #FFFFFF';
   const { id } = useParams();
   const dispatch = useDispatch();
+  const history = useHistory();
   const user = useSelector(state => state.session.user);
   const entry = useSelector(state => state.entries.oneEntry);
 
@@ -16,14 +17,20 @@ const Entry = () => {
     dispatch(getEntry(id))
   }, [dispatch, id])
 
+  const deleteEntry = async e => {
+    e.preventDefault();
+    await dispatch(deleteOneEntry(id));
+    history.push('/journal');
+  }
 
   return (
     <div id='entry-page'>
       <div id='entry-summary'>
         <h4>{entry.created_at}</h4>
-        {user &&
+        {user.id === entry.user_id &&
           <div>
             <button>Edit Entry</button>
+            <button onClick={deleteEntry}>Delete entry</button>
           </div>
         }
         {entry.img_url && <img src={entry.img_url} alt="Skin progress" />}

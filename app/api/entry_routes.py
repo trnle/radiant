@@ -27,3 +27,24 @@ def create_entry():
   db.session.commit()
 
   return entry.to_dict()
+
+@entry_routes.route('/<int:id>', methods=['PUT', 'DELETE'])
+@login_required
+def update_entry(id):
+  entry = Entry.query.get(id)
+
+  if request.method == 'PUT':
+    entry.img_url = request.json['img_url']
+    entry.description = request.json['description']
+    entry.rating = request.json['rating']
+    entry.am_products = request.json['am_products']
+    entry.pm_products = request.json['pm_products']
+
+    db.session.add(entry)
+ 
+  elif request.method == 'DELETE':
+    db.session.delete(entry)
+
+  db.session.commit()
+
+  return entry.to_dict()

@@ -33,8 +33,6 @@ def update_product(id):
   product = Product.query.get(id)
   
   if request.method == 'PUT':
-    user = User.query.get(product.user_id).username
-
     product.product_name = request.json['product_name']
     product.brand_name = request.json['brand_name']
     product.skincare_step = request.json['skincare_step']
