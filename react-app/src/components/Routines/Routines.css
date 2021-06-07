@@ -66,12 +66,6 @@ input[type='checkbox']:checked:after {
   text-align: center;
 } */
 
-#am-routine-form {
-  /* position: sticky;
-  overflow: scroll;
-  height: 100vh; */
-}
-
 #am-routine-form h4, #pm-routine-form h4 {
   margin-top: 35px;
   margin-bottom: 0;

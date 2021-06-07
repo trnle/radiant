@@ -1,7 +1,40 @@
 #journal-page {
-  height: 100%;
+  display: grid;
+  justify-content: center;
+  min-height: 100%;
+  position: relative;
+  margin: 50px 17vw;
+}
+
+#journal-page h1 {
+  /* margin: 50px 0 0; */
+  text-align: center;
 }
 
 #entries-list {
-  margin: 10%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-bottom: 500px;
+  justify-items: center;
+}
+
+.entry-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #86A283;
+  max-height: 10em;
+  width: 90%;
+  margin: 5px;
+  border-radius: 12px;
+}
+
+.entry-info h4 {
+  text-align: center;
+  margin-bottom: 3px;
+}
+
+.entry-info p {
+  text-align: center;
+  margin: 5px;
 }

@@ -10,6 +10,7 @@ import Routines from './components/Routines';
 import Products from './components/Products';
 import Product from './components/Product';
 import Journal from './components/Journal';
+import Entry from './components/Entry';
 import Footer from './components/Footer';
 import { authenticate } from './store/session';
 
@@ -57,6 +58,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path={'/journal'} exact={true}>
           <Journal />
+        </ProtectedRoute>
+        <ProtectedRoute path={'/journal/:id'} exact={true}>
+          <Entry />
         </ProtectedRoute>
       </Switch>
       <Footer />
