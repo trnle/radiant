@@ -194,10 +194,10 @@ return (
               }
             </div>
           ))}
-          <h4>6 MISCELLANEOUS</h4>
+          <h4>6 OTHER</h4>
           {amRoutine.map((product, idx) => (
             <div key={idx}>
-              {product.skincare_step === 'Miscellaneous' &&
+              {product.skincare_step === 'Other' &&
                 <div key={product.id} className='rp-container'>
                   <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
                   <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
@@ -286,10 +286,10 @@ return (
               }
             </div>
           ))}
-          <h4>6 MISCELLANEOUS</h4>
+          <h4>6 OTHER</h4>
           {pmRoutine.map((product, idx) => (
             <div key={idx}>
-              {product.skincare_step === 'Miscellaneous' &&
+              {product.skincare_step === 'Other' &&
                 <div key={product.id} className='rp-container'>
                   <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
                   <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>

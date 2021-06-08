@@ -1,6 +1,5 @@
 const LOAD_ENTRIES = 'routines/LOAD_ENTRIES';
 const LOAD_ENTRY = 'routines/LOAD_ENTRY';
-const LOAD_EXISTING = 'routines/LOAD_EXISTING';
 const CREATE_ENTRY = 'routines/CREATE_ENTRY';
 const UPDATE_ENTRY = 'products/UPDATE_ENTRY';
 const DELETE_ENTRY = 'products/DELETE_ENTRY';

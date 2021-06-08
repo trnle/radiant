@@ -63,7 +63,7 @@ const CreateProductModal = () => {
                   <option value='Nourish'>Nourish</option>
                   <option value='Moisturize'>Moisturize</option>
                   <option value='Protect'>Protect</option>
-                  <option value='Miscellaneous'>Miscellaneous</option>
+                  <option value='Other'>Other</option>
                 </select>
                 <label>Time of Use</label>
                 <div id='time-box-align'>
