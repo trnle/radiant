@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import { getProducts } from '../../store/products';
@@ -13,6 +13,9 @@ const Products = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const [filter, setFilter] = useState('')
+  const [filteredProducts, setFilteredProducts] = useState([])
+  console.log(filter, 'fdsfj=filter-------')
   useEffect(() => {
     dispatch(getProducts())
   }, [dispatch])
@@ -23,6 +26,18 @@ const Products = () => {
     <div id='products-page'>
       <h1>Products</h1>
       <CreateProductModal />
+      <div>
+        <label>Filter</label>
+        <select id="filter" onChange={e => setFilter(e.target.value)}>
+          <option value=""></option>
+          <option value="Cleanse">Cleanse</option>
+          <option value="Treat">Treat</option>
+          <option value="Nourish">Nourish</option>
+          <option value="Moisturize">Moisturize</option>
+          <option value="Protect">Protect</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
       <div id='product-grid'>
         {Object.values(products).map(product => (
           <div className='product-container' key={product.id} onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>
