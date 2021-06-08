@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { getEntry, deleteOneEntry } from '../../store/entries';
 import './Entry.css';
+import UpdateEntry from './UpdateEntry';
 
 const Entry = () => {
   document.title = 'Entry | Radiant';
@@ -23,21 +24,23 @@ const Entry = () => {
     history.push('/journal');
   }
 
+  if (!entry) return null
+
   return (
     <div id='entry-page'>
       <div id='entry-summary'>
         <h4>{entry.created_at}</h4>
+        {entry.img_url && <img src={entry.img_url} alt="Skin progress" />}
+        <p>{entry.description}</p>
+        <p>Morning Products: {entry.am_products}</p>
+        <p>Evening Products: {entry.pm_products}</p>
+        <p>Skin rating: {entry.rating}</p>
         {user.id === entry.user_id &&
           <div>
-            <button>Edit Entry</button>
+            <UpdateEntry />
             <button onClick={deleteEntry}>Delete entry</button>
           </div>
         }
-        {entry.img_url && <img src={entry.img_url} alt="Skin progress" />}
-        <p>{entry.description}</p>
-        <p>{entry.am_products}</p>
-        <p>{entry.pm_products}</p>
-        <p>Skin rating: {entry.rating}</p>
       </div>
     </div>
   )

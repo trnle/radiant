@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getRoutines } from '../../store/routines';
-import { createOneEntry } from '../../store/entries';
+import { createAMEntry, createPMEntry, getExisting } from '../../store/entries';
 import Swal from 'sweetalert2'
 import './Routines.css';
 
@@ -15,40 +15,73 @@ const Routines = () => {
 
   const dispatch = useDispatch();
   const history = useHistory();
-
+  const checkExistingEntry = useSelector(state => state.entries?.oneEntry);
+  // let existAMProducts = checkExistingEntry.am_products;
+  // const existAMProducts = checkExistingEntry.am_products;
+  // console.log(existAMProducts, 'test')
   const userRP = useSelector(state => state.routines?.userRoutines?.user_routine_products);
   const amRoutine = userRP?.AM;
   const pmRoutine = userRP?.PM;
 
   const [amRP, setAmRP] = useState([]);
   const [pmRP, setPmRP] = useState([]);
+  let newDate = new Date().toDateString().split(' ');
+  const [currentDate, setCurrentDate] = useState(`${newDate[1]} ${newDate[2]}, ${newDate[3]}`);
+  // console.log(checkExistingEntry.am_products, '-------------')
+  const [completeAMBtn, setCompleteAMBtn] = useState('Complete Routine');
+  const [completePMBtn, setCompletePMBtn] = useState('Complete Routine');
+  const [amDisableBtn, setAmDisableBtn] = useState(false);
+  const [pmDisableBtn, setPmDisableBtn] = useState(false);
+  // console.log(completeAMBtn, '=========ambtn');
 
   useEffect(() => {
     dispatch(getRoutines());
   }, [dispatch])
 
-  if (!amRoutine || !pmRoutine) return null;
+  useEffect(() => {
+    dispatch(getExisting());
+  }, [dispatch])
 
-  const handleAMCheck = product => {
-    if (amRP.includes(product)) {
-      amRP.splice(amRP.indexOf(product), 1);
-      setAmRP([...amRP])
+  useEffect(() => {
+    if (checkExistingEntry.am_products) {
+      setCompleteAMBtn('Finished');
+      setAmDisableBtn(true);
     } else {
-      setAmRP([...amRP, product])
+      setCompleteAMBtn('Complete Routine');
+      setAmDisableBtn(false);
     }
-  }
- 
-  const handlePMCheck = product => {
-    if (pmRP.includes(product)) {
-      pmRP.splice(pmRP.indexOf(product), 1);
-      setPmRP([...pmRP])
+    if (checkExistingEntry.pm_products) {
+      setCompletePMBtn('Finished');
+      setPmDisableBtn(true);
     } else {
-      setPmRP([...pmRP, product])
+      setCompletePMBtn('Complete Routine');
+      setPmDisableBtn(false);
     }
-  }
+  }, [checkExistingEntry.am_products, checkExistingEntry.pm_products])
 
-  const completeAM = async e => {
-    e.preventDefault();
+if (!amRoutine || !pmRoutine) return null;
+
+const handleAMCheck = product => {
+  if (amRP.includes(product)) {
+    amRP.splice(amRP.indexOf(product), 1);
+    setAmRP([...amRP])
+  } else {
+    setAmRP([...amRP, product])
+  }
+}
+
+const handlePMCheck = product => {
+  if (pmRP.includes(product)) {
+    pmRP.splice(pmRP.indexOf(product), 1);
+    setPmRP([...pmRP])
+  } else {
+    setPmRP([...pmRP, product])
+  }
+}
+
+const completeAM = async e => {
+  e.preventDefault();
+  if (!checkExistingEntry.am_products) {
     Swal.fire({
       title: 'Morning Routine Complete!',
       text: 'Do you want to complete your journal entry?',
@@ -57,227 +90,224 @@ const Routines = () => {
     }).then(async res => {
       if (res.value) {
         let amProducts = amRP.join(', ');
-        const entry = await dispatch(createOneEntry({ amProducts }));
+        const entry = await dispatch(createAMEntry({ amProducts, currentDate }));
         history.push(`/journal/${entry.id}`);
       }
     })
-    // const entry = await dispatch(createOneEntry({amRP}));
-    // history.push(`/journal/${entry.id}`);
   }
-  
-  const completePM = async e => {
-    e.preventDefault();
-    Swal.fire({
-      title: 'Evening Routine Complete!',
-      text: 'Do you want to complete your journal entry?',
-      showCancelButton: true,
-      confirmButtonText: 'Go to Entry'
-    }).then(async res => {
-      if (res.value) {
-        let pmProducts = pmRP.join(', ');
-        // const entry = await dispatch(createOneEntry({ pmProducts }));
-        // history.push(`/journal/${entry.id}`);
-      }
-    })
-    // const entry = await dispatch(createOneEntry({amRP}));
-    // history.push(`/journal/${entry.id}`);
-  }
+}
 
-  return (
-    <div id='routines-page'>
-      <h1>Routine</h1>
-      <Tabs>
-        <TabList>
-          <Tab>AM</Tab>
-          <Tab disabled>|</Tab>
-          <Tab>PM</Tab>
-        </TabList>
-        <TabPanel>
-          <form id='am-routine-form' onSubmit={completeAM}>
-            <h4>1 CLEANSE</h4>
-            {amRoutine.map((product, idx) => (
-              <div key={idx}>
-                {product.skincare_step === 'Cleanse' &&
-                  <div key={product.id} className='rp-container'>
-                    <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
-                    <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
-                    <input type="checkbox"
-                      value={product.product_name}
-                      onChange={() => handleAMCheck(product.product_name)} />
-                  </div>
-                }
-              </div>
-            ))}
-            <h4>2 TREAT</h4>
-            {amRoutine.map((product, idx) => (
-              <div key={idx}>
-                {product.skincare_step === 'Treat' &&
-                  <div key={product.id} className='rp-container'>
-                    <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
-                    <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
-                    <input type="checkbox"
-                      value={product.product_name}
-                      onChange={() => handleAMCheck(product.product_name)} />
-                  </div>
-                }
-              </div>
-            ))}
-            <h4>3 NOURISH</h4>
-            {amRoutine.map((product, idx) => (
-              <div key={idx}>
-                {product.skincare_step === 'Nourish' &&
-                  <div key={product.id} className='rp-container'>
-                    <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
-                    <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
-                    <input type="checkbox"
-                      value={product.product_name}
-                      onChange={() => handleAMCheck(product.product_name)} />
-                  </div>
-                }
-              </div>
-            ))}
-            <h4>4 MOISTURIZE</h4>
-            {amRoutine.map((product, idx) => (
-              <div key={idx}>
-                {product.skincare_step === 'Moisturize' &&
-                  <div key={product.id} className='rp-container'>
-                    <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
-                    <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
-                    <input type="checkbox"
-                      value={product.product_name}
-                      onChange={() => handleAMCheck(product.product_name)} />
-                  </div>
-                }
-              </div>
-            ))}
-            <h4>5 PROTECT</h4>
-            {amRoutine.map((product, idx) => (
-              <div key={idx}>
-                {product.skincare_step === 'Protect' &&
-                  <div key={product.id} className='rp-container'>
-                    <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
-                    <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
-                    <input type="checkbox"
-                      value={product.product_name}
-                      onChange={() => handleAMCheck(product.product_name)} />
-                  </div>
-                }
-              </div>
-            ))}
-            <h4>6 MISCELLANEOUS</h4>
-            {amRoutine.map((product, idx) => (
-              <div key={idx}>
-                {product.skincare_step === 'Miscellaneous' &&
-                  <div key={product.id} className='rp-container'>
-                    <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
-                    <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
-                    <input type="checkbox"
-                      value={product.product_name}
-                      onChange={() => handleAMCheck(product.product_name)} />
-                  </div>
-                }
-              </div>
-            ))}
-            <div id='complete-am'>
-              <button>Complete Routine</button>
+const completePM = async e => {
+  e.preventDefault();
+  Swal.fire({
+    title: 'Evening Routine Complete!',
+    text: 'Do you want to complete your journal entry?',
+    showCancelButton: true,
+    confirmButtonText: 'Go to Entry'
+  }).then(async res => {
+    if (res.value) {
+      let pmProducts = pmRP.join(', ');
+      const entry = await dispatch(createPMEntry({ pmProducts, currentDate }));
+      history.push(`/journal/${entry.id}`);
+    }
+  })
+}
+
+return (
+  <div id='routines-page'>
+    <h1>Routine</h1>
+    <Tabs>
+      <TabList>
+        <Tab>AM</Tab>
+        <Tab disabled>|</Tab>
+        <Tab>PM</Tab>
+      </TabList>
+      <TabPanel>
+        <form id='am-routine-form' onSubmit={completeAM}>
+          <h4>1 CLEANSE</h4>
+          {amRoutine.map((product, idx) => (
+            <div key={idx}>
+              {product.skincare_step === 'Cleanse' &&
+                <div key={product.id} className='rp-container'>
+                  <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
+                  <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
+                  <input type="checkbox"
+                    value={product.product_name}
+                    onChange={() => handleAMCheck(product.product_name)} />
+                </div>
+              }
             </div>
-          </form>
-        </TabPanel>
-        <TabPanel></TabPanel>
-        <TabPanel>
-          <form id='pm-routine-form'>
-            <h4>1 CLEANSE</h4>
-            {pmRoutine.map((product, idx) => (
-              <div key={idx}>
-                {product.skincare_step === 'Cleanse' &&
-                  <div key={product.id} className='rp-container'>
-                    <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
-                    <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
-                    <input type="checkbox"
-                      value={product.product_name}
+          ))}
+          <h4>2 TREAT</h4>
+          {amRoutine.map((product, idx) => (
+            <div key={idx}>
+              {product.skincare_step === 'Treat' &&
+                <div key={product.id} className='rp-container'>
+                  <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
+                  <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
+                  <input type="checkbox"
+                    value={product.product_name}
+                    onChange={() => handleAMCheck(product.product_name)} />
+                </div>
+              }
+            </div>
+          ))}
+          <h4>3 NOURISH</h4>
+          {amRoutine.map((product, idx) => (
+            <div key={idx}>
+              {product.skincare_step === 'Nourish' &&
+                <div key={product.id} className='rp-container'>
+                  <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
+                  <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
+                  <input type="checkbox"
+                    value={product.product_name}
+                    onChange={() => handleAMCheck(product.product_name)} />
+                </div>
+              }
+            </div>
+          ))}
+          <h4>4 MOISTURIZE</h4>
+          {amRoutine.map((product, idx) => (
+            <div key={idx}>
+              {product.skincare_step === 'Moisturize' &&
+                <div key={product.id} className='rp-container'>
+                  <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
+                  <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
+                  <input type="checkbox"
+                    value={product.product_name}
+                    onChange={() => handleAMCheck(product.product_name)} />
+                </div>
+              }
+            </div>
+          ))}
+          <h4>5 PROTECT</h4>
+          {amRoutine.map((product, idx) => (
+            <div key={idx}>
+              {product.skincare_step === 'Protect' &&
+                <div key={product.id} className='rp-container'>
+                  <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
+                  <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
+                  <input type="checkbox"
+                    value={product.product_name}
+                    onChange={() => handleAMCheck(product.product_name)} />
+                </div>
+              }
+            </div>
+          ))}
+          <h4>6 MISCELLANEOUS</h4>
+          {amRoutine.map((product, idx) => (
+            <div key={idx}>
+              {product.skincare_step === 'Miscellaneous' &&
+                <div key={product.id} className='rp-container'>
+                  <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
+                  <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
+                  <input type="checkbox"
+                    value={product.product_name}
+                    onChange={() => handleAMCheck(product.product_name)} />
+                </div>
+              }
+            </div>
+          ))}
+          <div id='complete-am'>
+            <button disabled={amDisableBtn}>{completeAMBtn}</button>
+          </div>
+        </form>
+      </TabPanel>
+      <TabPanel></TabPanel>
+      <TabPanel>
+        <form id='pm-routine-form' onSubmit={completePM}>
+          <h4>1 CLEANSE</h4>
+          {pmRoutine.map((product, idx) => (
+            <div key={idx}>
+              {product.skincare_step === 'Cleanse' &&
+                <div key={product.id} className='rp-container'>
+                  <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
+                  <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
+                  <input type="checkbox"
+                    value={product.product_name}
                     onChange={() => handlePMCheck(product.product_name)} />
-                  </div>
-                }
-              </div>
-            ))}
-            <h4>2 TREAT</h4>
-            {pmRoutine.map((product, idx) => (
-              <div key={idx}>
-                {product.skincare_step === 'Treat' &&
-                  <div key={product.id} className='rp-container'>
-                    <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
-                    <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
-                    <input type="checkbox" 
-                    value={product.product_name}
-                    onChange={() => handlePMCheck(product.product_name)}/>
-                  </div>
-                }
-              </div>
-            ))}
-            <h4>3 NOURISH</h4>
-            {pmRoutine.map((product, idx) => (
-              <div key={idx}>
-                {product.skincare_step === 'Nourish' &&
-                  <div key={product.id} className='rp-container'>
-                    <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
-                    <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
-                    <input type="checkbox" 
-                    value={product.product_name}
-                    onChange={() => handlePMCheck(product.product_name)}/>
-                  </div>
-                }
-              </div>
-            ))}
-            <h4>4 MOISTURIZE</h4>
-            {pmRoutine.map((product, idx) => (
-              <div key={idx}>
-                {product.skincare_step === 'Moisturize' &&
-                  <div key={product.id} className='rp-container'>
-                    <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
-                    <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
-                    <input type="checkbox" 
-                    value={product.product_name}
-                    onChange={() => handlePMCheck(product.product_name)}/>
-                  </div>
-                }
-              </div>
-            ))}
-            <h4>5 PROTECT</h4>
-            {pmRoutine.map((product, idx) => (
-              <div key={idx}>
-                {product.skincare_step === 'Protect' &&
-                  <div key={product.id} className='rp-container'>
-                    <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
-                    <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
-                    <input type="checkbox" 
-                    value={product.product_name}
-                    onChange={() => handlePMCheck(product.product_name)}/>
-                  </div>
-                }
-              </div>
-            ))}
-            <h4>6 MISCELLANEOUS</h4>
-            {pmRoutine.map((product, idx) => (
-              <div key={idx}>
-                {product.skincare_step === 'Miscellaneous' &&
-                  <div key={product.id} className='rp-container'>
-                    <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
-                    <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
-                    <input type="checkbox" 
-                    value={product.product_name}
-                    onChange={() => handlePMCheck(product.product_name)}/>
-                  </div>
-                }
-              </div>
-            ))}
-            <div id='complete-pm'>
-              <button>Complete Routine</button>
+                </div>
+              }
             </div>
-          </form>
-        </TabPanel>
-      </Tabs>
-    </div>
-  )
+          ))}
+          <h4>2 TREAT</h4>
+          {pmRoutine.map((product, idx) => (
+            <div key={idx}>
+              {product.skincare_step === 'Treat' &&
+                <div key={product.id} className='rp-container'>
+                  <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
+                  <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
+                  <input type="checkbox"
+                    value={product.product_name}
+                    onChange={() => handlePMCheck(product.product_name)} />
+                </div>
+              }
+            </div>
+          ))}
+          <h4>3 NOURISH</h4>
+          {pmRoutine.map((product, idx) => (
+            <div key={idx}>
+              {product.skincare_step === 'Nourish' &&
+                <div key={product.id} className='rp-container'>
+                  <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
+                  <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
+                  <input type="checkbox"
+                    value={product.product_name}
+                    onChange={() => handlePMCheck(product.product_name)} />
+                </div>
+              }
+            </div>
+          ))}
+          <h4>4 MOISTURIZE</h4>
+          {pmRoutine.map((product, idx) => (
+            <div key={idx}>
+              {product.skincare_step === 'Moisturize' &&
+                <div key={product.id} className='rp-container'>
+                  <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
+                  <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
+                  <input type="checkbox"
+                    value={product.product_name}
+                    onChange={() => handlePMCheck(product.product_name)} />
+                </div>
+              }
+            </div>
+          ))}
+          <h4>5 PROTECT</h4>
+          {pmRoutine.map((product, idx) => (
+            <div key={idx}>
+              {product.skincare_step === 'Protect' &&
+                <div key={product.id} className='rp-container'>
+                  <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
+                  <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
+                  <input type="checkbox"
+                    value={product.product_name}
+                    onChange={() => handlePMCheck(product.product_name)} />
+                </div>
+              }
+            </div>
+          ))}
+          <h4>6 MISCELLANEOUS</h4>
+          {pmRoutine.map((product, idx) => (
+            <div key={idx}>
+              {product.skincare_step === 'Miscellaneous' &&
+                <div key={product.id} className='rp-container'>
+                  <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
+                  <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
+                  <input type="checkbox"
+                    value={product.product_name}
+                    onChange={() => handlePMCheck(product.product_name)} />
+                </div>
+              }
+            </div>
+          ))}
+          <div id='complete-pm'>
+            <button disabled={pmDisableBtn}>{completePMBtn}</button>
+          </div>
+        </form>
+      </TabPanel>
+    </Tabs>
+  </div>
+)
 }
 
 export default Routines;

@@ -22,7 +22,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #86A283;
+  border: 1px solid #e7e5e5;
   max-height: 10em;
   width: 90%;
   margin: 5px;

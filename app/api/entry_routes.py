@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Entry, db
+from datetime import date
 
 entry_routes = Blueprint('entries', __name__)
 
@@ -18,15 +19,44 @@ def entry(id):
 
   return entry.to_dict()
 
+@entry_routes.route('/existing')
+@login_required
+def existing_entry():
+  entry = Entry.query.filter(Entry.created_at == date.today().strftime(('%b %d, %Y'))).all()
+
+  if not len(entry):
+    return {}
+  else:
+    entry = Entry.query.filter(Entry.created_at == date.today().strftime(('%b %d, %Y'))).one()
+    return entry.to_dict()
+
+
 @entry_routes.route('/', methods=['POST'])
 @login_required
 def create_entry():
-  entry = Entry(**request.json, user_id=current_user.id)
+  entry = Entry.query.filter(Entry.created_at == request.json['created_at']).all();
 
-  db.session.add(entry)
-  db.session.commit()
+  if not len(entry):
+    entry = Entry(**request.json, user_id=current_user.id)
+    
+    db.session.add(entry)
+    db.session.commit()
 
-  return entry.to_dict()
+    return entry.to_dict()
+
+  else:
+    existingEntry = entry[0]
+
+    if request.json['pm_products']:
+      existingEntry.pm_products = request.json['pm_products']
+    elif request.json['am_products']:
+      existingEntry.am_products = request.json['am_products']
+
+    db.session.add(existingEntry)
+    db.session.commit()
+    
+    return existingEntry.to_dict()
+ 
 
 @entry_routes.route('/<int:id>', methods=['PUT', 'DELETE'])
 @login_required
@@ -37,8 +67,10 @@ def update_entry(id):
     entry.img_url = request.json['img_url']
     entry.description = request.json['description']
     entry.rating = request.json['rating']
-    entry.am_products = request.json['am_products']
-    entry.pm_products = request.json['pm_products']
+    # if request.json['am_products']:
+    #   entry.am_products = request.json['am_products']
+    # if request.json['pm_products']:
+    #   entry.pm_products = request.json['pm_products']
 
     db.session.add(entry)
  

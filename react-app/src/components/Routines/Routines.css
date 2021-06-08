@@ -81,3 +81,8 @@ input[type='checkbox']:checked:after {
 #complete-am button, #complete-pm button {
   height: 40px;
 }
+
+#complete-am button:disabled, #complete-pm button:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
