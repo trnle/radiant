@@ -1,13 +1,11 @@
 #journal-page {
-  display: grid;
-  justify-content: center;
   min-height: 100%;
   position: relative;
-  margin: 50px 0;
+  margin: 50px 19vw;
 }
 
 #journal-page h1 {
-  /* margin: 50px 0 0; */
+  margin-bottom: 30px;
   text-align: center;
 }
 
@@ -24,8 +22,9 @@
   align-items: center;
   border: 1px solid #e7e5e5;
   /* max-height: 10em; */
-  width: 180px;
-  margin: 15px;
+  width: 200px;
+  height: 90px;
+  margin: 25px;
   border-radius: 12px;
   cursor: pointer;
   padding: 20px;
