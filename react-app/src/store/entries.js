@@ -1,7 +1,7 @@
 const LOAD_ENTRIES = 'routines/LOAD_ENTRIES';
 const LOAD_ENTRY = 'routines/LOAD_ENTRY';
 const CREATE_ENTRY = 'routines/CREATE_ENTRY';
-// const UPDATE_ENTRY = 'products/UPDATE_ENTRY';
+const UPDATE_ENTRY = 'products/UPDATE_ENTRY';
 const DELETE_ENTRY = 'products/DELETE_ENTRY';
 
 const loadEntries = entries => ({
@@ -19,10 +19,10 @@ const createEntry = entry => ({
   entry
 })
 
-// const updateEntry = entry => ({
-//   type: UPDATE_ENTRY,
-//   entry
-// })
+const updateEntry = entry => ({
+  type: UPDATE_ENTRY,
+  entry
+})
 
 const deleteEntry = entry => ({
   type: DELETE_ENTRY,
@@ -60,29 +60,27 @@ export const createOneEntry = data => async dispatch => {
   return entry;
 }
 
-// export const updateOneEntry = data => async dispatch => {
-//   const { entryImg, entryId } = data
-//   const res = await fetch(`/api/entries/${entryId}`, {
-//     method: 'PUT',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify({
-//       img_url: entryImg,
-//       description,
-//       rating,
-//       am_products,
-//       pm_products
-//     }),
-//   });
-//   const product = await res.json();
-//   if (!res.ok) throw res;
+export const updateOneEntry = data => async dispatch => {
+  const { img, description, rating, id } = data
+  const res = await fetch(`/api/entries/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      img_url: img,
+      description,
+      rating,
+    }),
+  });
+  const entry = await res.json();
+  if (!res.ok) throw res;
 
-//   dispatch(updateEntry(product));
-//   dispatch(getOneProduct(productId));
+  dispatch(updateEntry(entry));
+  dispatch(getEntry(id));
 
-//   return product
-// }
+  return entry
+}
 
 export const deleteOneEntry = id => async dispatch => {
   const res = await fetch(`/api/entries/${id}`, {
@@ -106,9 +104,9 @@ export default function reducer(state = initialState, action) {
     case CREATE_ENTRY:
       newState = { ...state, [action.entry.id]: action.entry } // wrong format
       return newState
-    // case UPDATE_ENTRY:
-    //   newState = { ...state, [action.entry.id]: action.entry }
-    //   return newState
+    case UPDATE_ENTRY:
+      newState = { ...state, [action.entry.id]: action.entry }
+      return newState
     case DELETE_ENTRY:
       newState = { ...state }
       delete newState[action.entry]

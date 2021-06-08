@@ -37,8 +37,10 @@ def update_entry(id):
     entry.img_url = request.json['img_url']
     entry.description = request.json['description']
     entry.rating = request.json['rating']
-    entry.am_products = request.json['am_products']
-    entry.pm_products = request.json['pm_products']
+    # if request.json['am_products']:
+    #   entry.am_products = request.json['am_products']
+    # if request.json['pm_products']:
+    #   entry.pm_products = request.json['pm_products']
 
     db.session.add(entry)
  

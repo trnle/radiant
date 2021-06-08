@@ -22,6 +22,9 @@ const Routines = () => {
 
   const [amRP, setAmRP] = useState([]);
   const [pmRP, setPmRP] = useState([]);
+  let newDate = new Date().toDateString().split(' ');
+  const [currentDate, setCurrentDate] = useState(`${newDate[1]} ${newDate[2]}, ${newDate[3]}`);
+  console.log(currentDate, '-------------')
 
   useEffect(() => {
     dispatch(getRoutines());
@@ -61,8 +64,6 @@ const Routines = () => {
         history.push(`/journal/${entry.id}`);
       }
     })
-    // const entry = await dispatch(createOneEntry({amRP}));
-    // history.push(`/journal/${entry.id}`);
   }
   
   const completePM = async e => {
@@ -79,8 +80,6 @@ const Routines = () => {
         // history.push(`/journal/${entry.id}`);
       }
     })
-    // const entry = await dispatch(createOneEntry({amRP}));
-    // history.push(`/journal/${entry.id}`);
   }
 
   return (
