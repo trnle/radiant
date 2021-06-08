@@ -23,7 +23,6 @@ const Journal = () => {
         {Object.values(entries).map(entry => (
             <div key={entry.id} className='entry-info' onClick={e => { e.preventDefault(); history.push(`/journal/${entry.id}`) }}>
               <h4>{entry.created_at}</h4>
-              {entry.description && <p>{entry.description}</p>}
               {entry.rating && <p>Skin rating: {entry.rating}</p>}
             </div>
         ))}
