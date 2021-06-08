@@ -69,27 +69,27 @@
 }
 
 .swal2-popup {
-  border-radius: 20px;
+  border-radius: 20px !important;
 }
 
 .swal2-title {
-  font-family: muli, sans-serif;
-  font-weight: 800;
-  font-style: normal;
-  color: #1C2237;
-  font-size: 27px;
+  font-family: muli, sans-serif !important;
+  font-weight: 800 !important;
+  font-style: normal !important;
+  color: #1C2237 !important;
+  font-size: 27px !important;
 }
 
 .swal2-styled.swal2-confirm {
-  background-color: #e5aa8b;
+  background-color: #e5aa8b !important;
 }
 
 .swal2-styled.swal2-cancel {
-  background-color: #bebebe;
+  background-color: #bebebe !important;
 }
 
 .swal2-actions button {
-  font-weight: 700;
+  font-weight: 700 !important;
   border-radius: 8px !important;
 }
 
