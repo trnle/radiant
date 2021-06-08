@@ -24,6 +24,8 @@ const Entry = () => {
     history.push('/journal');
   }
 
+  if (!entry) return null
+
   return (
     <div id='entry-page'>
       <div id='entry-summary'>

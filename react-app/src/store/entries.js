@@ -1,5 +1,6 @@
 const LOAD_ENTRIES = 'routines/LOAD_ENTRIES';
 const LOAD_ENTRY = 'routines/LOAD_ENTRY';
+const LOAD_EXISTING = 'routines/LOAD_EXISTING';
 const CREATE_ENTRY = 'routines/CREATE_ENTRY';
 const UPDATE_ENTRY = 'products/UPDATE_ENTRY';
 const DELETE_ENTRY = 'products/DELETE_ENTRY';
@@ -38,6 +39,13 @@ export const getEntries = () => async dispatch => {
 
 export const getEntry = id => async dispatch => {
   const res = await fetch(`/api/entries/${id}`);
+  const data = await res.json();
+
+  if (res.ok) dispatch(loadEntry(data));
+}
+
+export const getExisting = () => async dispatch => {
+  const res = await fetch('/api/entries/existing');
   const data = await res.json();
 
   if (res.ok) dispatch(loadEntry(data));
@@ -122,7 +130,7 @@ export default function reducer(state = initialState, action) {
     case LOAD_ENTRY:
       return { ...state, oneEntry: action.entry }
     case CREATE_ENTRY:
-      newState = { ...state, [action.entry.id]: action.entry } // wrong format
+      newState = { ...state, [action.entry.id]: action.entry } // wrong format?
       return newState
     case UPDATE_ENTRY:
       newState = { ...state, [action.entry.id]: action.entry }
