@@ -43,15 +43,35 @@ export const getEntry = id => async dispatch => {
   if (res.ok) dispatch(loadEntry(data));
 }
 
-export const createOneEntry = data => async dispatch => {
-  const { amProducts } = data;
+export const createAMEntry = data => async dispatch => {
+  const { amProducts, currentDate } = data;
   const res = await fetch(`/api/entries/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      am_products: amProducts
+      am_products: amProducts,
+      created_at: currentDate
+    }),
+  });
+  const entry = await res.json();
+
+  if (res.ok) dispatch(createEntry(entry));
+  return entry;
+}
+
+export const createPMEntry = data => async dispatch => {
+  const { pmProducts, currentDate } = data;
+  // console.log(currentDate,'===')
+  const res = await fetch(`/api/entries/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      pm_products: pmProducts,
+      created_at: currentDate
     }),
   });
   const entry = await res.json();

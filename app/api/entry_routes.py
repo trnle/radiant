@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
+from sqlalchemy.orm.exc import NoResultFound
 from app.models import Entry, db
 
 entry_routes = Blueprint('entries', __name__)
@@ -21,12 +22,32 @@ def entry(id):
 @entry_routes.route('/', methods=['POST'])
 @login_required
 def create_entry():
-  entry = Entry(**request.json, user_id=current_user.id)
+  # print('!-----------', NoResultFound != Entry.query.filter(Entry.created_at == request.json['created_at']))
+  # print('========queryone', Entry.query.filter(Entry.created_at == request.json['created_at']).all())
+  entry = Entry.query.filter(Entry.created_at == request.json['created_at']).all();
+  if not len(entry):
+    entry = Entry(**request.json, user_id=current_user.id)
+    
+    db.session.add(entry)
+    db.session.commit()
 
-  db.session.add(entry)
-  db.session.commit()
+    return entry.to_dict()
 
-  return entry.to_dict()
+  else:
+    existingEntry = entry[0]
+    print(existingEntry, '===============existing entry')
+    print('request.json', request.json)
+    
+    if request.json['pm_products']:
+      existingEntry.pm_products = request.json['pm_products']
+    elif request.json['am_products']:
+      existingEntry.am_products = request.json['am_products']
+    
+    db.session.add(existingEntry)
+    db.session.commit()
+    
+    return existingEntry.to_dict()
+ 
 
 @entry_routes.route('/<int:id>', methods=['PUT', 'DELETE'])
 @login_required

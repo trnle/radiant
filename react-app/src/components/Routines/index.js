@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getRoutines } from '../../store/routines';
-import { createOneEntry } from '../../store/entries';
+import { createAMEntry, createPMEntry } from '../../store/entries';
 import Swal from 'sweetalert2'
 import './Routines.css';
 
@@ -24,11 +24,15 @@ const Routines = () => {
   const [pmRP, setPmRP] = useState([]);
   let newDate = new Date().toDateString().split(' ');
   const [currentDate, setCurrentDate] = useState(`${newDate[1]} ${newDate[2]}, ${newDate[3]}`);
-  console.log(currentDate, '-------------')
+  // console.log(currentDate, '-------------')
 
   useEffect(() => {
     dispatch(getRoutines());
   }, [dispatch])
+
+  // useEffect(() => {
+
+  // })
 
   if (!amRoutine || !pmRoutine) return null;
 
@@ -60,7 +64,7 @@ const Routines = () => {
     }).then(async res => {
       if (res.value) {
         let amProducts = amRP.join(', ');
-        const entry = await dispatch(createOneEntry({ amProducts }));
+        const entry = await dispatch(createAMEntry({ amProducts, currentDate }));
         history.push(`/journal/${entry.id}`);
       }
     })
@@ -76,8 +80,8 @@ const Routines = () => {
     }).then(async res => {
       if (res.value) {
         let pmProducts = pmRP.join(', ');
-        // const entry = await dispatch(createOneEntry({ pmProducts }));
-        // history.push(`/journal/${entry.id}`);
+        const entry = await dispatch(createPMEntry({ pmProducts, currentDate }));
+        history.push(`/journal/${entry.id}`);
       }
     })
   }
@@ -184,7 +188,7 @@ const Routines = () => {
         </TabPanel>
         <TabPanel></TabPanel>
         <TabPanel>
-          <form id='pm-routine-form'>
+          <form id='pm-routine-form' onSubmit={completePM}>
             <h4>1 CLEANSE</h4>
             {pmRoutine.map((product, idx) => (
               <div key={idx}>
