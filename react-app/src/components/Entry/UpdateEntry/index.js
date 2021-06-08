@@ -4,7 +4,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import { updateOneEntry } from '../../../store/entries';
 import './UpdateEntry.css';
 
-const UpdateEntry = () => {
+const UpdateEntry = ({entry}) => {
   // document.title = 'Entry | Radiant';
   // document.body.style = 'background-color: #FFFFFF';
   const { id } = useParams();
@@ -12,9 +12,9 @@ const UpdateEntry = () => {
   const history = useHistory();
   // const user = useSelector(state => state.session.user);
   // const entry = useSelector(state => state.entries.oneEntry);
-  const [description, setDescription] = useState('');
-  const [img, setImg] = useState('');
-  const [rating, setRating] = useState('');
+  const [description, setDescription] = useState(entry.description);
+  const [img, setImg] = useState(entry.img_url);
+  const [rating, setRating] = useState(entry.rating || '');
   const [editForm, setEditForm] = useState(false);
 
   const updateEntry = e => {

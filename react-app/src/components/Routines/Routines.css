@@ -38,6 +38,10 @@
   padding: 10px 0;
 }
 
+.rp-container:hover {
+  border-color: #e5aa8b;
+}
+
 .rp-container img {
   margin: 0 25px;
 }

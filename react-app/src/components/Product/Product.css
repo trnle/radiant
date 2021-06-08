@@ -73,10 +73,6 @@
   margin: 0;
 }
 
- .react-tabs__tab {
-  
-}
-
 .react-tabs__tab--selected {
   color: #e5aa8b;
   font-weight: 800;

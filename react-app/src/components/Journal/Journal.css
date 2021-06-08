@@ -1,13 +1,11 @@
 #journal-page {
-  display: grid;
-  justify-content: center;
   min-height: 100%;
   position: relative;
-  margin: 50px 17vw;
+  margin: 50px 19vw;
 }
 
 #journal-page h1 {
-  /* margin: 50px 0 0; */
+  margin-bottom: 30px;
   text-align: center;
 }
 
@@ -23,16 +21,23 @@
   flex-direction: column;
   align-items: center;
   border: 1px solid #e7e5e5;
-  max-height: 10em;
-  width: 90%;
-  margin: 5px;
+  /* max-height: 10em; */
+  width: 200px;
+  height: 90px;
+  margin: 25px;
   border-radius: 12px;
   cursor: pointer;
+  padding: 20px;
+  justify-content: center;
+}
+
+.entry-info:hover {
+  background-color: #f8f8f8;
 }
 
 .entry-info h4 {
   text-align: center;
-  margin-bottom: 3px;
+  margin: 0 0 3px;
 }
 
 .entry-info p {

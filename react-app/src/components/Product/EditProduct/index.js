@@ -36,16 +36,16 @@ const UpdateProduct = () => {
     // setShowForm(false);
   }
 
-  const deleteProduct = async e => {
+  const deleteProduct = e => {
     e.preventDefault();
     Swal.fire({
       title: 'Delete Product',
       text: 'Are you sure you want to delete this product permanently?',
       showCancelButton: true,
       confirmButtonText: 'Delete'
-    }).then(res => {
+    }).then(async res => {
       if (res.value) {
-        dispatch(deleteOneProduct(productId));
+        await dispatch(deleteOneProduct(productId));
         history.push('/products');
       }
     }) 

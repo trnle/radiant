@@ -26,10 +26,14 @@ const Products = () => {
       <div id='product-grid'>
         {Object.values(products).map(product => (
           <div className='product-container' key={product.id} onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>
-            {/* <img src={product.img_url} alt={product.product_name} /> */}
-            <NavLink to={`/products/${product.id}`}>{product.product_name}</NavLink>
-            {product.brand_name}
-            <p>{product.description}</p>
+            <div id='products-imgs'>
+              <img src={product.img_url} alt={product.product_name} />
+            </div>
+            <div id='products-overview'>
+              <NavLink to={`/products/${product.id}`}>{product.product_name}</NavLink>
+              <h4>{product.brand_name}</h4>
+              <p>{product.description}</p>
+            </div>
           </div>
         ))}
 
