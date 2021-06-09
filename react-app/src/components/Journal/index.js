@@ -23,7 +23,6 @@ const Journal = () => {
   }, [dispatch])
 
   let months = moment.monthsShort();
-  let currentDate = (new Date().getMonth());
 
   return (
     <div id='journal-page'>
@@ -32,13 +31,15 @@ const Journal = () => {
       {/* <CreateEntryModal /> */}
       <Tabs forceRenderTabPanel>
         <TabList>
-          <Tab>{new Date().getFullYear()}</Tab>
+          <Tab>2021</Tab>
         </TabList>
         <TabPanel>
           <Tabs forceRenderTabPanel defaultIndex={new Date().getMonth()}>
             <TabList>
               {months.map(month => (
-                <Tab>{month}</Tab>
+                <span key={month}>
+                  <Tab key={month.id}>{month}</Tab>
+                </span>
               ))}
             </TabList>
             <TabPanel>
