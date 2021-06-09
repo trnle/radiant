@@ -9,12 +9,22 @@
   margin-bottom: 50px;
 }
 
+.fa-arrow-left {
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  display: flex;
+  align-items: center;
+  color: #1f2024;
+}
+
 #nav-products a {
   font-weight: 400;
   font-size: 15px;
   border: 1px solid #e7e5e5;
   padding: 5px 10px;
   border-radius: 10px;
+  padding-left: 26px;
 }
 
 #nav-products a:hover {

@@ -33,6 +33,7 @@ const Entry = () => {
   return (
     <div id='entry-page'>
       <div id='nav-entries'>
+        <span className="fas fa-arrow-left"></span>
         <NavLink to='/journal'>Back to Journal</NavLink>
       </div>
       <div id='entry-summary'>
