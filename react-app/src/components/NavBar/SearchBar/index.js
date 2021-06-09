@@ -26,7 +26,7 @@ const SearchBar = () => {
     if (!results || searchTerm === '') {
       setSearchResults('')
     }
-  }, [searchTerm])
+  }, [searchTerm, products])
 
   return (
     <div id='search-container'>
