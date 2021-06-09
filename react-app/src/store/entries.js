@@ -50,6 +50,26 @@ export const getExisting = () => async dispatch => {
   if (res.ok) dispatch(loadEntry(data));
 }
 
+export const createSimpleEntry = data => async dispatch => {
+  const { img, rating, description, currentDate } = data;
+  const res = await fetch(`/api/entries/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      img_url: img,
+      rating,
+      description,
+      created_at: currentDate
+    }),
+  });
+  const entry = await res.json();
+
+  if (res.ok) dispatch(createEntry(entry));
+  return entry;
+}
+
 export const createAMEntry = data => async dispatch => {
   const { amProducts, currentDate } = data;
   const res = await fetch(`/api/entries/`, {

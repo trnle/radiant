@@ -46,7 +46,7 @@ def create_entry():
 
   else:
     existingEntry = entry[0]
-
+    print(dir(request.get_json()),'---------------')
     if request.json['pm_products']:
       existingEntry.pm_products = request.json['pm_products']
     elif request.json['am_products']:

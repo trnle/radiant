@@ -1,0 +1,44 @@
+/* #journal-page .modal {
+  
+} */
+
+#entry-modal-btn {
+  float: right;
+  margin: 0 20px 30px 0;
+  padding: 8px;
+}
+
+#create-entry-header h1 {
+  text-align: center;
+}
+
+#create-entry-fields {
+  display: grid;
+  justify-content: center;
+}
+
+#create-entry-fields input, #create-entry-fields select {
+  margin-bottom: 10px;
+}
+
+#create-entry-fields textarea {
+  width: 50em;
+  min-height: 220px;
+  border-radius: 7px;
+  margin-bottom: 10px;
+}
+
+#entry-btns {
+  float: right;
+  margin-top: 15px;
+}
+
+#entry-btns button {
+  margin: 0 14px 0 0;
+  height: 30px;
+  background-color: #79B3C2;
+}
+
+#entry-btns button:hover {
+  background-color: #72aab8;
+}

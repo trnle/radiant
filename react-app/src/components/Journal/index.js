@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getEntries } from '../../store/entries';
+import CreateEntryModal from './CreateEntryModal';
 import './Journal.css';
 
 const Journal = () => {
@@ -20,6 +21,8 @@ const Journal = () => {
   return (
     <div id='journal-page'>
       <h1>Care Journal</h1>
+      <h4 id='progress-sub'>Log your progress</h4>
+      {/* <CreateEntryModal /> */}
       <div id='entries-list'>
         {Object.values(entries).map(entry => (
             <div key={entry.id} className='entry-info' onClick={e => { e.preventDefault(); history.push(`/journal/${entry.id}`) }}>

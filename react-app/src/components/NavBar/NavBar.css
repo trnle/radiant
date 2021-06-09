@@ -55,20 +55,3 @@ nav {
   font-size: 14px;
 }
 
-.fa-search {
-  color: #1f2024;
-  position: absolute;
-  left: 10px;
-}
-
-#search-input {
-  height: 28px;
-  width: 20vw;
-  padding-left: 35px;
-  border-radius: 8px;
-}
-
-#search-input:focus {
-  outline-width: 0.2px;
-  border-color: transparent;
-}

@@ -79,10 +79,10 @@ const completeAM = async e => {
   e.preventDefault();
   if (!checkExistingEntry.am_products) {
     Swal.fire({
-      title: 'Morning Routine Complete!',
-      text: 'Do you want to complete your journal entry?',
+      title: 'Morning Routine!',
+      text: 'Do you want to complete your morning routine?',
       showCancelButton: true,
-      confirmButtonText: 'Go to Entry'
+      confirmButtonText: 'Yes, Go to Entry'
     }).then(async res => {
       if (res.value) {
         let amProducts = amRP.join(', ');
@@ -96,10 +96,10 @@ const completeAM = async e => {
 const completePM = async e => {
   e.preventDefault();
   Swal.fire({
-    title: 'Evening Routine Complete!',
-    text: 'Do you want to complete your journal entry?',
+    title: 'Evening Routine!',
+    text: 'Do you want to complete your evening routine?',
     showCancelButton: true,
-    confirmButtonText: 'Go to Entry'
+    confirmButtonText: 'Yes, Go to Entry'
   }).then(async res => {
     if (res.value) {
       let pmProducts = pmRP.join(', ');

@@ -5,8 +5,15 @@
 }
 
 #journal-page h1 {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#progress-sub {
+  margin-top: 0;
   margin-bottom: 30px;
   text-align: center;
+  font-size: 18px;
 }
 
 #entries-list {
