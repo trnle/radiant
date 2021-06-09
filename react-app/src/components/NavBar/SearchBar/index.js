@@ -11,9 +11,18 @@ const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
+  // search by brand or product wip
+  // const productNames = Object.values(products).map(product => product.product_name);
+  // const productBrands = Object.values(products).map(product => product.brand_name);
+
+  // const names = productBrands.map((productBrand, productName) => {
+  //   return `${productBrand} - ${productNames[productName]}`;
+  // })
+
   useEffect(() => {
     const results = Object.values(products).filter(product => (product.product_name).toLowerCase().includes(searchTerm));
     setSearchResults(results)
+
     if (!results || searchTerm === '') {
       setSearchResults('')
     }
@@ -31,12 +40,12 @@ const SearchBar = () => {
         onFocus={useEffect(() => {
           dispatch(getProducts())
         }, [dispatch])}
-        onClick={() => setSearchResults('')}
-        
+        onBlur={() => setSearchResults('')}
       />
       <div id='results-container'>
         {searchResults.length > 0 && searchResults.map(result => (
-          <div key={result.id} id='product-res-container' onClick={() => {
+          <div key={result.id} id='product-res-container' onMouseDown={() => {
+            setSearchTerm('')
             history.push(`/products/${result.id}`)
           }}>
             <p>{result.brand_name} - {result.product_name}</p>
