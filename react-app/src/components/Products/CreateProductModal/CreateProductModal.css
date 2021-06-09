@@ -1,3 +1,7 @@
+#products-page .modal {
+  margin-bottom: 15px;
+}
+
 #product-modal-btn {
   float: right;
   margin: 0 20px 30px 0;

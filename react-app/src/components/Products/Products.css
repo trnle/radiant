@@ -1,13 +1,22 @@
 #products-page {
   display: grid;
   justify-content: center;
-  min-height: 100vh;
-  margin-bottom: 400px;
+  min-height: 100%;
+  margin-bottom: 200px;
 }
 
 #products-page h1 {
   margin: 50px 0 0;
   text-align: center;
+}
+
+#filter-container {
+  margin-left: 20px;
+  margin-bottom: 8px;;
+}
+
+#filter-container select {
+  margin-left: 6px;
 }
 
 #product-grid {

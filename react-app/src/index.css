@@ -63,3 +63,15 @@ input {
 input:focus {
   outline-color: lightgray;
 }
+
+select {
+  height: 27px;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  font-family: muli, sans-serif;
+  font-weight: 400;
+}
+
+select:focus {
+  outline-color: #e5aa8b;
+}
