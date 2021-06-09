@@ -37,7 +37,7 @@ const RoutineProduct = () => {
       <div className='rp-form'>
         <h4>Add Product to Routine</h4>
         <form method='post' onSubmit={handleAdd}>
-          <select name='routines' id='rp-select' onChange={e => setAddRoutine(e.target.value)} value={addRoutine} required>
+          <select name='routines' className='rp-select' onChange={e => setAddRoutine(e.target.value)} value={addRoutine} required>
             <option value=''>Select Routine</option>
             {userRoutines.map(routine => (
               <option key={routine.id} value={routine.routine_type}>{routine.routine_type}</option>
@@ -52,7 +52,7 @@ const RoutineProduct = () => {
       <div className='rp-form'>
         <h4>Remove Product to Routine</h4>
         <form method='post' onSubmit={handleRemove}>
-          <select name='routines' id='rp-select' onChange={e => setRemoveRoutine(e.target.value)} value={removeRoutine} required>
+          <select name='routines' className='rp-select' onChange={e => setRemoveRoutine(e.target.value)} value={removeRoutine} required>
             <option value=''>Select Routine</option>
             {userRoutines.map(routine => (
               <option key={routine.id} value={routine.routine_type}>{routine.routine_type}</option>

@@ -13,7 +13,7 @@
   padding-bottom: 5px;
 }
 
-#rp-select {
+.rp-select {
   margin-bottom: 10px;
   height: 27px;
   border-radius: 5px;
@@ -21,7 +21,7 @@
   padding: 3px;
 }
 
-#rp-select:focus {
+.rp-select:focus {
   outline-color: lightgray;
 }
 
