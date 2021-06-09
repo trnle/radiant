@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../Auth/LogoutButton';
 // import logo from '../../images/radiant-sparkles.png';
-import './NavBar.css';
 import SearchBar from './SearchBar';
+import './NavBar.css';
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user);
