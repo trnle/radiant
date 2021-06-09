@@ -17,7 +17,7 @@ const Routines = () => {
   const history = useHistory();
   const checkExistingEntry = useSelector(state => state.entries?.oneEntry);
 
-  const userRoutines = useSelector(state => state.routines.userRoutines.user_routines)
+  // const userRoutines = useSelector(state => state.routines.userRoutines.user_routines)
   const userRP = useSelector(state => state.routines?.userRoutines?.user_routine_products);
   const amRoutine = userRP?.AM;
   const pmRoutine = userRP?.PM;
@@ -56,7 +56,6 @@ const Routines = () => {
     }
   }, [checkExistingEntry.am_products, checkExistingEntry.pm_products])
 
-if (!amRoutine || !pmRoutine) return null;
 
 const handleAMCheck = product => {
   if (amRP.includes(product)) {
@@ -122,9 +121,9 @@ return (
       <TabPanel>
         <form id='am-routine-form' onSubmit={completeAM}>
           <h4>1 CLEANSE</h4>
-          {amRoutine.map((product, idx) => (
+          {amRoutine && amRoutine.map((product, idx) => (
             <div key={idx}>
-              {product.skincare_step === 'Cleanse' &&
+              {amRoutine && product.skincare_step === 'Cleanse' &&
                 <div key={product.id} className='rp-container'>
                   <img src={product.img_url} alt={product.product_name} height='70' onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }} />
                   <p onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>{product.product_name}</p>
@@ -136,7 +135,7 @@ return (
             </div>
           ))}
           <h4>2 TREAT</h4>
-          {amRoutine.map((product, idx) => (
+          {amRoutine && amRoutine.map((product, idx) => (
             <div key={idx}>
               {product.skincare_step === 'Treat' &&
                 <div key={product.id} className='rp-container'>
@@ -150,7 +149,7 @@ return (
             </div>
           ))}
           <h4>3 NOURISH</h4>
-          {amRoutine.map((product, idx) => (
+          {amRoutine && amRoutine.map((product, idx) => (
             <div key={idx}>
               {product.skincare_step === 'Nourish' &&
                 <div key={product.id} className='rp-container'>
@@ -164,7 +163,7 @@ return (
             </div>
           ))}
           <h4>4 MOISTURIZE</h4>
-          {amRoutine.map((product, idx) => (
+          {amRoutine && amRoutine.map((product, idx) => (
             <div key={idx}>
               {product.skincare_step === 'Moisturize' &&
                 <div key={product.id} className='rp-container'>
@@ -178,7 +177,7 @@ return (
             </div>
           ))}
           <h4>5 PROTECT</h4>
-          {amRoutine.map((product, idx) => (
+          {amRoutine && amRoutine.map((product, idx) => (
             <div key={idx}>
               {product.skincare_step === 'Protect' &&
                 <div key={product.id} className='rp-container'>
@@ -192,7 +191,7 @@ return (
             </div>
           ))}
           <h4>6 OTHER</h4>
-          {amRoutine.map((product, idx) => (
+          {amRoutine && amRoutine.map((product, idx) => (
             <div key={idx}>
               {product.skincare_step === 'Other' &&
                 <div key={product.id} className='rp-container'>
@@ -214,7 +213,7 @@ return (
       <TabPanel>
         <form id='pm-routine-form' onSubmit={completePM}>
           <h4>1 CLEANSE</h4>
-          {pmRoutine.map((product, idx) => (
+          {pmRoutine && pmRoutine.map((product, idx) => (
             <div key={idx}>
               {product.skincare_step === 'Cleanse' &&
                 <div key={product.id} className='rp-container'>
@@ -228,7 +227,7 @@ return (
             </div>
           ))}
           <h4>2 TREAT</h4>
-          {pmRoutine.map((product, idx) => (
+          {pmRoutine && pmRoutine.map((product, idx) => (
             <div key={idx}>
               {product.skincare_step === 'Treat' &&
                 <div key={product.id} className='rp-container'>
@@ -242,7 +241,7 @@ return (
             </div>
           ))}
           <h4>3 NOURISH</h4>
-          {pmRoutine.map((product, idx) => (
+          {pmRoutine && pmRoutine.map((product, idx) => (
             <div key={idx}>
               {product.skincare_step === 'Nourish' &&
                 <div key={product.id} className='rp-container'>
@@ -256,7 +255,7 @@ return (
             </div>
           ))}
           <h4>4 MOISTURIZE</h4>
-          {pmRoutine.map((product, idx) => (
+          {pmRoutine && pmRoutine.map((product, idx) => (
             <div key={idx}>
               {product.skincare_step === 'Moisturize' &&
                 <div key={product.id} className='rp-container'>
@@ -270,7 +269,7 @@ return (
             </div>
           ))}
           <h4>5 PROTECT</h4>
-          {pmRoutine.map((product, idx) => (
+          {pmRoutine && pmRoutine.map((product, idx) => (
             <div key={idx}>
               {product.skincare_step === 'Protect' &&
                 <div key={product.id} className='rp-container'>
@@ -284,7 +283,7 @@ return (
             </div>
           ))}
           <h4>6 OTHER</h4>
-          {pmRoutine.map((product, idx) => (
+          {pmRoutine && pmRoutine.map((product, idx) => (
             <div key={idx}>
               {product.skincare_step === 'Other' &&
                 <div key={product.id} className='rp-container'>

@@ -27,7 +27,7 @@ def existing_entry():
   if not len(entry):
     return {}
   else:
-    entry = Entry.query.filter(Entry.created_at == date.today().strftime(('%b %d, %Y'))).one()
+    entry = Entry.query.filter(Entry.created_at == date.today().strftime(('%b %d, %Y'))).filter(Entry.user_id == current_user.id).one()
     return entry.to_dict()
 
 
