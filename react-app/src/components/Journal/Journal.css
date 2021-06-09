@@ -57,3 +57,12 @@
 #journal-page .react-tabs__tab-list {
   border-color: #e7e5e5;
 }
+
+.react-tabs__tab--selected {
+  border-color: #e7e5e5;
+}
+
+.react-tabs__tab--selected:focus {
+  box-shadow: none;
+  border-color: #e7e5e5;
+}
