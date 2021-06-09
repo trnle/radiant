@@ -16,9 +16,8 @@ const Routines = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const checkExistingEntry = useSelector(state => state.entries?.oneEntry);
-  // let existAMProducts = checkExistingEntry.am_products;
-  // const existAMProducts = checkExistingEntry.am_products;
-  // console.log(existAMProducts, 'test')
+
+  const userRoutines = useSelector(state => state.routines.userRoutines.user_routines)
   const userRP = useSelector(state => state.routines?.userRoutines?.user_routine_products);
   const amRoutine = userRP?.AM;
   const pmRoutine = userRP?.PM;
@@ -27,12 +26,10 @@ const Routines = () => {
   const [pmRP, setPmRP] = useState([]);
   let newDate = new Date().toDateString().split(' ');
   const [currentDate, setCurrentDate] = useState(`${newDate[1]} ${newDate[2]}, ${newDate[3]}`);
-  // console.log(checkExistingEntry.am_products, '-------------')
   const [completeAMBtn, setCompleteAMBtn] = useState('Complete Routine');
   const [completePMBtn, setCompletePMBtn] = useState('Complete Routine');
   const [amDisableBtn, setAmDisableBtn] = useState(false);
   const [pmDisableBtn, setPmDisableBtn] = useState(false);
-  // console.log(completeAMBtn, '=========ambtn');
 
   useEffect(() => {
     dispatch(getRoutines());

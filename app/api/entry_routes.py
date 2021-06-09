@@ -8,7 +8,7 @@ entry_routes = Blueprint('entries', __name__)
 @entry_routes.route('/')
 @login_required
 def user_entries():
-  entries = Entry.query.order_by(Entry.user_id == current_user.id, Entry.created_at.desc()).all()
+  entries = Entry.query.order_by(Entry.created_at.desc()).filter(Entry.user_id == current_user.id).all()
 
   return jsonify([entry.to_dict() for entry in entries])
 
