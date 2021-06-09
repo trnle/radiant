@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal } from '../../../context/Modal';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createSimpleEntry } from '../../../store/entries';
 import './CreateEntryModal.css';
@@ -8,8 +8,7 @@ import './CreateEntryModal.css';
 const CreateEntryModal = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  // const user = useSelector(state => state.session.user);
-  // const userId = user.id;
+
   const [showModal, setShowModal] = useState(false);
   const [img, setImg] = useState('');
   const [rating, setRating] = useState('');

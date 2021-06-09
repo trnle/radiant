@@ -13,7 +13,8 @@
   margin-top: 0;
   margin-bottom: 30px;
   text-align: center;
-  font-size: 18px;
+  font-size: 19px;
+  font-weight: 400;
 }
 
 #entries-list {
@@ -51,4 +52,17 @@
 .entry-info p {
   text-align: center;
   margin: 5px;
+}
+
+#journal-page .react-tabs__tab-list {
+  border-color: #e7e5e5;
+}
+
+.react-tabs__tab--selected {
+  border-color: #e7e5e5;
+}
+
+.react-tabs__tab--selected:focus {
+  box-shadow: none;
+  border-color: #e7e5e5;
 }

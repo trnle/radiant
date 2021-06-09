@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { updateOneEntry } from '../../../store/entries';
 import './UpdateEntry.css';
 
 const UpdateEntry = ({entry}) => {
-  // document.title = 'Entry | Radiant';
-  // document.body.style = 'background-color: #FFFFFF';
   const { id } = useParams();
   const dispatch = useDispatch();
-  const history = useHistory();
   // const user = useSelector(state => state.session.user);
   // const entry = useSelector(state => state.entries.oneEntry);
   const [description, setDescription] = useState(entry.description || '');
