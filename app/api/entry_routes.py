@@ -22,7 +22,7 @@ def entry(id):
 @entry_routes.route('/existing')
 @login_required
 def existing_entry():
-  entry = Entry.query.filter(Entry.created_at == date.today().strftime(('%b %d, %Y'))).all()
+  entry = Entry.query.filter(Entry.created_at == date.today().strftime(('%b %d, %Y'))).filter(Entry.user_id == current_user.id).all()
 
   if not len(entry):
     return {}
@@ -34,7 +34,7 @@ def existing_entry():
 @entry_routes.route('/', methods=['POST'])
 @login_required
 def create_entry():
-  entry = Entry.query.filter(Entry.created_at == request.json['created_at']).all();
+  entry = Entry.query.filter(Entry.created_at == request.json['created_at'], Entry.user_id == current_user.id).all();
 
   if not len(entry):
     entry = Entry(**request.json, user_id=current_user.id)

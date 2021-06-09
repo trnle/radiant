@@ -12,7 +12,7 @@ const UpdateEntry = ({entry}) => {
   const history = useHistory();
   // const user = useSelector(state => state.session.user);
   // const entry = useSelector(state => state.entries.oneEntry);
-  const [description, setDescription] = useState(entry.description);
+  const [description, setDescription] = useState(entry.description || '');
   const [img, setImg] = useState(entry.img_url);
   const [rating, setRating] = useState(entry.rating || '');
   const [editForm, setEditForm] = useState(false);
