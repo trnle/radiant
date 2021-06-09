@@ -22,7 +22,7 @@
 }
 
 #rp-select:focus {
-  outline-color: #e5aa8b;
+  outline-color: lightgray;
 }
 
 #add-rp-btn, #remove-rp-btn {
