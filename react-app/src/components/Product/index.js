@@ -39,6 +39,7 @@ const Product = () => {
   return (
     <div id='product-page'>
       <div id='nav-products'>
+        <span className="fas fa-arrow-left"></span>
         <NavLink to='/products'>Back to Products</NavLink>
       </div>
       <div id='product-intro'>

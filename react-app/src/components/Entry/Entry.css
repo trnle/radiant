@@ -1,4 +1,5 @@
 #entry-page {
+  position: relative;
   min-height: 100%;
   margin: 50px 17vw;
 }
@@ -13,6 +14,7 @@
   border: 1px solid #e7e5e5;
   padding: 5px 10px;
   border-radius: 10px;
+  padding-left: 26px;
 }
 
 #nav-entries a:hover {
