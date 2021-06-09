@@ -4,26 +4,43 @@ import { NavLink } from 'react-router-dom';
 import LogoutButton from '../Auth/LogoutButton';
 // import logo from '../../images/radiant-sparkles.png';
 import './NavBar.css';
+import SearchBar from './SearchBar';
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user);
+  let sessionLinks;
 
-  return (
-    <nav>
-      <NavLink to='/' exact={true} className='nav-bar-links' id='radiant-home'>Radiant</NavLink>
-      {!user ? (
-        <>
-          <NavLink to='/login' id='login-nav' exact={true}>Log In</NavLink>
-          <NavLink to='/signup' id='signup-nav' exact={true}>Sign Up</NavLink>
-        </>
-      ) : (
-        <>
+  if (user) {
+    sessionLinks = (
+      <div className='session-links'>
+        <div id='left-bar-links'>
+          <SearchBar />
+        </div>
+        <div id='right-bar-links'>
           <NavLink to='/products' exact={true} id='products-nav'>Products</NavLink>
           <NavLink to='/' exact={true} id='routine-nav'>Routine</NavLink>
           <NavLink to='/journal' exact={true} id='journal-nav'>Journal</NavLink>
           <LogoutButton />
-        </>
-      )}
+        </div>
+      </div>
+    )
+  } else {
+    sessionLinks = (
+      <div className='session-links'>
+        <div id='right-bar-links'>
+          <NavLink to='/login' id='login-nav' exact={true}>Log In</NavLink>
+          <NavLink to='/signup' id='signup-nav' exact={true}>Sign Up</NavLink>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <nav>
+      <div id='nav'>
+        <NavLink to='/' exact={true} className='nav-bar-links' id='radiant-home'>Radiant</NavLink>
+        {sessionLinks}
+      </div>
     </nav>
   );
 }

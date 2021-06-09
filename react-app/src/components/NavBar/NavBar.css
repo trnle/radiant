@@ -1,12 +1,35 @@
 nav {
-  display: flex;
-  /* justify-content: center; */
-  align-items: center;
-  justify-content: space-evenly;
   top: 0;
   height: 8vh;
   background-color: white;
   box-shadow: 0px 1px 4px 0px rgb(0 0 0 / 20%);
+}
+
+#nav {
+  display: flex;
+  padding: 1.1em 10em;
+}
+
+.session-links {
+  display: flex;
+}
+
+#left-bar-links {
+  display: flex;
+  align-items: center;
+  margin: 0 1.7em;
+  position: relative;
+}
+
+#right-bar-links {
+  display: flex;
+  position: absolute;
+  /* align-items: center; */
+  right: 10em;
+}
+
+#right-bar-links a {
+  margin: 0 1.7em;
 }
 
 #radiant-home {
@@ -15,11 +38,6 @@ nav {
   font-style: normal;
   margin: 0;
   font-size: 26px;
-}
-
-#products-nav {
-  display: flex;
-  flex-direction: flex-start;
 }
 
 #products-nav.active, #routine-nav.active, #journal-nav.active {
@@ -32,5 +50,25 @@ nav {
 
 #logout-btn {
   height: 30px;
-  width: 70px;
+  width: auto;
+  margin-left: 15px;
+  font-size: 14px;
+}
+
+.fa-search {
+  color: rgb(179, 179, 179);
+  position: absolute;
+  left: 10px;
+}
+
+#search-input {
+  height: 28px;
+  width: 20vw;
+  padding-left: 35px;
+  border-radius: 8px;
+}
+
+#search-input:focus {
+  outline-width: 0.2px;
+  border-color: transparent;
 }
