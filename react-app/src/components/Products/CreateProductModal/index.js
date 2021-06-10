@@ -39,7 +39,7 @@ const CreateProductModal = () => {
           <form id='create-product-form' onSubmit={handleSubmit}>
             <div id='create-product-header'>
               <h1>New Product</h1>
-              <p>Add a custom product to your routine</p>
+              <p>Add a custom product to your routine.</p>
             </div>
             <div id='create-product-fields'>
               <div id='left-product-form'>

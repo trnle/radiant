@@ -9,8 +9,7 @@ const RoutineProduct = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const userRoutines = useSelector(state => state.routines.userRoutines.user_routines);
-  // const [showAddRoutines, setAddShowRoutines] = useState(false);
-  // const [showRemoveRoutines, setShowRemoveRoutines] = useState(false);
+  
   const [addRoutine, setAddRoutine] = useState('');
   const [removeRoutine, setRemoveRoutine] = useState('');
   
@@ -20,7 +19,6 @@ const RoutineProduct = () => {
 
   const handleAdd = e => {
     e.preventDefault();
-    console.log('===========', addRoutine)
     dispatch(addRoutineProduct({ addRoutine, id }))
   }
 

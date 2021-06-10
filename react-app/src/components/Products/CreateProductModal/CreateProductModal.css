@@ -17,6 +17,10 @@
   text-align: center;
 }
 
+#create-product-header p {
+  margin: 0 0 40px;
+}
+
 #left-product-form {
   display: flex;
   flex-direction: column; 
@@ -44,8 +48,7 @@
 
 #right-product-form {
   display: flex;
-  flex-direction: column; 
-  /* margin-left: 25px; */
+  flex-direction: column;
 }
 
 #right-product-form textarea {
@@ -73,9 +76,4 @@
   height: 35px;
   margin-left: 10px;
   font-size: 13px;
-  background-color: #79B3C2;
 }
-
-#cancel-product-btn:hover, #add-product-btn:hover {
-  background-color: #72aab8;
-} 
