@@ -35,8 +35,6 @@ const UpdateEntry = () => {
     dispatch(getEntry(id));
   }, [dispatch, id])
 
-  console.log(description, '-------------')
-
   return (
     <div>
       {!editForm && <button id='edit-entry-btn' onClick={() => setEditForm(!editForm)} value={editForm}>Edit Entry</button>}
