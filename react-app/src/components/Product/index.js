@@ -4,7 +4,7 @@ import { useParams, NavLink } from 'react-router-dom';
 import { getOneProduct } from '../../store/products';
 import EditProduct from './EditProduct';
 import RoutineProduct from '../RoutineProduct';
-import noProductImg from '../../images/product-img-placeholder.png';
+import noProductImg from '../../images/product-placeholder.png';
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';

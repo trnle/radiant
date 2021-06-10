@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, NavLink, useHistory } from 'react-router-dom';
 import { getEntry, updateOneEntry, deleteOneEntry } from '../../store/entries';
-import entryImg from '../../images/entryImg.png';
+import entryImg from '../../images/entry-img.png';
 import './Entry.css';
 
 const Entry = () => {

@@ -30,6 +30,8 @@
   border-bottom-right-radius: 7px;
   z-index: 1;
   width: 440px;
+  overflow: auto;
+  max-height: 300px;
 }
 
 #product-res-container:hover {

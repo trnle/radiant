@@ -2,11 +2,12 @@
   display: grid;
   justify-content: center;
   min-height: 100%;
+  margin-top: 110px;
   margin-bottom: 200px;
 }
 
 #products-page h1 {
-  margin: 50px 0 0;
+  margin: 0;
   text-align: center;
 }
 
