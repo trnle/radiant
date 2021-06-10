@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getRoutines } from '../../store/routines';
 import { addRoutineProduct, removeRoutineProduct } from '../../store/routineProducts';
+import Swal from 'sweetalert2'
 import './RoutineProduct.css';
 
 const RoutineProduct = () => {
@@ -12,6 +13,7 @@ const RoutineProduct = () => {
   
   const [addRoutine, setAddRoutine] = useState('');
   const [removeRoutine, setRemoveRoutine] = useState('');
+  const [addAM, setAddAM] = useState(false);
   
   useEffect(() => {
     dispatch(getRoutines());
@@ -19,11 +21,19 @@ const RoutineProduct = () => {
 
   const handleAdd = e => {
     e.preventDefault();
+    Swal.fire({
+      icon: 'success',
+      title: 'Product Added to Routine!',
+    })
     dispatch(addRoutineProduct({ addRoutine, id }))
   }
 
   const handleRemove = e => {
     e.preventDefault();
+    Swal.fire({
+      icon: 'success',
+      title: 'Product Removed from Routine!',
+    })
     dispatch(removeRoutineProduct({ removeRoutine, id }))
   }
 
@@ -31,7 +41,6 @@ const RoutineProduct = () => {
 
   return (
     <div id='rp-form-container'>
-      {/* <button onClick={() => setAddShowRoutines(!showAddRoutines)}>Add to Routine</button> */}
       <div className='rp-form'>
         <h4>Add Product to Routine</h4>
         <form method='post' onSubmit={handleAdd}>
@@ -43,12 +52,9 @@ const RoutineProduct = () => {
           </select>
           <button id='add-rp-btn'>Add</button>
         </form>
-
       </div>
-
-      {/* <button onClick={() => setShowRemoveRoutines(!showRemoveRoutines)}>Remove from Routine</button> */}
       <div className='rp-form'>
-        <h4>Remove Product to Routine</h4>
+        <h4>Remove Product from Routine</h4>
         <form method='post' onSubmit={handleRemove}>
           <select name='routines' className='rp-select' onChange={e => setRemoveRoutine(e.target.value)} value={removeRoutine} required>
             <option value=''>Select Routine</option>

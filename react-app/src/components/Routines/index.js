@@ -47,6 +47,9 @@ const Routines = () => {
       setCompleteAMBtn('Complete Routine');
       setAmDisableBtn(false);
     }
+  }, [checkExistingEntry.am_products])
+
+  useEffect(() => {
     if (checkExistingEntry.pm_products) {
       setCompletePMBtn('Finished');
       setPmDisableBtn(true);
@@ -54,8 +57,7 @@ const Routines = () => {
       setCompletePMBtn('Complete Routine');
       setPmDisableBtn(false);
     }
-  }, [checkExistingEntry.am_products, checkExistingEntry.pm_products])
-
+  }, [checkExistingEntry.pm_products])
 
 const handleAMCheck = product => {
   if (amRP.includes(product)) {

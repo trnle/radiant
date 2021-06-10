@@ -68,10 +68,10 @@ def update_entry(id):
     entry.description = request.json['description']
     if request.json['rating']:
       entry.rating = request.json['rating']
-    # if request.json['am_products']:
-    #   entry.am_products = request.json['am_products']
-    # if request.json['pm_products']:
-    #   entry.pm_products = request.json['pm_products']
+    if request.json['am_products']:
+      entry.am_products = request.json['am_products']
+    if request.json['pm_products']:
+      entry.pm_products = request.json['pm_products']
 
     db.session.add(entry)
  

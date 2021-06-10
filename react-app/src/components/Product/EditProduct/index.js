@@ -33,7 +33,6 @@ const UpdateProduct = () => {
       title: 'Product Updated!',
     })
     dispatch(updateOneProduct({ productName, brandName, skincareStep, target, checkAM, checkPM, description, directions, precautions, ingredients, productImg, userId, productId }))
-    // setShowForm(false);
   }
 
   const deleteProduct = e => {
@@ -48,99 +47,97 @@ const UpdateProduct = () => {
         await dispatch(deleteOneProduct(productId));
         history.push('/products');
       }
-    }) 
+    })
   }
 
   return (
     <div>
-      {/* <button id='edit-product-btn' onClick={() => setShowForm(!showForm)}>Edit Product</button> */}
-        <form action={`/product/${productId}`} method='post' onSubmit={updateProduct}>
-          <div id='edit-product-fields'>
-            <div id='left-edit-product-form'>
-              <label>Product Name*</label>
-              <input type='text'
-                placeholder='Product Name'
-                onChange={e => setProductName(e.target.value)}
-                value={productName}
-                required />
-              <label>Brand Name*</label>
-              <input type='text'
-                placeholder='Brand Name'
-                onChange={e => setBrandName(e.target.value)}
-                value={brandName}
-                required />
-              <label>Skincare Step*</label>
-              <select name='skincare-step' onChange={e => setSkincareStep(e.target.value)} value={skincareStep} required>
-                <option value=''></option>
-                <option value='Cleanse'>Cleanse</option>
-                <option value='Treat'>Treat</option>
-                <option value='Nourish'>Nourish</option>
-                <option value='Moisturize'>Moisturize</option>
-                <option value='Protect'>Protect</option>
-                <option value='Other'>Other</option>
-              </select>
-              <label>Time of Use</label>
-              <div id='edit-time-box-align'>
-                <div className='time-box'>
-                  <input type='checkbox' onChange={() => setCheckAM(!checkAM)} checked={checkAM} id='am' value='AM' />
-                  <label htmlFor="am">AM</label>
-                </div>
-                <div className='edit-time-box'>
-                  <input type='checkbox' onChange={() => setCheckPM(!checkPM)} checked={checkPM} id='pm' value='PM' />
-                  <label htmlFor="pm">PM</label>
-                </div>
+      <form action={`/product/${productId}`} method='post' onSubmit={updateProduct}>
+        <div id='edit-product-fields'>
+          <div id='left-edit-product-form'>
+            <label>Product Name*</label>
+            <input type='text'
+              placeholder='Product Name'
+              onChange={e => setProductName(e.target.value)}
+              value={productName}
+              required />
+            <label>Brand Name*</label>
+            <input type='text'
+              placeholder='Brand Name'
+              onChange={e => setBrandName(e.target.value)}
+              value={brandName}
+              required />
+            <label>Skincare Step*</label>
+            <select name='skincare-step' onChange={e => setSkincareStep(e.target.value)} value={skincareStep} required>
+              <option value=''></option>
+              <option value='Cleanse'>Cleanse</option>
+              <option value='Treat'>Treat</option>
+              <option value='Nourish'>Nourish</option>
+              <option value='Moisturize'>Moisturize</option>
+              <option value='Protect'>Protect</option>
+              <option value='Other'>Other</option>
+            </select>
+            <label>Time of Use</label>
+            <div id='edit-time-box-align'>
+              <div className='time-box'>
+                <input type='checkbox' onChange={() => setCheckAM(!checkAM)} checked={checkAM} id='am' value='AM' />
+                <label htmlFor="am">AM</label>
               </div>
-              <label>Product Image</label>
-              <input type='text'
-                placeholder='Insert Image URL'
-                onChange={e => setProductImg(e.target.value)}
-                value={productImg} />
-              <label>Targets</label>
-              <input type='text'
-                placeholder='Targets...'
-                onChange={e => setTarget(e.target.value)}
-                value={target} />
-              <label>Precautions</label>
-              <input type='text'
-                placeholder='Precautions'
-                onChange={e => setPrecautions(e.target.value)}
-                value={precautions} />
+              <div className='edit-time-box'>
+                <input type='checkbox' onChange={() => setCheckPM(!checkPM)} checked={checkPM} id='pm' value='PM' />
+                <label htmlFor="pm">PM</label>
+              </div>
             </div>
-            <div id='right-edit-product-form'>
-              <label>Product Description*</label>
-              <textarea
-                name='description'
-                placeholder='What is this product'
-                onChange={e => setDescription(e.target.value)}
-                value={description}
-                cols='5'
-                rows='7'
-                required>
-              </textarea>
-              <label>How to Use</label>
-              <textarea
-                name='directions'
-                placeholder='How should this product be used?'
-                onChange={e => setDirections(e.target.value)}
-                value={directions}
-                cols='5'
-                rows='7'>
-              </textarea>
-              <label>Ingredients</label>
-              <textarea
-                name='ingredients'
-                placeholder='Ingredients'
-                onChange={e => setIngredients(e.target.value)}
-                value={ingredients}
-                cols='5'
-                rows='7'>
-              </textarea>
-            </div>
+            <label>Product Image</label>
+            <input type='text'
+              placeholder='Insert Image URL'
+              onChange={e => setProductImg(e.target.value)}
+              value={productImg} />
+            <label>Targets</label>
+            <input type='text'
+              placeholder='Targets...'
+              onChange={e => setTarget(e.target.value)}
+              value={target} />
+            <label>Precautions</label>
+            <input type='text'
+              placeholder='Precautions'
+              onChange={e => setPrecautions(e.target.value)}
+              value={precautions} />
           </div>
-          <button id='update-product-btn' type='submit'>Update Product</button>
-          <button id='delete-product-btn' onClick={deleteProduct}>Delete Product</button>
-          {/* <button id='cancel-edit-product-btn'>Cancel</button> */}
-        </form>
+          <div id='right-edit-product-form'>
+            <label>Product Description*</label>
+            <textarea
+              name='description'
+              placeholder='What is this product'
+              onChange={e => setDescription(e.target.value)}
+              value={description}
+              cols='5'
+              rows='7'
+              required>
+            </textarea>
+            <label>How to Use</label>
+            <textarea
+              name='directions'
+              placeholder='How should this product be used?'
+              onChange={e => setDirections(e.target.value)}
+              value={directions}
+              cols='5'
+              rows='7'>
+            </textarea>
+            <label>Ingredients</label>
+            <textarea
+              name='ingredients'
+              placeholder='Ingredients'
+              onChange={e => setIngredients(e.target.value)}
+              value={ingredients}
+              cols='5'
+              rows='7'>
+            </textarea>
+          </div>
+        </div>
+        <button id='update-product-btn' type='submit'>Update Product</button>
+        <button id='delete-product-btn' onClick={deleteProduct}>Delete Product</button>
+      </form>
     </div>
   )
 }
