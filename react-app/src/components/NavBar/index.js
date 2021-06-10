@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../Auth/LogoutButton';
-// import logo from '../../images/radiant-sparkles.png';
 import SearchBar from './SearchBar';
 import './NavBar.css';
 
