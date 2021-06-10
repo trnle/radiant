@@ -13,7 +13,7 @@ const Entry = () => {
   const user = useSelector(state => state.session.user);
   const entry = useSelector(state => state.entries.oneEntry);
 
-  const [description, setDescription] = useState(entry.description);
+  const [description, setDescription] = useState(entry.description || '');
   const [img, setImg] = useState(entry.img_url);
   const [rating, setRating] = useState(entry.rating || '');
   const [amProducts, setAMProducts] = useState(entry.am_products || '');

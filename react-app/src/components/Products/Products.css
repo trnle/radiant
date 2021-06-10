@@ -3,6 +3,9 @@
   justify-content: center;
   min-height: 100%;
   margin-top: 130px;
+  animation: fadeInAnimation ease 0.3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
 #products-page h1 {

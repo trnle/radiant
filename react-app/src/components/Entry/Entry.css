@@ -2,6 +2,9 @@
   position: relative;
   min-height: 100%;
   margin: 110px 17vw 0;
+  animation: fadeInAnimation ease 0.3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
 #nav-entries {

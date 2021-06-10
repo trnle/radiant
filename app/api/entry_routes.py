@@ -64,8 +64,10 @@ def update_entry(id):
   entry = Entry.query.get(id)
 
   if request.method == 'PUT':
-    entry.img_url = request.json['img_url']
-    entry.description = request.json['description']
+    if request.json['img_url']:
+      entry.img_url = request.json['img_url']
+    if request.json['description']:
+      entry.description = request.json['description']
     if request.json['rating']:
       entry.rating = request.json['rating']
     if request.json['am_products']:
