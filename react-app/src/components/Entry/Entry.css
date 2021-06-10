@@ -60,5 +60,54 @@
   word-wrap: break-word;
   width: 66vw;
   margin: 0;
-  margin-bottom: 40px;;
+  margin-bottom: 20px;;
+}
+
+/* Update Entry */
+#edit-btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+#edit-entry-btn {
+  height: 35px;
+  
+}
+
+#entry-form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#entry-form-container h4 {
+  margin: 0 0 10px;
+}
+
+#entry-form-container input, #entry-form-container textarea, #entry-form-container select {
+  margin-bottom: 10px;
+}
+
+#entry-form-container input {
+  height: 23px;
+  padding: 3px 5px 3px;
+}
+
+#entry-form-container select {
+  height: 30px;
+}
+
+#update-entry-btn, #delete-entry-btn, #cancel-entry-btn {
+  float: right;
+  margin-top: 10px;
+  height: 35px;
+  margin-left: 10px;
+  font-size: 13px;
+}
+
+#cancel-entry-btn, #delete-entry-btn {
+  background-color: #808080;
+}
+
+#cancel-entry-btn:hover, #delete-entry-btn:hover {
+  background-color: #8f8f8f;
 }

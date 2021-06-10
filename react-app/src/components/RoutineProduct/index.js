@@ -13,7 +13,6 @@ const RoutineProduct = () => {
   
   const [addRoutine, setAddRoutine] = useState('');
   const [removeRoutine, setRemoveRoutine] = useState('');
-  const [addAM, setAddAM] = useState(false);
   
   useEffect(() => {
     dispatch(getRoutines());
