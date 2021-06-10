@@ -77,3 +77,11 @@
   margin-left: 10px;
   font-size: 13px;
 }
+
+#cancel-product-btn {
+  background-color: #808080;
+}
+
+#cancel-product-btn:hover {
+  background-color: #8f8f8f;
+}

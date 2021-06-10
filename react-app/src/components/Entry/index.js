@@ -49,7 +49,7 @@ const Entry = () => {
         </div>
         {user.id === entry.user_id &&
           <div>
-            <UpdateEntry entry={entry} />
+            <UpdateEntry />
           </div>
         }
       </div>

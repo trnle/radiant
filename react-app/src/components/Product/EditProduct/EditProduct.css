@@ -59,6 +59,14 @@
   font-size: 13px;
 }
 
+#delete-product-btn {
+  background-color: #808080;
+}
+
+#delete-product-btn:hover {
+  background-color: #8f8f8f;
+}
+
 #edit-product-btn {
   margin-top: 10px;
   height: 35px;

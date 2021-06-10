@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import moment from 'moment'
 import { getEntries } from '../../store/entries';
-import CreateEntryModal from './CreateEntryModal';
 import './Journal.css';
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';

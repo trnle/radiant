@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import { updateOneEntry, deleteOneEntry } from '../../../store/entries';
+import { updateOneEntry, deleteOneEntry, getEntry } from '../../../store/entries';
 import './UpdateEntry.css';
 
-const UpdateEntry = ({ entry }) => {
+const UpdateEntry = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const entry = useSelector(state => state.entries.oneEntry);
 
   const [description, setDescription] = useState(entry.description || '');
   const [img, setImg] = useState(entry.img_url);
@@ -28,6 +30,12 @@ const UpdateEntry = ({ entry }) => {
     await dispatch(deleteOneEntry(id));
     history.push('/journal');
   }
+
+  useEffect(() => {
+    dispatch(getEntry(id));
+  }, [dispatch, id])
+
+  console.log(description, '-------------')
 
   return (
     <div>
