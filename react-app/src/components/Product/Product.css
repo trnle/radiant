@@ -1,7 +1,7 @@
 #product-page {
   position: relative;
   min-height: 100%;
-  margin: 110px 17vw;
+  margin: 110px 17vw 0;
 }
 
 #nav-products {
