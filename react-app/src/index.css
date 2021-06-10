@@ -54,6 +54,7 @@ input, textarea {
   font-style: normal;
   color: #1C2237;
   border: 1px solid lightgray;
+  border-radius: 8px;
 }
 
 input {

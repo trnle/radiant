@@ -119,7 +119,7 @@ export default function reducer(state = initialState, action) {
     case LOAD_PRODUCTS:
       return { ...state, allProducts: action.products }
     case LOAD_ONE_PRODUCT:
-      return { ...state, oneProduct: action.product };
+      return { ...state, oneProduct: action.product }
     case CREATE_PRODUCT:
       return { ...state, newProduct: action.product }
     case UPDATE_PRODUCT:

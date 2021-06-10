@@ -108,7 +108,7 @@ export const createPMEntry = data => async dispatch => {
 }
 
 export const updateOneEntry = data => async dispatch => {
-  const { img, description, rating, id } = data
+  const { img, description, rating, amProducts, pmProducts, id } = data
   const res = await fetch(`/api/entries/${id}`, {
     method: 'PUT',
     headers: {
@@ -118,6 +118,8 @@ export const updateOneEntry = data => async dispatch => {
       img_url: img,
       description,
       rating,
+      am_products: amProducts,
+      pm_products: pmProducts
     }),
   });
   const entry = await res.json();
@@ -139,7 +141,7 @@ export const deleteOneEntry = id => async dispatch => {
 }
 
 
-const initialState = { userEntries: {}, oneEntry: {} }
+const initialState = { userEntries: {}, oneEntry: {}, newEntry: {} }
 
 export default function reducer(state = initialState, action) {
   let newState = {}
@@ -149,8 +151,9 @@ export default function reducer(state = initialState, action) {
     case LOAD_ENTRY:
       return { ...state, oneEntry: action.entry }
     case CREATE_ENTRY:
-      newState = { ...state, [action.entry.id]: action.entry } // wrong format?
-      return newState
+      return { ...state, newEntry: action.entry }
+      // newState = { ...state, [action.entry.id]: action.entry } // wrong format?
+      // return newState
     case UPDATE_ENTRY:
       newState = { ...state, [action.entry.id]: action.entry }
       return newState
