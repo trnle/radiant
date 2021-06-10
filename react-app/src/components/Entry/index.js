@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams, NavLink, useHistory } from 'react-router-dom';
 import { getEntry, updateOneEntry, deleteOneEntry } from '../../store/entries';
 import entryImg from '../../images/entry-img.png';
+import Swal from 'sweetalert2'
 import './Entry.css';
 
 const Entry = () => {
@@ -20,9 +21,6 @@ const Entry = () => {
   const [pmProducts, setPMProducts] = useState(entry.pm_products || '');
   const [editForm, setEditForm] = useState(false);
 
-  console.log('rating--description--------', rating, description)
-  console.log('entry-rating--description--------', entry.rating, entry.description)
-
   const updateEntry = e => {
     e.preventDefault();
     setEditForm(!editForm)
@@ -31,14 +29,30 @@ const Entry = () => {
 
   const deleteEntry = async e => {
     e.preventDefault();
-
-    await dispatch(deleteOneEntry(id));
-    history.push('/journal');
+    Swal.fire({
+      title: 'Delete Product',
+      text: 'Are you sure you want to delete this entry permanently?',
+      showCancelButton: true,
+      confirmButtonText: 'Delete'
+    }).then(async res => {
+      if (res.value) {
+        await dispatch(deleteOneEntry(id));
+        history.push('/journal');
+      }
+    })
   }
 
   useEffect(() => {
     dispatch(getEntry(id));
   }, [dispatch, id])
+
+  useEffect(() => {
+    setDescription(entry.description || '')
+    setImg(entry.img_url);
+    setAMProducts(entry.am_products || '');
+    setPMProducts(entry.pm_products || '');
+    setRating(entry.rating || '')
+  }, [entry])
 
   if (!entry) return null;
 
@@ -55,26 +69,29 @@ const Entry = () => {
       </div>
       <div id='entry'>
         <h4>{entry.created_at}</h4>
-        {!editForm && <span>
-          <div id='entry-summary'>
-            {entry.img_url && <img src={entry.img_url} alt="Skin progress" height='70' />}
-            <div>
-              <h5>AM Products</h5>
-              <p>{entry.am_products}</p>
-              <h5>PM Products</h5>
-              <p>{entry.pm_products}</p>
-              <h5>Skin rating</h5>
-              <p>{entry.rating}</p>
+        {!editForm &&
+          <span>
+            <div id='entry-summary'>
+              {entry.img_url && <img src={entry.img_url} alt="Skin progress" height='70' />}
+              <div>
+                <h5>AM Products</h5>
+                <p>{entry.am_products}</p>
+                <h5>PM Products</h5>
+                <p>{entry.pm_products}</p>
+                <h5>Skin rating</h5>
+                <p>{entry.rating}</p>
+              </div>
             </div>
-          </div>
-          <div id='entry-description'>
-            <h5>Journal Entry</h5>
-            <p>{entry.description}</p>
-          </div>
-        </span>}
+            <div id='entry-description'>
+              <h5>Journal Entry</h5>
+              <p>{entry.description}</p>
+            </div>
+          </span>}
         {user.id === entry.user_id &&
           <div>
-            {!editForm && <div id='edit-btn-container'><button id='edit-entry-btn' onClick={() => setEditForm(!editForm)} value={editForm}>Edit Entry</button></div>}
+            {!editForm &&
+              <div id='edit-btn-container'><button id='edit-entry-btn' onClick={() => setEditForm(!editForm)} value={editForm}>Edit Entry</button></div>
+            }
             {editForm && <form id='entry-form-container' onSubmit={updateEntry}>
               <h4>Edit Journal Entry</h4>
               <label>Photo</label>
@@ -118,7 +135,7 @@ const Entry = () => {
               <div>
                 <button id='update-entry-btn'>Save Entry</button>
                 <button id='delete-entry-btn' onClick={deleteEntry}>Delete entry</button>
-                <button id='cancel-entry-btn' onClick={e => {e.preventDefault(); setEditForm(!editForm)}}>Cancel</button>
+                <button id='cancel-entry-btn' onClick={e => { e.preventDefault(); setEditForm(!editForm) }}>Cancel</button>
               </div>
             </form>}
           </div>
