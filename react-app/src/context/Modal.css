@@ -1,12 +1,15 @@
 #modal {
   position: fixed;
-  top: 0;
+  top: 30px;
   right: 0;
   left: 0;
   bottom: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: fadeInAnimation ease 0.2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
 #modal-background {

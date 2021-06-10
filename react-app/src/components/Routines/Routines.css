@@ -1,9 +1,12 @@
 #routines-page {
   min-height: 95%; 
-  margin: 110px 0 0;
+  margin: 130px 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: fadeInAnimation ease 0.3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
 #routines-page .react-tabs__tab-list {
@@ -23,6 +26,12 @@
 
 #routines-page .react-tabs {
   padding-top: 0;
+}
+
+#routines-page .react-tabs__tab-panel {
+  animation: fadeInAnimation ease 0.8s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
 .rp-container {

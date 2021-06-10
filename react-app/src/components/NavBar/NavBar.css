@@ -1,6 +1,6 @@
 nav {
   top: 0;
-  height: 8vh;
+  height: 60px;
   background-color: white;
   box-shadow: 0px 1px 4px 0px rgb(0 0 0 / 20%);
   position: fixed;
@@ -10,7 +10,7 @@ nav {
 
 #nav {
   display: flex;
-  padding: 1.1em 10em;
+  padding: 18px 10em;
 }
 
 .session-links {
@@ -21,13 +21,13 @@ nav {
   display: flex;
   align-items: center;
   margin: 0 1.7em;
+  bottom: 3px;
   position: relative;
 }
 
 #right-bar-links {
   display: flex;
   position: absolute;
-  /* align-items: center; */
   right: 10em;
 }
 

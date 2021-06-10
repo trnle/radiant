@@ -2,6 +2,9 @@
   display: flex;
   justify-content: center;
   min-height: 100%;
+  animation: fadeInAnimation ease 0.2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
 #login-form {

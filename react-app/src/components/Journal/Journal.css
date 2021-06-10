@@ -1,7 +1,10 @@
 #journal-page {
   min-height: 100%;
   position: relative;
-  margin: 110px 19vw;
+  margin: 130px 19vw 0;
+  animation: fadeInAnimation ease 0.3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
 #journal-page h1 {
@@ -20,7 +23,6 @@
 #entries-list {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  margin-bottom: 500px;
   justify-items: center;
 }
 

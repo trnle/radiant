@@ -55,7 +55,7 @@ const Products = () => {
           {Object.values(filteredProducts).map(product => (
             <div className='product-container' key={product.id} onClick={e => { e.preventDefault(); history.push(`/products/${product.id}`) }}>
               <div id='products-imgs'>
-                <img src={product.img_url} alt={product.product_name} />
+                {product.img_url && <img src={product.img_url} alt={product.product_name} />}
               </div>
               <div id='products-overview'>
                 <NavLink to={`/products/${product.id}`}>{product.product_name}</NavLink>
