@@ -11,7 +11,36 @@ const RoutineGuideModal = () => {
 
   return (
     <div id='guide-page'>
-      <h1>Key Features of Radiant</h1>
+      <h1>About Radiant</h1>
+      <h3>
+        Radiant helps you envision your skincare routine as a series of concepts.
+      </h3>
+      {/* Skincare info from Jude Chao: https://fiftyshadesofsnail.com/2018/06/03/5-step-k-beauty-skincare-routine/ */}
+      <div id='skincare-steps-explained'>
+        <h4>1 CLEANSE</h4>
+        <p>
+          Removes makeup, sunscreen, dirt, excess dead skin and oils, and environmental
+          pollutants from the surface of skin. Prepares skin for further skincare steps
+          and prevents issues caused by unclean skin.
+        </p>
+        <h4>2 TREAT</h4>
+        <p>
+          Intensively targets specific skin concerns, like acne, “blackheads,” hyperpigmentation, or visible skin aging.
+        </p>
+        <h4>3 NOURISH</h4>
+        <p>
+          More gently treats skin concerns and supports overall skin health and comfort.
+        </p>
+        <h4>4 MOISTURIZE</h4>
+        <p>
+          Seals hydration and helpful ingredients from previous steps into skin to maximize benefits; maintains skin softness and comfort.
+        </p>
+        <h4>5 PROTECT</h4>
+        <p>
+          Shields skin from UV radiation to prevent skin cancer, visible skin aging, and hyperpigmentation due to photodamage.
+        </p>
+      </div>
+      <h1>Key Features</h1>
       <div className='feature-list'>
         <img src={routineIcon} alt='Routine checklist' />
         <div className='feature'>
