@@ -40,7 +40,7 @@ function Profile() {
           <div onClick={() => history.push('/guide')}>
             <NavLink to='/guide' exact={true} id='guide-nav'>About Us</NavLink>
           </div>
-          <div onClick={() => history.push('/')}>
+          <div onClick={(onLogout)}>
             <NavLink to='/' id='logout-btn' onClick={onLogout}>Log Out</NavLink>
           </div>
         </div>
