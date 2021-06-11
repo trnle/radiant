@@ -5,6 +5,7 @@ import './PageNotFound.css';
 
 const PageNotFound = () => {
   const history = useHistory();
+  
   return (
     <div id='pnf-page'>
       <h1>Sorry! The page you're looking for cannot be found.</h1>

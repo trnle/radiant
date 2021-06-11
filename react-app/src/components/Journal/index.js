@@ -15,7 +15,6 @@ const Journal = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const entries = useSelector(state => state.entries.userEntries);
-  // const user = useSelector(state => state.session.user)
 
   useEffect(() => {
     dispatch(getEntries())

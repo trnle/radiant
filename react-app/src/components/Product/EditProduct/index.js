@@ -8,8 +8,10 @@ import './EditProduct.css';
 const UpdateProduct = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+
   const product = useSelector(state => state.products.oneProduct?.product);
   const user = useSelector(state => state.session.user);
+  
   const userId = user.id;
   const productId = product.id;
 

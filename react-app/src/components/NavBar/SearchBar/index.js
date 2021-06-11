@@ -7,7 +7,9 @@ import './SearchBar.css'
 const SearchBar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  
   const products = useSelector(state => state.products.allProducts)
+
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 

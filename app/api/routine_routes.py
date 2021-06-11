@@ -19,5 +19,4 @@ def user_routines():
       else:
         routine_products[routine.routine_type] = [product.to_dict()]
 
-  # return jsonify([routine.to_dict() for routine in routines])
   return {'user_routines': [routine.to_dict() for routine in routines], 'user_routine_products': routine_products}

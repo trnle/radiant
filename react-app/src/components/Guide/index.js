@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import React from 'react';
 import routineIcon from '../../images/routine-icon.png';
 import journalIcon from '../../images/journal-icon.png';
 import productIcon from '../../images/product-icon.png';

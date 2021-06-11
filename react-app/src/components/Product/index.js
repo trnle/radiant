@@ -14,6 +14,7 @@ import './Product.css';
 const Product = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+
   let product = useSelector(state => state.products.oneProduct?.product);
   let productUser = useSelector(state => state.products.oneProduct?.user);
   const user = useSelector(state => state.session.user);
@@ -23,6 +24,7 @@ const Product = () => {
   }, [dispatch, id])
   
   if (!product) return null;
+  
   document.title = `${product.product_name} | Radiant`;
   document.body.style = 'background-color: #FFFFFF';
   

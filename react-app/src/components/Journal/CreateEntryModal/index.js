@@ -33,28 +33,27 @@ const CreateEntryModal = () => {
           <form id='create-entry-form' onSubmit={handleSubmit}>
             <div id='create-entry-header'>
               <h1>New Entry</h1>
-              {/* <p>Add a custom product to your routine</p> */}
             </div>
             <div id='create-entry-fields'>
-                <label>Photo</label>
-                <input type='text'
-                  placeholder='Insert Image URL'
-                  onChange={e => setImg(e.target.value)}
-                  value={img} />
-                <label>Rating</label>
-                <select onChange={e => setRating(e.target.value)} value={rating}>
-                  <option value="" disabled></option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                </select>
+              <label>Photo</label>
+              <input type='text'
+                placeholder='Insert Image URL'
+                onChange={e => setImg(e.target.value)}
+                value={img} />
+              <label>Rating</label>
+              <select onChange={e => setRating(e.target.value)} value={rating}>
+                <option value="" disabled></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
               <label>Journal Entry</label>
               <textarea
                 name='description'
