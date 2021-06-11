@@ -6,7 +6,7 @@
 .fa-search {
   color: #1f2024;
   position: absolute;
-  top: 7px;
+  top: 8px;
   left: 10px;
 }
 
@@ -15,6 +15,10 @@
   width: 25vw;
   padding-left: 35px;
   border-radius: 8px;
+}
+
+#search-input:hover {
+  background-color: #f7f7f7;
 }
 
 #search-input:focus {

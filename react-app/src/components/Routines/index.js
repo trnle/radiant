@@ -84,7 +84,8 @@ const completeAM = async e => {
       title: 'Morning Routine!',
       text: 'Do you want to complete your morning routine?',
       showCancelButton: true,
-      confirmButtonText: 'Yes, Go to Entry'
+      confirmButtonText: 'Yes, Go to Entry',
+      reverseButtons: true
     }).then(async res => {
       if (res.value) {
         let amProducts = amRP.join(', ');
@@ -101,7 +102,8 @@ const completePM = async e => {
     title: 'Evening Routine!',
     text: 'Do you want to complete your evening routine?',
     showCancelButton: true,
-    confirmButtonText: 'Yes, Go to Entry'
+    confirmButtonText: 'Yes, Go to Entry',
+    reverseButtons: true
   }).then(async res => {
     if (res.value) {
       let pmProducts = pmRP.join(', ');

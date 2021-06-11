@@ -23,6 +23,10 @@ const Entry = () => {
 
   const updateEntry = e => {
     e.preventDefault();
+    Swal.fire({
+      icon: 'success',
+      title: 'Entry Updated!',
+    })
     setEditForm(!editForm)
     dispatch(updateOneEntry({ img, description, rating, amProducts, pmProducts, id }));
   }
@@ -33,7 +37,8 @@ const Entry = () => {
       title: 'Delete Product',
       text: 'Are you sure you want to delete this entry permanently?',
       showCancelButton: true,
-      confirmButtonText: 'Delete'
+      confirmButtonText: 'Delete',
+      reverseButtons: true
     }).then(async res => {
       if (res.value) {
         await dispatch(deleteOneEntry(id));

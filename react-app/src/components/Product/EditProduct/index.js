@@ -41,7 +41,8 @@ const UpdateProduct = () => {
       title: 'Delete Product',
       text: 'Are you sure you want to delete this product permanently?',
       showCancelButton: true,
-      confirmButtonText: 'Delete'
+      confirmButtonText: 'Delete',
+      reverseButtons: true
     }).then(async res => {
       if (res.value) {
         await dispatch(deleteOneProduct(productId));

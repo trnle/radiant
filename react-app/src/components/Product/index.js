@@ -73,7 +73,7 @@ const Product = () => {
                 <p>{product.skincare_step}</p>
               </div>
               <div className='summary'>
-                <h4>Suggested time of use:</h4>
+                <h4>Suggested Time of Use</h4>
                 {timeOfUse.map(time => (
                   <li key={time}>{time}</li>
                 ))}
