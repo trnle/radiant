@@ -14,6 +14,7 @@ import Entry from './components/Entry';
 import Footer from './components/Footer';
 import { authenticate } from './store/session';
 import PageNotFound from './components/PageNotFound';
+import Guide from './components/Guide';
 
 function App() {
   const user = useSelector(state => state.session.user);
@@ -62,6 +63,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path={'/journal/:id'} exact={true}>
           <Entry />
+        </ProtectedRoute>
+        <ProtectedRoute path={'/guide'} exact={true}>
+          <Guide />
         </ProtectedRoute>
         <Route path='*'>
           <PageNotFound />

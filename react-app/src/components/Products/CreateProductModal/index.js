@@ -3,6 +3,7 @@ import { Modal } from '../../../context/Modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createOneProduct } from '../../../store/products';
+import noProductImg from '../../../images/product-placeholder.png';
 import './CreateProductModal.css';
 
 const CreateProductModal = () => {
@@ -25,6 +26,7 @@ const CreateProductModal = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
+
     const product = await dispatch(createOneProduct({ productName, brandName, skincareStep, target, checkAM, checkPM, description, directions, precautions, ingredients, productImg, userId }));
     history.push(`/products/${product.id}`);
   }

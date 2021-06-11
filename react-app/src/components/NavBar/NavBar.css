@@ -43,7 +43,7 @@ nav {
   font-size: 26px;
 }
 
-#products-nav.active, #routine-nav.active, #journal-nav.active {
+#products-nav.active, #routine-nav.active, #journal-nav.active, #guide-nav.active {
   color: #e5aa8b;
 }
 
@@ -51,10 +51,35 @@ nav {
   color: #79B3C2;
 }
 
-#logout-btn {
-  height: 30px;
-  width: auto;
-  margin-left: 15px;
-  font-size: 14px;
+.dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: white;
+  min-width: 180px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  box-shadow: 0 0 6px 0 rgb(0 0 0 / 20%);
+  margin-top: 43px;
+  padding: 12px 0;
+  right: -10px;
 }
 
+.dropdown-menu div {
+  padding: 8px 0;
+}
+
+.dropdown-menu div:hover {
+  background-color: #f7f7f7;
+  cursor: pointer;
+}
+
+#profile-btn {
+  background-color: white;
+  box-shadow: none;
+}
+
+.fa-cog {
+  color: #1C2237;
+  font-size: 18px;
+}
