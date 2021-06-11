@@ -64,9 +64,9 @@ function App() {
         <ProtectedRoute path={'/journal/:id'} exact={true}>
           <Entry />
         </ProtectedRoute>
-        <ProtectedRoute path={'/guide'} exact={true}>
+        <Route path={'/guide'} exact={true}>
           <Guide />
-        </ProtectedRoute>
+        </Route>
         <Route path='*'>
           <PageNotFound />
         </Route>

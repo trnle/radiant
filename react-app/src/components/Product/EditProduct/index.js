@@ -8,8 +8,10 @@ import './EditProduct.css';
 const UpdateProduct = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+
   const product = useSelector(state => state.products.oneProduct?.product);
   const user = useSelector(state => state.session.user);
+  
   const userId = user.id;
   const productId = product.id;
 
@@ -41,7 +43,8 @@ const UpdateProduct = () => {
       title: 'Delete Product',
       text: 'Are you sure you want to delete this product permanently?',
       showCancelButton: true,
-      confirmButtonText: 'Delete'
+      confirmButtonText: 'Delete',
+      reverseButtons: true
     }).then(async res => {
       if (res.value) {
         await dispatch(deleteOneProduct(productId));

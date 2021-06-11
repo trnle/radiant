@@ -3,14 +3,15 @@ import { Modal } from '../../../context/Modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createOneProduct } from '../../../store/products';
-import noProductImg from '../../../images/product-placeholder.png';
 import './CreateProductModal.css';
 
 const CreateProductModal = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  
   const user = useSelector(state => state.session.user);
   const userId = user.id;
+
   const [showModal, setShowModal] = useState(false);
   const [productName, setProductName] = useState('');
   const [brandName, setBrandName] = useState('');

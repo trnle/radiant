@@ -9,9 +9,10 @@ const Products = () => {
   document.title = 'Products | Radiant';
   document.body.style = 'background-color: #FFFFFF';
 
-  let products = useSelector(state => state.products.allProducts);
   const dispatch = useDispatch();
   const history = useHistory();
+  
+  let products = useSelector(state => state.products.allProducts);
   const user = useSelector(state => state.session.user);
   const [filter, setFilter] = useState('')
 

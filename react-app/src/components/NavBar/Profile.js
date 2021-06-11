@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, NavLink } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { logout } from "../../store/session";
 
 function Profile() {
-  const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);

@@ -30,6 +30,7 @@ const NavBar = () => {
         <div id='right-bar-links'>
           <NavLink to='/login' id='login-nav' exact={true}>Log In</NavLink>
           <NavLink to='/signup' id='signup-nav' exact={true}>Sign Up</NavLink>
+          <NavLink to='/guide' exact={true} id='guide-nav'>About Us</NavLink>
         </div>
       </div>
     )

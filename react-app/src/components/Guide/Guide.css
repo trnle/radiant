@@ -1,5 +1,5 @@
 #guide-page {
-  min-height: 90%;
+  min-height: 100%;
   margin: 130px 23vw 0;
   animation: fadeInAnimation ease 0.6s;
   animation-iteration-count: 1;
@@ -10,6 +10,7 @@
   text-align: center;
   margin: 0;
   margin-bottom: 10px;
+  margin-top: 50px;
 }
 
 #guide-page h3 {
@@ -41,9 +42,9 @@
 }
 
 .feature-list img {
-  height: 11vh;
+  height: 80px;
   width: auto;
-  margin-right: 15px;
+  margin-right: 25px;
 }
 
 .feature h4 {

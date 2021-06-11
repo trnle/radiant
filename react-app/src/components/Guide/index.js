@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import React from 'react';
 import routineIcon from '../../images/routine-icon.png';
 import journalIcon from '../../images/journal-icon.png';
 import productIcon from '../../images/product-icon.png';
@@ -8,7 +6,9 @@ import searchIcon from '../../images/search-icon.png';
 import './Guide.css';
 
 const RoutineGuideModal = () => {
-
+  document.title = 'About Us | Radiant';
+  document.body.style = 'background-color: #FFFFFF';
+  
   return (
     <div id='guide-page'>
       <h1>About Radiant</h1>

@@ -10,6 +10,9 @@ const SignUpForm = () => {
     document.title = 'Sign Up | Radiant';
     document.body.style = 'background-color: #F2CC8F';
   }, []);
+  
+  const user = useSelector(state => state.session.user);
+  const dispatch = useDispatch();
 
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
@@ -17,8 +20,6 @@ const SignUpForm = () => {
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
 
-  const user = useSelector(state => state.session.user);
-  const dispatch = useDispatch();
 
   const onSignUp = async e => {
     e.preventDefault();
@@ -35,17 +36,6 @@ const SignUpForm = () => {
       setRepeatPassword('');
     }
   };
-
-  // const checkPass = () => {
-  //   if (password !== repeatPassword) {
-  //     document.getElementById('password-field').style.borderColor = '#E34234';
-  //     document.getElementById('confirm-password-field').style.borderColor = '#E34234';
-  //   }
-  //   if (password === repeatPassword) {
-  //     document.getElementById('password-field').style.borderColor = 'lightgray';
-  //     document.getElementById('confirm-password-field').style.borderColor = 'lightgray';
-  //   }
-  // }
 
   if (user) {
     return <Redirect to='/' />;
@@ -86,7 +76,6 @@ const SignUpForm = () => {
             name='password'
             placeholder='Password'
             onChange={e => setPassword(e.target.value)}
-            // onKeyUp={checkPass}
             value={password}
             required
           ></input>
@@ -97,7 +86,6 @@ const SignUpForm = () => {
             name='repeat_password'
             placeholder='Confirm password'
             onChange={e => setRepeatPassword(e.target.value)}
-            // onKeyUp={checkPass}
             value={repeatPassword}
             required={true}
           ></input>

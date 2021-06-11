@@ -14,6 +14,7 @@ import './Product.css';
 const Product = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+
   let product = useSelector(state => state.products.oneProduct?.product);
   let productUser = useSelector(state => state.products.oneProduct?.user);
   const user = useSelector(state => state.session.user);
@@ -23,6 +24,7 @@ const Product = () => {
   }, [dispatch, id])
   
   if (!product) return null;
+  
   document.title = `${product.product_name} | Radiant`;
   document.body.style = 'background-color: #FFFFFF';
   
@@ -73,7 +75,7 @@ const Product = () => {
                 <p>{product.skincare_step}</p>
               </div>
               <div className='summary'>
-                <h4>Suggested time of use:</h4>
+                <h4>Suggested Time of Use</h4>
                 {timeOfUse.map(time => (
                   <li key={time}>{time}</li>
                 ))}
