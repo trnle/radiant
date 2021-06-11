@@ -8,7 +8,9 @@ import searchIcon from '../../images/search-icon.png';
 import './Guide.css';
 
 const RoutineGuideModal = () => {
-
+  document.title = 'About Us | Radiant';
+  document.body.style = 'background-color: #FFFFFF';
+  
   return (
     <div id='guide-page'>
       <h1>About Radiant</h1>
