@@ -1,0 +1,40 @@
+#guide-page {
+  min-height: 80%;
+  margin: 130px 23vw 0;
+  animation: fadeInAnimation ease 0.6s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+#guide-page h1 {
+  text-align: center;
+  margin: 0;
+  margin-bottom: 30px;
+}
+
+#guide-page h3 {
+  text-align: center;
+  font-weight: 400;
+  margin: 0;
+}
+
+.feature-list {
+  display: flex;
+  align-items: center;
+  margin: 35px 0;
+}
+
+.feature-list img {
+  height: 12vh;
+  width: auto;
+  margin-right: 15px;
+}
+
+.feature h4 {
+  margin: 0 0 7px;
+  font-size: 19px;
+}
+
+.feature p {
+  margin: 0;
+}
