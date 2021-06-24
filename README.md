@@ -45,6 +45,7 @@ Check out the [wiki](https://github.com/trnle/radiant/wiki)!
 ***
 
 ### Stretch Goals
+- [ ] Access to user's camera to take photos for journal entries
 - [ ] Skincare insights and information threads for users to interact
 - [ ] Keep track of products that can only be used a certain number of times in a week, month, etc.
 - [ ] Notifications for conflicting ingredients users check off within the same routine
