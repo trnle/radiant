@@ -12,9 +12,9 @@
   flex-direction: column;
   align-items: center;
   background-color: white;
-  width: 450px;
+  width: 30vw;
   margin: 25vh 0 0;
-  height: 450px;
+  height: 58vh;
   border-radius: 39px;
   box-shadow: 0px 1px 4px 0px rgb(0 0 0 / 20%);
 }
