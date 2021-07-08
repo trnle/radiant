@@ -1,7 +1,7 @@
 
 # Welcome to Radiant! ✨
 ### Live link: [Radiant](https://radiantskin.herokuapp.com/)
-Radiant is a skincare application where users can keep track of their skincare routines and skin progress. My vision for developing and designing Radiant was to create an easy to use application with a clean and minimal appearance. The range of skincare products and routines can be daunting for skincare newcomers, so I utilized a five step skincare concept on Radiant to keep skincare simple and refreshing!
+Radiant is a skincare application where users can keep track of their skincare routines and skin progress. My vision for developing and designing Radiant was to create an easy to use application with a clean and minimal appearance. The range of skincare products and routines can be daunting for skincare newcomers, so I utilized a five step concept on Radiant to keep skincare simple and refreshing!
 
 Check out the [wiki](https://github.com/trnle/radiant/wiki)!
 
