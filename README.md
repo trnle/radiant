@@ -20,6 +20,9 @@ Check out the [wiki](https://github.com/trnle/radiant/wiki)!
 * Adobe XD for [wireframes](https://xd.adobe.com/view/c86b0283-7c64-444c-97bb-2c0bfc26798c-9d38/)
 * [Favicon.io](https://favicon.io/) for favicon
 * [Font Awesome](https://fontawesome.com/v4.7.0/icons/) and [Icons8](https://icons8.com/) for icons
+* [SweetAlert2](https://sweetalert2.github.io/)
+* [react-tabs](https://github.com/reactjs/react-tabs)
+* [Moment.js](https://momentjs.com/)
 
 #### Back End
 * Python
