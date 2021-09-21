@@ -10,9 +10,6 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
 const Routines = () => {
-  document.title = 'Home | Radiant';
-  document.body.style = 'background-color: #FFFFFF';
-
   const dispatch = useDispatch();
   const history = useHistory();
   const checkExistingEntry = useSelector(state => state.entries?.oneEntry);
@@ -30,6 +27,11 @@ const Routines = () => {
   const [amDisableBtn, setAmDisableBtn] = useState(false);
   const [pmDisableBtn, setPmDisableBtn] = useState(false);
 
+  useEffect(() => {
+    document.title = 'Home | Radiant';
+    document.body.style = 'background-color: #FFFFFF';
+  }, []);
+  
   useEffect(() => {
     dispatch(getRoutines());
   }, [dispatch])
