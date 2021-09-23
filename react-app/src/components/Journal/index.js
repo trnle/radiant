@@ -9,12 +9,14 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
 const Journal = () => {
-  document.title = 'Journal | Radiant';
-  document.body.style = 'background-color: #FFFFFF';
-
   const dispatch = useDispatch();
   const history = useHistory();
   const entries = useSelector(state => state.entries.userEntries);
+
+  useEffect(() => {
+    document.title = 'Journal | Radiant';
+    document.body.style = 'background-color: #FFFFFF';
+  }, []);
 
   useEffect(() => {
     dispatch(getEntries())
