@@ -6,15 +6,17 @@ import CreateProductModal from './CreateProductModal';
 import './Products.css';
 
 const Products = () => {
-  document.title = 'Products | Radiant';
-  document.body.style = 'background-color: #FFFFFF';
-
   const dispatch = useDispatch();
   const history = useHistory();
   
   let products = useSelector(state => state.products.allProducts);
   const user = useSelector(state => state.session.user);
   const [filter, setFilter] = useState('')
+  
+  useEffect(() => {
+    document.title = 'Products | Radiant';
+    document.body.style = 'background-color: #FFFFFF';
+  }, []);
 
   useEffect(() => {
     dispatch(getProducts())
