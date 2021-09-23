@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import routineIcon from '../../images/routine-icon.png';
 import journalIcon from '../../images/journal-icon.png';
 import productIcon from '../../images/product-icon.png';
