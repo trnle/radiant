@@ -31,6 +31,7 @@ const Journal = () => {
       {/* <CreateEntryModal /> */}
       <Tabs forceRenderTabPanel>
         <TabList>
+          <Tab>2022</Tab>
           <Tab>2021</Tab>
         </TabList>
         <TabPanel>
@@ -43,7 +44,7 @@ const Journal = () => {
             <TabPanel>
               <div id='entries-list'>
                 {Object.values(entries).map(entry => (
-                  entry.created_at.includes('Jan') &&
+                  entry.created_at.includes('Jan') && entry.created_at.includes('2022') &&
                   <div key={entry.id} className='entry-info' onClick={e => { e.preventDefault(); history.push(`/journal/${entry.id}`) }}>
                     <h4>{entry.created_at}</h4>
                     {entry.rating && <p>Skin rating: {entry.rating}</p>}
@@ -54,7 +55,7 @@ const Journal = () => {
             <TabPanel>
               <div id='entries-list'>
                 {Object.values(entries).map(entry => (
-                  entry.created_at.includes('Feb') &&
+                  entry.created_at.includes('Feb') && entry.created_at.includes('2022') &&
                   <div key={entry.id} className='entry-info' onClick={e => { e.preventDefault(); history.push(`/journal/${entry.id}`) }}>
                     <h4>{entry.created_at}</h4>
                     {entry.rating && <p>Skin rating: {entry.rating}</p>}
@@ -65,7 +66,7 @@ const Journal = () => {
             <TabPanel>
               <div id='entries-list'>
                 {Object.values(entries).map(entry => (
-                  entry.created_at.includes('Mar') &&
+                  entry.created_at.includes('Mar') && entry.created_at.includes('2022') &&
                   <div key={entry.id} className='entry-info' onClick={e => { e.preventDefault(); history.push(`/journal/${entry.id}`) }}>
                     <h4>{entry.created_at}</h4>
                     {entry.rating && <p>Skin rating: {entry.rating}</p>}
@@ -76,7 +77,7 @@ const Journal = () => {
             <TabPanel>
               <div id='entries-list'>
                 {Object.values(entries).map(entry => (
-                  entry.created_at.includes('Apr') &&
+                  entry.created_at.includes('Apr') && entry.created_at.includes('2022') &&
                   <div key={entry.id} className='entry-info' onClick={e => { e.preventDefault(); history.push(`/journal/${entry.id}`) }}>
                     <h4>{entry.created_at}</h4>
                     {entry.rating && <p>Skin rating: {entry.rating}</p>}
@@ -87,7 +88,7 @@ const Journal = () => {
             <TabPanel>
               <div id='entries-list'>
                 {Object.values(entries).map(entry => (
-                  entry.created_at.includes('May') &&
+                  entry.created_at.includes('May') && entry.created_at.includes('2022') &&
                   <div key={entry.id} className='entry-info' onClick={e => { e.preventDefault(); history.push(`/journal/${entry.id}`) }}>
                     <h4>{entry.created_at}</h4>
                     {entry.rating && <p>Skin rating: {entry.rating}</p>}
@@ -98,7 +99,7 @@ const Journal = () => {
             <TabPanel>
               <div id='entries-list'>
                 {Object.values(entries).map(entry => (
-                  entry.created_at.includes('Jun') &&
+                  entry.created_at.includes('Jun') && entry.created_at.includes('2022') &&
                   <div key={entry.id} className='entry-info' onClick={e => { e.preventDefault(); history.push(`/journal/${entry.id}`) }}>
                     <h4>{entry.created_at}</h4>
                     {entry.rating && <p>Skin rating: {entry.rating}</p>}
@@ -109,7 +110,7 @@ const Journal = () => {
             <TabPanel>
               <div id='entries-list'>
                 {Object.values(entries).map(entry => (
-                  entry.created_at.includes('Jul') &&
+                  entry.created_at.includes('Jul') && entry.created_at.includes('2022') &&
                   <div key={entry.id} className='entry-info' onClick={e => { e.preventDefault(); history.push(`/journal/${entry.id}`) }}>
                     <h4>{entry.created_at}</h4>
                     {entry.rating && <p>Skin rating: {entry.rating}</p>}
@@ -120,7 +121,7 @@ const Journal = () => {
             <TabPanel>
               <div id='entries-list'>
                 {Object.values(entries).map(entry => (
-                  entry.created_at.includes('Aug') &&
+                  entry.created_at.includes('Aug') && entry.created_at.includes('2022') &&
                   <div key={entry.id} className='entry-info' onClick={e => { e.preventDefault(); history.push(`/journal/${entry.id}`) }}>
                     <h4>{entry.created_at}</h4>
                     {entry.rating && <p>Skin rating: {entry.rating}</p>}
@@ -131,7 +132,7 @@ const Journal = () => {
             <TabPanel>
               <div id='entries-list'>
                 {Object.values(entries).map(entry => (
-                  entry.created_at.includes('Sep') &&
+                  entry.created_at.includes('Sep') && entry.created_at.includes('2022') &&
                   <div key={entry.id} className='entry-info' onClick={e => { e.preventDefault(); history.push(`/journal/${entry.id}`) }}>
                     <h4>{entry.created_at}</h4>
                     {entry.rating && <p>Skin rating: {entry.rating}</p>}
@@ -142,7 +143,7 @@ const Journal = () => {
             <TabPanel>
               <div id='entries-list'>
                 {Object.values(entries).map(entry => (
-                  entry.created_at.includes('Oct') &&
+                  entry.created_at.includes('Oct') && entry.created_at.includes('2022') &&
                   <div key={entry.id} className='entry-info' onClick={e => { e.preventDefault(); history.push(`/journal/${entry.id}`) }}>
                     <h4>{entry.created_at}</h4>
                     {entry.rating && <p>Skin rating: {entry.rating}</p>}
@@ -153,7 +154,7 @@ const Journal = () => {
             <TabPanel>
               <div id='entries-list'>
                 {Object.values(entries).map(entry => (
-                  entry.created_at.includes('Nov') &&
+                  entry.created_at.includes('Nov') && entry.created_at.includes('2022') &&
                   <div key={entry.id} className='entry-info' onClick={e => { e.preventDefault(); history.push(`/journal/${entry.id}`) }}>
                     <h4>{entry.created_at}</h4>
                     {entry.rating && <p>Skin rating: {entry.rating}</p>}
@@ -164,7 +165,148 @@ const Journal = () => {
             <TabPanel>
               <div id='entries-list'>
                 {Object.values(entries).map(entry => (
-                  entry.created_at.includes('Dec') &&
+                  entry.created_at.includes('Dec') && entry.created_at.includes('2022') &&
+                  <div key={entry.id} className='entry-info' onClick={e => { e.preventDefault(); history.push(`/journal/${entry.id}`) }}>
+                    <h4>{entry.created_at}</h4>
+                    {entry.rating && <p>Skin rating: {entry.rating}</p>}
+                  </div>
+                ))}
+              </div>
+            </TabPanel>
+          </Tabs>
+        </TabPanel>
+        <TabPanel>
+          <Tabs forceRenderTabPanel defaultIndex={new Date().getMonth()}>
+            <TabList>
+              {months.map(month => (
+                <Tab key={month}>{month}</Tab>
+              ))}
+            </TabList>
+            <TabPanel>
+              <div id='entries-list'>
+                {Object.values(entries).map(entry => (
+                  entry.created_at.includes('Jan') && entry.created_at.includes('2021') &&
+                  <div key={entry.id} className='entry-info' onClick={e => { e.preventDefault(); history.push(`/journal/${entry.id}`) }}>
+                    <h4>{entry.created_at}</h4>
+                    {entry.rating && <p>Skin rating: {entry.rating}</p>}
+                  </div>
+                ))}
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div id='entries-list'>
+                {Object.values(entries).map(entry => (
+                  entry.created_at.includes('Feb') && entry.created_at.includes('2021') &&
+                  <div key={entry.id} className='entry-info' onClick={e => { e.preventDefault(); history.push(`/journal/${entry.id}`) }}>
+                    <h4>{entry.created_at}</h4>
+                    {entry.rating && <p>Skin rating: {entry.rating}</p>}
+                  </div>
+                ))}
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div id='entries-list'>
+                {Object.values(entries).map(entry => (
+                  entry.created_at.includes('Mar') && entry.created_at.includes('2021') &&
+                  <div key={entry.id} className='entry-info' onClick={e => { e.preventDefault(); history.push(`/journal/${entry.id}`) }}>
+                    <h4>{entry.created_at}</h4>
+                    {entry.rating && <p>Skin rating: {entry.rating}</p>}
+                  </div>
+                ))}
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div id='entries-list'>
+                {Object.values(entries).map(entry => (
+                  entry.created_at.includes('Apr') && entry.created_at.includes('2021') &&
+                  <div key={entry.id} className='entry-info' onClick={e => { e.preventDefault(); history.push(`/journal/${entry.id}`) }}>
+                    <h4>{entry.created_at}</h4>
+                    {entry.rating && <p>Skin rating: {entry.rating}</p>}
+                  </div>
+                ))}
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div id='entries-list'>
+                {Object.values(entries).map(entry => (
+                  entry.created_at.includes('May') && entry.created_at.includes('2021') &&
+                  <div key={entry.id} className='entry-info' onClick={e => { e.preventDefault(); history.push(`/journal/${entry.id}`) }}>
+                    <h4>{entry.created_at}</h4>
+                    {entry.rating && <p>Skin rating: {entry.rating}</p>}
+                  </div>
+                ))}
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div id='entries-list'>
+                {Object.values(entries).map(entry => (
+                  entry.created_at.includes('Jun') && entry.created_at.includes('2021') &&
+                  <div key={entry.id} className='entry-info' onClick={e => { e.preventDefault(); history.push(`/journal/${entry.id}`) }}>
+                    <h4>{entry.created_at}</h4>
+                    {entry.rating && <p>Skin rating: {entry.rating}</p>}
+                  </div>
+                ))}
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div id='entries-list'>
+                {Object.values(entries).map(entry => (
+                  entry.created_at.includes('Jul') && entry.created_at.includes('2021') &&
+                  <div key={entry.id} className='entry-info' onClick={e => { e.preventDefault(); history.push(`/journal/${entry.id}`) }}>
+                    <h4>{entry.created_at}</h4>
+                    {entry.rating && <p>Skin rating: {entry.rating}</p>}
+                  </div>
+                ))}
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div id='entries-list'>
+                {Object.values(entries).map(entry => (
+                  entry.created_at.includes('Aug') && entry.created_at.includes('2021') &&
+                  <div key={entry.id} className='entry-info' onClick={e => { e.preventDefault(); history.push(`/journal/${entry.id}`) }}>
+                    <h4>{entry.created_at}</h4>
+                    {entry.rating && <p>Skin rating: {entry.rating}</p>}
+                  </div>
+                ))}
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div id='entries-list'>
+                {Object.values(entries).map(entry => (
+                  entry.created_at.includes('Sep') && entry.created_at.includes('2021') &&
+                  <div key={entry.id} className='entry-info' onClick={e => { e.preventDefault(); history.push(`/journal/${entry.id}`) }}>
+                    <h4>{entry.created_at}</h4>
+                    {entry.rating && <p>Skin rating: {entry.rating}</p>}
+                  </div>
+                ))}
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div id='entries-list'>
+                {Object.values(entries).map(entry => (
+                  entry.created_at.includes('Oct') && entry.created_at.includes('2021') &&
+                  <div key={entry.id} className='entry-info' onClick={e => { e.preventDefault(); history.push(`/journal/${entry.id}`) }}>
+                    <h4>{entry.created_at}</h4>
+                    {entry.rating && <p>Skin rating: {entry.rating}</p>}
+                  </div>
+                ))}
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div id='entries-list'>
+                {Object.values(entries).map(entry => (
+                  entry.created_at.includes('Nov') && entry.created_at.includes('2021') &&
+                  <div key={entry.id} className='entry-info' onClick={e => { e.preventDefault(); history.push(`/journal/${entry.id}`) }}>
+                    <h4>{entry.created_at}</h4>
+                    {entry.rating && <p>Skin rating: {entry.rating}</p>}
+                  </div>
+                ))}
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div id='entries-list'>
+                {Object.values(entries).map(entry => (
+                  entry.created_at.includes('Dec') && entry.created_at.includes('2021') &&
                   <div key={entry.id} className='entry-info' onClick={e => { e.preventDefault(); history.push(`/journal/${entry.id}`) }}>
                     <h4>{entry.created_at}</h4>
                     {entry.rating && <p>Skin rating: {entry.rating}</p>}
