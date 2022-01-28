@@ -36,7 +36,6 @@ const Journal = () => {
         </TabList>
         <TabPanel>
           <Tabs forceRenderTabPanel defaultIndex={new Date().getMonth()}>
-            {console.log(new Date().getMonth())}
             <TabList>
               {months.map(month => (
                 <Tab key={month}>{month}</Tab>
